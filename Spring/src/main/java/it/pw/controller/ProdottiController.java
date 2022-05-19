@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.pw.model.Prodotto;
 import it.pw.service.ProdottoService;
@@ -32,6 +33,16 @@ public class ProdottiController {
 	private List<Prodotto> vediTutti(){
 		return prodottoService.vediTutti();
 	}
+	
+	@GetMapping("/infoProdotto")
+	private String getProdotti(Model model,@RequestParam("id") int id) {
+		model.addAttribute("prodotto",getProdottoById(id));
+		
+		
+		return "info-prodotti";
+	}
+	
+	
 }
 	
 	

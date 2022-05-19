@@ -16,16 +16,14 @@
  <put-attribute name="content" value="/WEB-INF/view/home.jsp" />
  </definition>
  
- <definition name="cart" extends="baseLayout">
- <put-attribute name="title" value="Carrello" />
- <put-attribute name="content" value="/WEB-INF/view/cart.jsp" />
- </definition>
- 
   <definition name="prodotti" extends="baseLayout">
  <put-attribute name="title" value="Prodotti" />
  <put-attribute name="content" value="/WEB-INF/view/prodotti.jsp" />
  </definition>
  
- 
+ <definition name="info-prodotti" extends="baseLayout">
+ <put-attribute name="title" value="Info-Prodotti" />
+ <put-attribute name="content" value="/WEB-INF/view/info-prodotti.jsp" />
+ </definition>
 
  </tiles-definitions>
