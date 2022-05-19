@@ -23,36 +23,33 @@
 								${prodotto.nome}
 							</td>
 							<td class="text-left" >
-							<a href='<spring:url value="/infoProdotto?id=${prodotto.id}" />' class="btn btn-primary btn-sm ">
+							<a href='<spring:url value="/prodotti/infoProdotto?id=${prodotto.id_prodotto}" />' class="btn btn-primary btn-sm ">
 								mostra dettagli
 							</a>
 						</td>
+						
+						
+						
+						
+						
+						
+						
+						
 						<td class="text-left" >
-							<a href='<spring:url value="/cart?id=${prodotto.id}" />' class="btn btn-primary btn-sm ">
+							<a href='<spring:url value="/cart?id=${prodotto.id_prodotto}" />' class="btn btn-primary btn-sm ">
 								Acquista subito
 							</a>
 						</td>
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
+	
 							<td class="text-left" >
 								${prodotto.descrizione}
 							</td>
 						<td class="text-left" >
 								${prodotto.prezzo}
 							</td>
-							
-							
+
 					</tr>
+					
 				</c:forEach>
 			</tbody>
 		</table>

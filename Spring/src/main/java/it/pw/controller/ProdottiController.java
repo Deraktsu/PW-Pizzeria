@@ -1,6 +1,9 @@
 package it.pw.controller;
 
+import java.io.File;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,14 +33,20 @@ public class ProdottiController {
 	}
 	
 	
-	private List<Prodotto> vediTutti(){
+	public List<Prodotto> vediTutti(){
 		return prodottoService.vediTutti();
 	}
 	
+	
 	@GetMapping("/infoProdotto")
-	private String getProdotti(Model model,@RequestParam("id") int id) {
-		model.addAttribute("prodotto",getProdottoById(id));
+	public String getProdotti(Model model,@RequestParam("id") int id,HttpSession session) {
+		String path = session.getServletContext().getRealPath("/");
+		String path2 = path + "static\\images\\"+String.valueOf(id)+".png";
+		File file = new File(path2);
+		System.out.println(file.exists());
 		
+		model.addAttribute("prodotto",prodottoService.getProdottoById(id));
+		model.addAttribute("immagine", file);
 		
 		return "info-prodotti";
 	}

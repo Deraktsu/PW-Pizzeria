@@ -28,7 +28,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
 			->
 	{
 		Prodotto p = new Prodotto();
-		p.setId(resultSet.getInt("id_prodotto"));
+		p.setId_prodotto(resultSet.getInt("id_prodotto"));
 		p.setNome(resultSet.getString("nome"));
 		p.setDescrizione(resultSet.getString("descrizione"));
 		p.setPrezzo(resultSet.getDouble("prezzo"));
@@ -55,6 +55,12 @@ public class ProdottoDaoImpl implements ProdottoDao {
 		String sql = "DELETE FROM prodotti WHERE id=?";
 		template.update(sql,id);
 		
+	}
+
+	@Override
+	public Prodotto getProdottoById(int id) {
+		String sql = "SELECT * FROM prodotti WHERE id_prodotto=?";
+		return template.queryForObject(sql,prodottoMapper,id);
 	}
 
 }

@@ -10,6 +10,7 @@ public interface ProdottoDao {
 	void create(Prodotto p);
 	void update(Prodotto p);
 	void delete(int id);
+	Prodotto getProdottoById(int id);
 	
 
 }

@@ -40,6 +40,13 @@ public class ProdottoServiceImpl implements ProdottoService {
 		
 	}
 
+
+	@Override
+	public Prodotto getProdottoById(int id) {
+		
+		return prodottoDao.getProdottoById(id);
+	}
+
 	
 
 		

@@ -3,16 +3,17 @@ package it.pw.model;
 
 public class Prodotto {
 
-	private int id;
+	
+	private int id_prodotto;
 	private String nome;
 	private String descrizione;
 	private double prezzo;
 	
-	public int getId() {
-		return id;
+	public int getId_prodotto() {
+		return id_prodotto;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId_prodotto(int id) {
+		this.id_prodotto = id;
 	}
 	public String getNome() {
 		return nome;
