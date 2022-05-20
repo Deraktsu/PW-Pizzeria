@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+:root {
+    --clr1:#f95b11;
+    --clr2:#fff;
+    --clr3:#000;
+    --clr4:#f42f1d;
+    --clr5:limegreen;
+}
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+html {
+    font-size:65%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 8rem;
+    overflow-x: hidden;
+}
+html::-webkit-scrollbar {
+    width:1rem;
+}
+html::-webkit-scrollbar-thumb {
+    background: var(--clr4);
+}
+.head {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index: 1000;
+    display: flex;
+    background-color: rgb(255,205,57,0.95);
+    color: var(--clr2);
+    padding: 3rem 9%;
+    align-items: center;
+    justify-content: space-between;
+}
+.head h1 {
+    font-size:2.5rem;
+}
+.head .fa-pizza-slice {
+    animation: icon 5s ease infinite;
+}
+@keyframes icon {
+    25% {
+        transform:translateY(-1.5rem);
+    }
+    50% {
+        transform:translateY(1.5rem);
+    }
+}
+.head .navbar a {
+    color: var(--clr2);
+    font-size: 1.6rem;
+    font-weight:600;
+    margin:0 2rem;
+}
+.head .navbar a:hover {
+    color: var(--clr3);
+    transition: .4s ease;
+}
+.head .side-bar i {
+    padding: 1.5rem;
+    font-size: 2.1rem;
+    border: none;
+    background: var(--clr2);
+    color: var(--clr4);
+}
+.head .side-bar i:hover {
+
+}
+#bars {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+#tabella { /* css per formattare il div con id="tabella" */
+    background-color: white;
+    height: 100%; /* css dire al div con id="tabella" di prendere tutta l'altezza disponibile della row in cui è contenuto */
+    z-index: 1; /* css per fare risultare in sovraimpressione il div con id="tabella" */
+}
+#benvenuto {
+    margin-top: 80px;
+    border-top: 2px solid darkred;
+    height: 90%;
+    background-color: white; /* ho messo il colore di sfondo solo per farti vedere quanto è grande il div con id="miele", puoi cancellarlo tranquillamente */
+}
+#benvenuto b { /* css per formattare slo ciò che è contenuto nel tag <b> del div con id="miele" */
+    font-size: 20px;
+}
+.cella {
+    height: 200px;
+    padding-top: 100px;
+    font-size: 20px;
+    text-align: center;
+}
