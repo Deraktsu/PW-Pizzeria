@@ -1,10 +1,10 @@
 package it.pw.service;
 
-import it.pw.model.User;
+import it.pw.model.Utente;
 
-public interface UserService {
+public interface UtenteService {
 	
-	void create(User u);
+	void create(Utente u);
 	boolean verificaLogin(String username,String password);
 	
 }

@@ -24,6 +24,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
 		return template.query(sql, prodottoMapper);
 	}
 	
+	
 	private RowMapper<Prodotto> prodottoMapper = (resultSet, rowNum)
 			->
 	{

@@ -11,15 +11,15 @@ import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 
 @Entity
-@Table(name = "anagrafica")
-public class User implements Serializable{
+@Table(name = "utente")
+public class Utente implements Serializable{
 	
 	
 	private static final long serialVersionUID = 4280897582555117959L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_anagrafica;
+	private int id_utente;
 	
 	@Pattern(regexp = "[a-zA-Zטיעאשל\\s']{1,255}",message = "{user.form.error.general}")
 	@Column(name = "nome", length = 255, nullable = false)
@@ -42,11 +42,11 @@ public class User implements Serializable{
 	private String password;
 
 	public int getId_anagrafica() {
-		return id_anagrafica;
+		return id_utente;
 	}
 
-	public void setId_anagrafica(int id_anagrafica) {
-		this.id_anagrafica = id_anagrafica;
+	public void setId_anagrafica(int id_utente) {
+		this.id_utente = id_utente;
 	}
 
 	public String getNome() {

@@ -3,26 +3,26 @@ package it.pw.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import it.pw.dao.UserDao;
-import it.pw.model.User;
+import it.pw.dao.UtenteDao;
+import it.pw.model.Utente;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UtenteServiceImpl implements UtenteService {
 
 	@Autowired
-	private UserDao userDao;
+	private UtenteDao utenteDao;
 	
 	
 	@Override
-	public void create(User u) {
-		userDao.create(u);
+	public void create(Utente u) {
+		utenteDao.create(u);
 	}
 
 
 	@Override
 	public boolean verificaLogin(String username, String password) {
 		
-		return userDao.verificaLogin(username,password);
+		return utenteDao.verificaLogin(username,password);
 	}
 
 	

@@ -24,9 +24,10 @@ public class CarrelloController {
 	ProdottoService prodottoService;
 
 	@GetMapping
-	public String getPage(Model model) {
+	public String getPage(Model model,HttpServletRequest request, HttpSession session) {
 	model.addAttribute("listaCarello",listaCarrello);
 	model.addAttribute("totale",prodottoService.calcolaPrezzo(listaCarrello));
+	model.addAttribute("loggato", session.getAttribute("loggato"));
 	return "carrello";
 	}
 
@@ -36,10 +37,11 @@ public class CarrelloController {
 	  @GetMapping("/prodottoInOrdine")
 	  public String aggiungiProdotto(HttpServletRequest request, HttpSession session)
 	  {		
+		  
 		  int id = 0;
 		  id = Integer.parseInt(request.getParameter("id"));
 		  if(prodottoService.getProdottoById(id) !=null) {
-			  if(session.getAttribute("id") == null) {
+			  	    
 				  session.setAttribute("id", id);
 				  Carrello c = new Carrello();
 				  c.setId_prodotto(id);
@@ -47,17 +49,7 @@ public class CarrelloController {
 				  c.setNome(prodottoService.getProdottoById(id).getNome());
 				  c.setPrezzo(prodottoService.getProdottoById(id).getPrezzo());
 				  listaCarrello.add(c);
-				  //listaOrdine.add(prodottoService.getProdottoById(id));
-			  }else {
-				  session.setAttribute("id", id);
-				  Carrello c = new Carrello();
-				  c.setId_prodotto(id);
-				  c.setQuantita(1);
-				  c.setNome(prodottoService.getProdottoById(id).getNome());
-				  c.setPrezzo(prodottoService.getProdottoById(id).getPrezzo());
-				  listaCarrello.add(c);
-				  //listaOrdine.add(prodottoService.getProdottoById(id));
-			  }
+			
 		  }
 
 	  return "redirect:/carrello"; 

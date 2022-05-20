@@ -1,9 +1,9 @@
 package it.pw.dao;
 
-import it.pw.model.User;
+import it.pw.model.Utente;
 
 
-public interface UserDao {
-	void create(User u);
+public interface UtenteDao {
+	void create(Utente u);
 	boolean verificaLogin(String username,String password);
 }

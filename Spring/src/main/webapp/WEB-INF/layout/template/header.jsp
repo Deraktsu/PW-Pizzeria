@@ -16,19 +16,19 @@
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" href='<spring:url value="/carrello"/>'>Carrello</a>
+          <a class="nav-link" href='<spring:url value="/prodotti"/>'>Prodotti</a>
         </li>
         
+        <li class="nav-item">
+          <a class="nav-link" href='<spring:url value="/carrello"/>'>Carrello</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href='<spring:url value="/registrazione"/>'>Registrazione</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href='<spring:url value="/registrazione/login"/>'>Login</a>
+        </li>
       </ul>
-      <c:if test="${isArticoli}">
-			
-      <form class="d-flex" action="home" method="GET">
-        <input class="form-control me-2" type="search" placeholder="cerca per ID" name="searchText" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Cerca</button>
-      </form>
-       
-
-      </c:if>
     </div>
   </div>
 </nav>
