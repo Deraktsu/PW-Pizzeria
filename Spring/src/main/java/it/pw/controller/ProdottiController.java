@@ -43,7 +43,7 @@ public class ProdottiController {
 		String path = session.getServletContext().getRealPath("/");
 		String path2 = path + "static\\images\\"+String.valueOf(id)+".png";
 		File file = new File(path2);
-		System.out.println(file.exists());
+		
 		
 		model.addAttribute("prodotto",prodottoService.getProdottoById(id));
 		model.addAttribute("immagine", file);

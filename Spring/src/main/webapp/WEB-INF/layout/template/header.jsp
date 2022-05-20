@@ -16,7 +16,7 @@
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" href='<spring:url value="/cart"/>'>Carrello</a>
+          <a class="nav-link" href='<spring:url value="/carrello"/>'>Carrello</a>
         </li>
         
       </ul>

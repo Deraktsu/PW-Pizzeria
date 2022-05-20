@@ -4,6 +4,8 @@ package it.pw.service;
 
 import java.util.List;
 
+import it.pw.model.Carrello;
+
 import it.pw.model.Prodotto;
 
 public interface ProdottoService {
@@ -12,6 +14,7 @@ public interface ProdottoService {
 	void update(Prodotto p);
 	void delete(int id);
 	Prodotto getProdottoById(int id);
+	double calcolaPrezzo(List<Carrello>listacalcolare);
 	
 	
 	

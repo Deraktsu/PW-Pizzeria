@@ -62,5 +62,5 @@ public class ProdottoDaoImpl implements ProdottoDao {
 		String sql = "SELECT * FROM prodotti WHERE id_prodotto=?";
 		return template.queryForObject(sql,prodottoMapper,id);
 	}
-
+	
 }

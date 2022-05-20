@@ -19,8 +19,17 @@
 					<img class="img-thumbnail" style="width: 180px; height: 250px;max-width: 180px; max-height: 250px;" 
 							alt="Book Image" src="<c:url value="/static/images/${prodotto.id_prodotto}.png" />">
 					</td>
-					
-					
+					<td class="text-left" >
+								${prodotto.descrizione}
+							</td>
+						<td class="text-left" >
+								${prodotto.prezzo}€
+							</td>
+							<td class="text-left" >
+							<a href='<spring:url value="/carrello/prodottoInOrdine?id=${prodotto.id_prodotto}" />' class="btn btn-primary btn-sm ">
+								Acquista subito
+							</a>
+						</td>
 				</tr>
 			</tbody>
 		</table>		
