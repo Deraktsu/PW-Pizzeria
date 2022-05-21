@@ -12,5 +12,4 @@ public interface ProdottoDao {
 	void delete(int id);
 	Prodotto getProdottoById(int id);
 	
-
 }

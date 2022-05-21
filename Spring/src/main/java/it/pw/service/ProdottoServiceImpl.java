@@ -58,8 +58,7 @@ public class ProdottoServiceImpl implements ProdottoService {
 		totale += c.getQuantita() *	prodottoDao.getProdottoById(c.getId_prodotto()).getPrezzo();
 			
 		}
-		
-		
+
 		return totale;
 	}
 

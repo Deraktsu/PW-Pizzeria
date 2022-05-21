@@ -15,15 +15,12 @@ public class ProdottoDaoImpl implements ProdottoDao {
 
 	@Autowired
 	private JdbcTemplate template;
-	
 
-	
 	@Override
 	public List<Prodotto> vediTutti() {
 		String sql = "SELECT * from prodotti";
 		return template.query(sql, prodottoMapper);
 	}
-	
 	
 	private RowMapper<Prodotto> prodottoMapper = (resultSet, rowNum)
 			->
@@ -35,8 +32,6 @@ public class ProdottoDaoImpl implements ProdottoDao {
 		p.setPrezzo(resultSet.getDouble("prezzo"));
 		return p;
 	};
-
-
 
 	@Override
 	public void create(Prodotto p) {

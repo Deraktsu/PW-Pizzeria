@@ -1,9 +1,7 @@
 package it.pw.model;
 
-
 public class Prodotto {
 
-	
 	private int id_prodotto;
 	private String nome;
 	private String descrizione;

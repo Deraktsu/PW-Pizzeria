@@ -12,12 +12,10 @@ public class UtenteServiceImpl implements UtenteService {
 	@Autowired
 	private UtenteDao utenteDao;
 	
-	
 	@Override
 	public void create(Utente u) {
 		utenteDao.create(u);
 	}
-
 
 	@Override
 	public boolean verificaLogin(String username, String password) {
@@ -25,13 +23,22 @@ public class UtenteServiceImpl implements UtenteService {
 		return utenteDao.verificaLogin(username,password);
 	}
 
-
 	@Override
 	public boolean verficaUsername(String username) {
 		
 		return utenteDao.verficaUsername(username);
 	}
 
-	
+	@Override
+	public Utente getUtenteByUsername(String username) {
+		
+		return utenteDao.getUtenteByUsername(username);
+	}
+
+	@Override
+	public void update(Utente u) {
+		utenteDao.update(u);
+	}
+
 	
 }

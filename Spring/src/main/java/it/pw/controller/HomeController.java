@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(path = {"/","/index","/home"})
-public class IndexController {
+public class HomeController {
 	
 	@GetMapping
 	public String getPage(Model model) {
 		
 		
 		
-		return "index";
+		return "home";
 	}
 
 }

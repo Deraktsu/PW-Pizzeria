@@ -36,9 +36,19 @@
  <put-attribute name="content" value="/WEB-INF/view/login.jsp" />
  </definition>
  
+  <definition name="login-admin" extends="baseLayout">
+ <put-attribute name="title" value="Login-Admin" />
+ <put-attribute name="content" value="/WEB-INF/view/login-admin.jsp" />
+ </definition>
+ 
  <definition name="registrazione" extends="baseLayout">
  <put-attribute name="title" value="Registrazione" />
  <put-attribute name="content" value="/WEB-INF/view/registrazione.jsp" />
+ </definition>
+ 
+ <definition name="area-clienti" extends="baseLayout">
+ <put-attribute name="title" value="Area Clienti" />
+ <put-attribute name="content" value="/WEB-INF/view/area-clienti.jsp" />
  </definition>
  
 

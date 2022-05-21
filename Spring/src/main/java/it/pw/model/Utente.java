@@ -14,7 +14,6 @@ import javax.validation.constraints.Pattern;
 @Table(name = "utente")
 public class Utente implements Serializable{
 	
-	
 	private static final long serialVersionUID = 4280897582555117959L;
 	
 	@Id
@@ -41,11 +40,11 @@ public class Utente implements Serializable{
 	@Column(name = "password", length = 255, nullable = false)
 	private String password;
 
-	public int getId_anagrafica() {
+	public int getId_utente() {
 		return id_utente;
 	}
 
-	public void setId_anagrafica(int id_utente) {
+	public void setId_utente(int id_utente) {
 		this.id_utente = id_utente;
 	}
 
@@ -89,6 +88,4 @@ public class Utente implements Serializable{
 		this.password = password;
 	}
 
-
-	
 }

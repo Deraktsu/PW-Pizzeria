@@ -10,4 +10,6 @@ public interface UtenteDao {
 	boolean verificaLogin(String username,String password);
 	boolean verficaUsername(String username);
 	List<Utente>leggiTutti();
+	Utente getUtenteByUsername(String username);
+	void update(Utente u);
 }

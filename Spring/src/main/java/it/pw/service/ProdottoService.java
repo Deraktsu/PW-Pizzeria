@@ -16,6 +16,4 @@ public interface ProdottoService {
 	Prodotto getProdottoById(int id);
 	double calcolaPrezzo(List<Carrello>listacalcolare);
 	
-	
-	
 }

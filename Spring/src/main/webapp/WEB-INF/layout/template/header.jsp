@@ -28,6 +28,12 @@
         <li class="nav-item">
           <a class="nav-link" href='<spring:url value="/registrazione/login"/>'>Login</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href='<spring:url value="/loginAdmin"/>'>Login Admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href='<spring:url value="/areaClienti"/>'>Area Clienti</a>
+        </li>
       </ul>
     </div>
   </div>

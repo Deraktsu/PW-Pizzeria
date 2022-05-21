@@ -43,21 +43,26 @@ public class RegistrazioneController {
 		if (result.hasErrors()) {
 			return "registrazione";
 		}else {
-			if(!utenteService.verficaUsername(utente.getUsername())){
-				System.out.println("UTENTE NUOVO CREATO");
-				utenteService.create(utente);
-			}else {
-				System.out.println("UTENTE ESISTENTE");
-				return "registrazione";
-			}
+			
+			  if(!utenteService.verficaUsername(utente.getUsername())){
+				 
+			   utenteService.create(utente);
+				 
+				  
+			  }else { 
+				  return "registrazione"; }
+			 
 		}
 		
-		return"redirect:/login";
+		
+		return"redirect:/registrazione/login";
 	}
 	@GetMapping("/login")
 	public String getPageLogin(@ModelAttribute("user") Utente utente, Model model) {
 		model.addAttribute("user", new Utente());
+		
 		return "login";
+		
 	}
 	
 	@PostMapping("/login")
@@ -67,12 +72,15 @@ public class RegistrazioneController {
 		String esito;
 		
 		if(utenteService.verificaLogin(utente.getUsername(), utente.getPassword())) {
-			System.out.println("SEI LOGGATO");
+			
 			esito = "Ti sei loggato correttamente";
 			session.setAttribute("loggato", true);
 			
+			session.setAttribute("Utente", utenteService.getUtenteByUsername(utente.getUsername()));
+			
+			
 		}else {
-			System.out.println("ERRORE");
+			
 			esito = "Errore durante il login";
 			session.setAttribute("loggato", false);
 			return "redirect:/registrazione/login";

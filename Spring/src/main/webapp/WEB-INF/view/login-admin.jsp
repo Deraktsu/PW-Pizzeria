@@ -6,7 +6,7 @@
 FORM LOGIN ADMIN
 
 
-	<form:form method="POST" modelAttribute="user" acceptCharset="ISO-8859-1">
+	<form:form method="POST" modelAttribute="admin" acceptCharset="ISO-8859-1">
 			<form:errors path="*" cssClass="alert alert-danger" element="div" id="generalAlert"/>
 			<div class="row">
 				<div class="col-6">
