@@ -8,8 +8,6 @@ import javax.persistence.PersistenceContext;
 
 import javax.transaction.Transactional;
 
-
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import it.pw.model.Utente;
@@ -30,32 +28,36 @@ public class UtenteDaoImpl implements UtenteDao {
 
 	}
 	
-	
-	private RowMapper<Utente> utenteMapper = (resultSet, rowNum)
-			->
-	{
-		Utente u = new Utente();
-		u.setUsername(resultSet.getString("username"));
-		u.setPassword(resultSet.getString("nome"));
-	
-		return u;
-	};
 
-	@SuppressWarnings("unchecked")
+	
 	@Override
 	public boolean verificaLogin(String username, String password) {
 	
 		
-		List<Utente>utenti = new ArrayList<>();
-		
-		String jpql = "SELECT c FROM Utente c";
-		utenti = manager.createQuery(jpql).getResultList();
-		
+
 		
 				
 		
-	return utenti.stream().
+	return leggiTutti().stream().
 			anyMatch(x -> x.getUsername().equalsIgnoreCase(username)&&
-			x.getPassword().equalsIgnoreCase(password));	}
+			x.getPassword().equals(password));	}
+
+
+	@Override
+	public boolean verficaUsername(String username) {
+
+		return leggiTutti().stream().
+				anyMatch(x -> x.getUsername().equalsIgnoreCase(username));
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Utente> leggiTutti() {
+		List<Utente>utenti = new ArrayList<>();
+		
+		String jpql = "SELECT u FROM Utente u";
+		utenti = manager.createQuery(jpql).getResultList();
+		return utenti;
+	}
 
 }

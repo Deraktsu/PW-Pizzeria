@@ -25,6 +25,13 @@ public class UtenteServiceImpl implements UtenteService {
 		return utenteDao.verificaLogin(username,password);
 	}
 
+
+	@Override
+	public boolean verficaUsername(String username) {
+		
+		return utenteDao.verficaUsername(username);
+	}
+
 	
 	
 }

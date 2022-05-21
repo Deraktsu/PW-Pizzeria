@@ -6,7 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
+
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,18 +34,23 @@ public class RegistrazioneController {
 		return "registrazione";
 	}
 	
+	@SuppressWarnings("unused")
 	private boolean loggato = false;
 	
 	@PostMapping
 	public String registraUser(@Valid @ModelAttribute("utente") Utente utente, BindingResult result) {
 		
-		if (result.hasErrors())
+		if (result.hasErrors()) {
 			return "registrazione";
-		
-		utenteService.create(utente);
-		
-		
-		
+		}else {
+			if(!utenteService.verficaUsername(utente.getUsername())){
+				System.out.println("UTENTE NUOVO CREATO");
+				utenteService.create(utente);
+			}else {
+				System.out.println("UTENTE ESISTENTE");
+				return "registrazione";
+			}
+		}
 		
 		return"redirect:/login";
 	}
