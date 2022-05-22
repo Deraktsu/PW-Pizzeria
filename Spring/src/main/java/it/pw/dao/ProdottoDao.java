@@ -9,7 +9,7 @@ public interface ProdottoDao {
 	List<Prodotto>vediTutti();
 	void create(Prodotto p);
 	void update(Prodotto p);
-	void delete(int id);
+	void delete(Prodotto p);
 	Prodotto getProdottoById(int id);
 	
 }

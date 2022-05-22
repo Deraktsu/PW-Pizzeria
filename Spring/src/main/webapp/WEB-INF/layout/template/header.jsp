@@ -22,18 +22,24 @@
         <li class="nav-item">
           <a class="nav-link" href='<spring:url value="/carrello"/>'>Carrello</a>
         </li>
+        <c:if test="${!loggato}">
         <li class="nav-item">
           <a class="nav-link" href='<spring:url value="/registrazione"/>'>Registrazione</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href='<spring:url value="/registrazione/login"/>'>Login</a>
         </li>
+        
+      
         <li class="nav-item">
           <a class="nav-link" href='<spring:url value="/loginAdmin"/>'>Login Admin</a>
         </li>
+        </c:if>
+        <c:if test="${loggato}">
         <li class="nav-item">
           <a class="nav-link" href='<spring:url value="/areaClienti"/>'>Area Clienti</a>
         </li>
+        </c:if>
       </ul>
     </div>
   </div>

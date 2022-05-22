@@ -26,18 +26,18 @@
 						<td>${carrello.prezzo}€</td>
 						<td>${carrello.quantita}</td>
 						<td class="text-left" >
-							<a href='<spring:url value="/carrello/eliminaDalCarrello?indice=" />' class="btn btn-primary btn-sm ">
+							<a href='<spring:url value="/carrello/diminuisciQuantita?id=${carrello.id_prodotto}" />' class="btn btn-primary btn-sm ">
 								-
 							</a>
 						</td>
 						<td class="text-left" >
-							<a href='<spring:url value="/carrello/eliminaDalCarrello?indice=" />' class="btn btn-primary btn-sm ">
+							<a href='<spring:url value="/carrello/aumentaQuantita?id=${carrello.id_prodotto}" />' class="btn btn-primary btn-sm ">
 								+
 							</a>
 						</td>
 						<td class="text-left" >
-							<a href='<spring:url value="/carrello/eliminaDalCarrello?indice=" />' class="btn btn-primary btn-sm ">
-								Eilmina tutte le ${carrello.nome} dal carrello
+							<a href='<spring:url value="/carrello/eliminaDalCarrello?id=${carrello.id_prodotto}" />' class="btn btn-primary btn-sm ">
+								Elimina tutte le ${carrello.nome} dal carrello
 							</a>
 						</td>
 						<td></td>

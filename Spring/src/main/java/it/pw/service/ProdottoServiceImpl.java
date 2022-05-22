@@ -36,8 +36,8 @@ public class ProdottoServiceImpl implements ProdottoService {
 	}
 
 	@Override
-	public void delete(int id) {
-		prodottoDao.delete(id);
+	public void delete(Prodotto prodotto) {
+		prodottoDao.delete(prodotto);
 		
 	}
 
@@ -58,11 +58,41 @@ public class ProdottoServiceImpl implements ProdottoService {
 		totale += c.getQuantita() *	prodottoDao.getProdottoById(c.getId_prodotto()).getPrezzo();
 			
 		}
-
+			
 		return totale;
 	}
 
-	
+
+	@Override
+	public int trovaIndex(List<Carrello> lcs, int id) {
+		
+		int index = 0;
+		
+		for(Carrello c : lcs) {
+
+			if(c.getId_prodotto() == id) {
+				index = lcs.indexOf(c);
+				break;
+			}
+			
+		}
+		
+		return index;
+	}
+
+
+	@Override
+	public boolean confrontaProdotti(int id, List<Carrello> lista) {
+		
+		for(Carrello c : lista) {
+			if(c.getId_prodotto() == id) {
+				return true;
+			}
+			
+		}
+		
+		return false;
+	}
 
 		
 	

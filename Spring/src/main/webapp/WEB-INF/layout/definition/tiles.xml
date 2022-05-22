@@ -51,5 +51,10 @@
  <put-attribute name="content" value="/WEB-INF/view/area-clienti.jsp" />
  </definition>
  
+ <definition name="admin-utenti" extends="baseLayout">
+ <put-attribute name="title" value="Admin Utenti" />
+ <put-attribute name="content" value="/WEB-INF/view/admin-utenti.jsp" />
+ </definition>
+ 
 
  </tiles-definitions>

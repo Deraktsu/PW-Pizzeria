@@ -28,17 +28,18 @@ public class RegistrazioneController {
 	public String getPage(Model model) {
 		Utente utente;
 		utente = new Utente();
+		model.addAttribute("esitoRegistrazione",true);
 		
 		model.addAttribute("utente", utente);
-
+		model.addAttribute("esito",true);
 		return "registrazione";
 	}
 	
-	@SuppressWarnings("unused")
-	private boolean loggato = false;
+
+
 	
 	@PostMapping
-	public String registraUser(@Valid @ModelAttribute("utente") Utente utente, BindingResult result) {
+	public String registraUser(@Valid @ModelAttribute("utente") Utente utente, BindingResult result,Model model) {
 		
 		if (result.hasErrors()) {
 			return "registrazione";
@@ -50,6 +51,7 @@ public class RegistrazioneController {
 				 
 				  
 			  }else { 
+				  model.addAttribute("esitoRegistrazione",false);
 				  return "registrazione"; }
 			 
 		}
@@ -60,7 +62,7 @@ public class RegistrazioneController {
 	@GetMapping("/login")
 	public String getPageLogin(@ModelAttribute("user") Utente utente, Model model) {
 		model.addAttribute("user", new Utente());
-		
+		model.addAttribute("esitoLogin",true);
 		return "login";
 		
 	}
@@ -69,11 +71,8 @@ public class RegistrazioneController {
 	public String comparaCredenziali(@ModelAttribute("user") Utente utente, Model model,
 			HttpServletRequest request, HttpSession session) {	
 		
-		String esito;
-		
 		if(utenteService.verificaLogin(utente.getUsername(), utente.getPassword())) {
 			
-			esito = "Ti sei loggato correttamente";
 			session.setAttribute("loggato", true);
 			
 			session.setAttribute("Utente", utenteService.getUtenteByUsername(utente.getUsername()));
@@ -81,15 +80,14 @@ public class RegistrazioneController {
 			
 		}else {
 			
-			esito = "Errore durante il login";
 			session.setAttribute("loggato", false);
-			return "redirect:/registrazione/login";
+			model.addAttribute("esitoLogin",false);
+			return "login";
 		}
 		
-		model.addAttribute("esito",esito);
-		
 	
-		return "redirect:/areaClienti";
+
+		return "redirect:/prodotti";
 		
 	}
 	

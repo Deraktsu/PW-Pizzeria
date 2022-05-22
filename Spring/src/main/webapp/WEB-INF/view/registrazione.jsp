@@ -5,6 +5,12 @@
 
 <div class="row justify-content-center">
 	<div class="col-6">
+	
+	<c:if test="${!esitoRegistrazione}">
+<div class="alert alert-danger" role="alert">
+  Impossibile registrare: username già in uso.
+</div>
+</c:if>
 		<form:form method="POST" modelAttribute="utente" acceptCharset="ISO-8859-1">
 			<div class="row">
 				<div class="col-6">

@@ -1,7 +1,6 @@
 package it.pw.controller;
 
 import java.io.File;
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import it.pw.model.Prodotto;
+
 import it.pw.service.ProdottoService;
 
 @Controller
@@ -27,16 +26,10 @@ public class ProdottiController {
 	@GetMapping
 	public String getPage(Model model) {
 		
-		model.addAttribute("prodotti",vediTutti());
+		model.addAttribute("prodotti",prodottoService.vediTutti());
 		
 		return "prodotti";
 	}
-	
-	
-	public List<Prodotto> vediTutti(){
-		return prodottoService.vediTutti();
-	}
-	
 	
 	@GetMapping("/infoProdotto")
 	public String getProdotti(Model model,@RequestParam("id") int id,HttpSession session) {
@@ -47,7 +40,6 @@ public class ProdottiController {
 		
 		model.addAttribute("prodotto",prodottoService.getProdottoById(id));
 		model.addAttribute("immagine", file);
-		
 		return "info-prodotti";
 	}
 	

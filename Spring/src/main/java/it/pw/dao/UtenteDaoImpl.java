@@ -32,7 +32,7 @@ public class UtenteDaoImpl implements UtenteDao {
 	return leggiTutti().stream().
 			anyMatch(x -> x.getUsername().equalsIgnoreCase(username)&&
 			x.getPassword().equals(password));	}
-
+	
 	
 	@Override
 	public boolean verficaUsername(String username) {
@@ -66,7 +66,6 @@ public class UtenteDaoImpl implements UtenteDao {
 		return u;
 	}
 
-	
 	@Override
 	@Transactional
 	public void update(Utente u) {

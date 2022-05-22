@@ -1,5 +1,7 @@
 package it.pw.service;
 
+import java.util.List;
+
 import it.pw.model.Utente;
 
 public interface UtenteService {
@@ -9,4 +11,5 @@ public interface UtenteService {
 	boolean verficaUsername(String username);
 	Utente getUtenteByUsername(String username);
 	void update(Utente u);
+	List<Utente>leggiTutti();
 }

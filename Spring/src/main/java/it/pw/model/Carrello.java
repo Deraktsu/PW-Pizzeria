@@ -1,12 +1,17 @@
 package it.pw.model;
 
-public class Carrello {
+import java.util.Date;
+
+public class Carrello {  // PRODOTTO NEL CARRELLO PER LA LISTA FINTA
 
 	private int id_ordine;
 	private int id_prodotto;
+	private int id_utente;
 	private String nome;
 	private Double prezzo;
 	private int quantita;
+	private String data_ordine;
+	private String orario_ordine;
 	
 	
 	

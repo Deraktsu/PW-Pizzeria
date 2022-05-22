@@ -2,10 +2,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 FORM LOGIN ADMIN
 
-
+<c:if test="${!esitoLoginAdmin}">
+<div class="alert alert-danger" role="alert">
+  Accesso non autorizzato.
+</div>
+</c:if>
+	<c:if test="${!logAdmin}">
 	<form:form method="POST" modelAttribute="admin" acceptCharset="ISO-8859-1">
 			<form:errors path="*" cssClass="alert alert-danger" element="div" id="generalAlert"/>
 			<div class="row">
@@ -29,3 +35,23 @@ FORM LOGIN ADMIN
 				</div>
 			</div>
 		</form:form>
+		</c:if>
+		
+<c:if test="${logAdmin}">
+				<br>
+				<br>
+				<br>
+				<a href='<spring:url value="/admin-prodotti" />' class="btn btn-primary btn-sm ">
+								Gestisci PRODOTTI
+				</a>
+				<a href='<spring:url value="admin-utenti" />' class="btn btn-primary btn-sm ">
+								Gestisci UTENTI
+				</a>
+				<a href='<spring:url value="admin-ordini" />' class="btn btn-primary btn-sm ">
+								Gestisci ORDINI
+				</a>
+				
+				
+
+</c:if>	
+		

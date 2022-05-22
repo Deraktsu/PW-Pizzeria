@@ -1,5 +1,7 @@
 package it.pw.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +40,12 @@ public class UtenteServiceImpl implements UtenteService {
 	@Override
 	public void update(Utente u) {
 		utenteDao.update(u);
+	}
+
+	@Override
+	public List<Utente> leggiTutti() {
+		
+		return utenteDao.leggiTutti();
 	}
 
 	

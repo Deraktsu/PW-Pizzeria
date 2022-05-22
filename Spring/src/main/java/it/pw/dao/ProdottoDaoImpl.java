@@ -1,62 +1,57 @@
 package it.pw.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Repository;
 
 
 import it.pw.model.Prodotto;
 
 @Repository
-public class ProdottoDaoImpl implements ProdottoDao {
+public class ProdottoDaoImpl implements ProdottoDao{
 
-	@Autowired
-	private JdbcTemplate template;
-
+	@PersistenceContext
+	EntityManager manager;
+	
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Prodotto> vediTutti() {
-		String sql = "SELECT * from prodotti";
-		return template.query(sql, prodottoMapper);
+		List<Prodotto>prodotti = new ArrayList<>();
+		
+		String jpql = "SELECT p FROM Prodotto p";
+		prodotti = manager.createQuery(jpql).getResultList();
+		return prodotti;
+	}
+	@Override
+	@Transactional
+	public void create(Prodotto p) {
+		manager.persist(p);
+	}
+	@Override
+	@Transactional
+	public void update(Prodotto p) {
+		manager.merge(p);
+		
+	}
+	@Override
+	@Transactional
+	public void delete(Prodotto p) 
+	{
+		manager.remove(manager.merge(p));
 	}
 	
-	private RowMapper<Prodotto> prodottoMapper = (resultSet, rowNum)
-			->
-	{
-		Prodotto p = new Prodotto();
-		p.setId_prodotto(resultSet.getInt("id_prodotto"));
-		p.setNome(resultSet.getString("nome"));
-		p.setDescrizione(resultSet.getString("descrizione"));
-		p.setPrezzo(resultSet.getDouble("prezzo"));
-		return p;
-	};
-
-	@Override
-	public void create(Prodotto p) {
-		String sql = "INSERT INTO prodotti(nome,descrizione,prezzo VALUES(?,?,?)";
-		template.update(sql, p.getNome(),p.getDescrizione(),p.getPrezzo());
-	}
-
-	@Override
-	public void update(Prodotto p) {
-		String sql = "UPDATE prodotti SET nome=?,descrizione=?,prezzo=? WHERE id = ?";
-		template.update(sql, p.getNome(),p.getDescrizione(),p.getPrezzo());
-		
-	}
-
-	@Override
-	public void delete(int id) {
-		String sql = "DELETE FROM prodotti WHERE id=?";
-		template.update(sql,id);
-		
-	}
-
 	@Override
 	public Prodotto getProdottoById(int id) {
-		String sql = "SELECT * FROM prodotti WHERE id_prodotto=?";
-		return template.queryForObject(sql,prodottoMapper,id);
-	}
 	
+		return manager.find(Prodotto.class, id);
+	}
 }
+	
+	
+

@@ -1,10 +1,29 @@
 package it.pw.model;
 
-public class Prodotto {
+import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "prodotti")
+public class Prodotto implements Serializable{
+
+	private static final long serialVersionUID = 2999766654118374688L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_prodotto;
+	
+	@Column(name = "nome", length = 255, nullable = false)
 	private String nome;
+	@Column(name = "descrizione", length = 255, nullable = false)
 	private String descrizione;
+	@Column(name = "prezzo", length = 255, nullable = false)
 	private double prezzo;
 	
 	public int getId_prodotto() {

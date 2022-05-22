@@ -4,6 +4,11 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 
+<c:if test="${!esitoLogin}">
+<div class="alert alert-danger" role="alert">
+  Accesso non autorizzato.
+</div>
+</c:if>
 	<form:form method="POST" modelAttribute="user" acceptCharset="ISO-8859-1">
 			<form:errors path="*" cssClass="alert alert-danger" element="div" id="generalAlert"/>
 			<div class="row">
