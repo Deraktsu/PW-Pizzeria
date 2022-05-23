@@ -1,5 +1,7 @@
 package it.pw.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,18 +16,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 	
 	@GetMapping
-	public String getPage(Model model) {
+	public String getPage(Model model,HttpServletRequest request, HttpSession session) {
+		if(session.getAttribute("logUtente") == null)
+		session.setAttribute("logUtente", false);
 		
+		if(session.getAttribute("logAdmin") == null)
+		session.setAttribute("logAdmin", false);
 		
+		Date data = new Date();
+		model.addAttribute("data",data);
 		
 		return "home";
 	}
 	
 	@PostMapping
 	public String logout(Model model,HttpServletRequest request, HttpSession session) {
-		session.setAttribute("loggato", false);
-		
-		
+		session.removeAttribute("logUtente");
+		session.removeAttribute("logAdmin");
+		session.removeAttribute("listaCarrello");
+		session.removeAttribute("Utente");
 		return "home";
 	}
 

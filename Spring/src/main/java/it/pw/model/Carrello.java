@@ -1,48 +1,84 @@
 package it.pw.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Carrello {  // PRODOTTO NEL CARRELLO PER LA LISTA FINTA
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-	private int id_ordine;
-	private int id_prodotto;
-	private int id_utente;
-	private String nome;
-	private Double prezzo;
-	private int quantita;
-	private String data_ordine;
-	private String orario_ordine;
+@Entity
+@Table(name = "carrello")
+public class Carrello implements Serializable{
+
+
+	private static final long serialVersionUID = 6634095732301309175L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id_carrello;
+	
+	@Column(name = "data_ordine", nullable = false)
+	private Date data_ordine;
+	
+	@Column(name = "orario_ordine", nullable = false)
+	private Date orario_ordine;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="id_utente",referencedColumnName="id_utente")
+	private Utente utente;
+	
+
+	@OneToOne(
+			mappedBy = "carrello", 
+			cascade = CascadeType.ALL,
+			fetch = FetchType.EAGER,
+			orphanRemoval = true
+		)
+	private Ordini ordini;
+
+	
+	
+	public int getId_carrello() {
+		return id_carrello;
+	}
+
+	public void setId_carrello(int id_carrello) {
+		this.id_carrello = id_carrello;
+	}
+
+	public Date getData_ordine() {
+		return data_ordine;
+	}
+
+	public void setData_ordine(Date data_ordine) {
+		this.data_ordine = data_ordine;
+	}
+
+	public Date getOrario_ordine() {
+		return orario_ordine;
+	}
+
+	public void setOrario_ordine(Date orario_ordine) {
+		this.orario_ordine = orario_ordine;
+	}
+
+	
+
+	public Ordini getOrdini() {
+		return ordini;
+	}
+
+	public void setOrdini(Ordini ordini) {
+		this.ordini = ordini;
+	}
 	
 	
 	
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public Double getPrezzo() {
-		return prezzo;
-	}
-	public void setPrezzo(Double prezzo) {
-		this.prezzo = prezzo;
-	}
-	public int getId_ordine() {
-		return id_ordine;
-	}
-	public void setId_ordine(int id_ordine) {
-		this.id_ordine = id_ordine;
-	}
-	public int getId_prodotto() {
-		return id_prodotto;
-	}
-	public void setId_prodotto(int id_prodotto) {
-		this.id_prodotto = id_prodotto;
-	}
-	public int getQuantita() {
-		return quantita;
-	}
-	public void setQuantita(int quantita) {
-		this.quantita = quantita;
-	}
 }

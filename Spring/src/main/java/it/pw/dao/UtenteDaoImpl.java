@@ -40,7 +40,8 @@ public class UtenteDaoImpl implements UtenteDao {
 		return leggiTutti().stream().
 				anyMatch(x -> x.getUsername().equalsIgnoreCase(username));
 	}
-
+	
+	
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -72,6 +73,10 @@ public class UtenteDaoImpl implements UtenteDao {
 		manager.merge(u);
 		
 	}
+
+
+	
+	}
 	
 
-}
+

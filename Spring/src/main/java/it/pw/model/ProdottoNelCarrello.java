@@ -1,12 +1,26 @@
 package it.pw.model;
 
-public class Ordine {
-	
+public class ProdottoNelCarrello {  
+
 	private int id_ordine;
+	
 	private int id_prodotto;
+	private String nome;
+	private Double prezzo;
 	private int quantita;
-	
-	
+
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public Double getPrezzo() {
+		return prezzo;
+	}
+	public void setPrezzo(Double prezzo) {
+		this.prezzo = prezzo;
+	}
 	public int getId_ordine() {
 		return id_ordine;
 	}
@@ -25,8 +39,4 @@ public class Ordine {
 	public void setQuantita(int quantita) {
 		this.quantita = quantita;
 	}
-	
-	
-	
-	
 }

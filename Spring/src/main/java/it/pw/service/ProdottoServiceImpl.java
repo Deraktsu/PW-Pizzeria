@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.pw.dao.ProdottoDao;
-import it.pw.model.Carrello;
+import it.pw.model.ProdottoNelCarrello;
 import it.pw.model.Prodotto;
 
 @Service
@@ -50,10 +50,10 @@ public class ProdottoServiceImpl implements ProdottoService {
 
 
 	@Override
-	public double calcolaPrezzo(List<Carrello> listacalcolare) {
+	public double calcolaPrezzo(List<ProdottoNelCarrello> listacalcolare) {
 		double totale = 0;
 		
-		for(Carrello c : listacalcolare) {
+		for(ProdottoNelCarrello c : listacalcolare) {
 			
 		totale += c.getQuantita() *	prodottoDao.getProdottoById(c.getId_prodotto()).getPrezzo();
 			
@@ -64,11 +64,11 @@ public class ProdottoServiceImpl implements ProdottoService {
 
 
 	@Override
-	public int trovaIndex(List<Carrello> lcs, int id) {
+	public int trovaIndex(List<ProdottoNelCarrello> lcs, int id) {
 		
 		int index = 0;
 		
-		for(Carrello c : lcs) {
+		for(ProdottoNelCarrello c : lcs) {
 
 			if(c.getId_prodotto() == id) {
 				index = lcs.indexOf(c);
@@ -82,9 +82,9 @@ public class ProdottoServiceImpl implements ProdottoService {
 
 
 	@Override
-	public boolean confrontaProdotti(int id, List<Carrello> lista) {
+	public boolean confrontaProdotti(int id, List<ProdottoNelCarrello> lista) {
 		
-		for(Carrello c : lista) {
+		for(ProdottoNelCarrello c : lista) {
 			if(c.getId_prodotto() == id) {
 				return true;
 			}

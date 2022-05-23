@@ -24,48 +24,51 @@ public class AreaClientiController {
 	UtenteService utenteService;
 	
 	@GetMapping
-	String getPage(HttpServletRequest request, HttpSession session, Model model
-		) {
-		if(session.getAttribute("loggato") == null) {
-			session.setAttribute("loggato", false);
-		}
-		
-		model.addAttribute("areaClientiForm",session.getAttribute("Utente"));
-		
-		try {
+	String getPage(HttpServletRequest request, HttpSession session, Model model) {
 			
-		if(!(Boolean)session.getAttribute("loggato")){
-			
-			return "redirect:/registrazione/login";	
-		}
+		boolean logUtente;
+		boolean logAdmin;
+		if(session.getAttribute("logUtente") == null)
+		session.setAttribute("logUtente", false);	
+		if(session.getAttribute("logAdmin") == null)
+			session.setAttribute("logAdmin", false);
+		logUtente = (boolean) session.getAttribute("logUtente");
+		logAdmin = (boolean) session.getAttribute("logAdmin");
+		if(!logUtente)
+			return "redirect:/registrazione/login";
+		if(logAdmin)
+			return "redirect:/home";
 		
-		}catch (Exception e) {
-
-			return "redirect:/registrazione/login";	
-		}
-
+		model.addAttribute("areaClientiForm",session.getAttribute("Utente"));	
+		model.addAttribute("esitoUpdate",true);
 		return "area-clienti";
 	}
 	
 	@PostMapping
-	public String updateUser(@Valid @ModelAttribute("areaClientiForm") Utente utente, BindingResult result,HttpServletRequest request, HttpSession session) {
-		Utente u = (Utente) session.getAttribute("Utente");
-		if (result.hasErrors()) {
+	public String updateUser(@Valid @ModelAttribute("areaClientiForm") Utente utente, BindingResult result,Model model,
+			HttpServletRequest request, HttpSession session) {
+		Utente oldUtente = (Utente) session.getAttribute("Utente");
+		if (result.hasErrors()) 
 			return "areaClienti";
-		}else {
-
-			utente.setId_utente(u.getId_utente());
-			utenteService.update(utente);
-			if(!utenteService.verficaUsername(utente.getUsername())){
 			
-				
+		if(oldUtente.getUsername().equalsIgnoreCase(utente.getUsername())) {
+			utente.setId_utente(oldUtente.getId_utente());
+			utenteService.update(utente);
+			session.setAttribute("Utente", utente);
+		}else {
+			if(!utenteService.verficaUsername(utente.getUsername())) {
+				utente.setId_utente(oldUtente.getId_utente());
+				utenteService.update(utente);
+				session.setAttribute("Utente", utente);
 			}else {
-		
-				return "redirect:/prodotti";
+				model.addAttribute("esitoUpdate",false);
 			}
+			
 		}
 		
-		return"redirect:/prodotti";
+		return "redirect:/areaClienti";
+			
+	
 	}
 	
 	

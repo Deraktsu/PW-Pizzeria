@@ -25,18 +25,25 @@ public class RegistrazioneController {
 	UtenteService utenteService;
 	
 	@GetMapping
-	public String getPage(Model model) {
-		Utente utente;
-		utente = new Utente();
-		model.addAttribute("esitoRegistrazione",true);
+	public String getPage(Model model,
+			HttpServletRequest request, HttpSession session) {
+		boolean logUtente;
+		boolean logAdmin;
+		if(session.getAttribute("logUtente") == null)
+		session.setAttribute("logUtente", false);	
+		if(session.getAttribute("logAdmin") == null)
+			session.setAttribute("logAdmin", false);
+		logUtente = (boolean) session.getAttribute("logUtente");
+		logAdmin = (boolean) session.getAttribute("logAdmin");
+		if(logUtente || logAdmin)
+			return "redirect:/home";
 		
+		Utente utente = new Utente();
+		model.addAttribute("esitoRegistrazione",true);
 		model.addAttribute("utente", utente);
 		model.addAttribute("esito",true);
 		return "registrazione";
 	}
-	
-
-
 	
 	@PostMapping
 	public String registraUser(@Valid @ModelAttribute("utente") Utente utente, BindingResult result,Model model) {
@@ -60,7 +67,20 @@ public class RegistrazioneController {
 		return"redirect:/registrazione/login";
 	}
 	@GetMapping("/login")
-	public String getPageLogin(@ModelAttribute("user") Utente utente, Model model) {
+	public String getPageLogin(@ModelAttribute("user") Utente utente, Model model,
+			HttpServletRequest request, HttpSession session) {
+		boolean logUtente;
+		boolean logAdmin;
+		if(session.getAttribute("logUtente") == null)
+		session.setAttribute("logUtente", false);	
+		if(session.getAttribute("logAdmin") == null)
+			session.setAttribute("logAdmin", false);
+		logUtente = (boolean) session.getAttribute("logUtente");
+		logAdmin = (boolean) session.getAttribute("logAdmin");
+		
+		if(logUtente || logAdmin)
+			return "redirect:/home";
+		
 		model.addAttribute("user", new Utente());
 		model.addAttribute("esitoLogin",true);
 		return "login";
@@ -70,23 +90,23 @@ public class RegistrazioneController {
 	@PostMapping("/login")
 	public String comparaCredenziali(@ModelAttribute("user") Utente utente, Model model,
 			HttpServletRequest request, HttpSession session) {	
-		
+			
 		if(utenteService.verificaLogin(utente.getUsername(), utente.getPassword())) {
 			
-			session.setAttribute("loggato", true);
+			session.setAttribute("logUtente", true);
 			
 			session.setAttribute("Utente", utenteService.getUtenteByUsername(utente.getUsername()));
 			
 			
 		}else {
 			
-			session.setAttribute("loggato", false);
+			session.setAttribute("logUtente", false);
 			model.addAttribute("esitoLogin",false);
 			return "login";
 		}
-		
-	
-
+			
+			
+			
 		return "redirect:/prodotti";
 		
 	}

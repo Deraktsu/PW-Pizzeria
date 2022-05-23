@@ -1,6 +1,7 @@
 package it.pw.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,10 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import it.pw.model.Carrello;
+import it.pw.model.ProdottoNelCarrello;
 import it.pw.service.ProdottoService;
 
 @Controller
@@ -27,12 +29,13 @@ public class CarrelloController {
 	@GetMapping
 	public String getPage(Model model,HttpServletRequest request, HttpSession session) {
 		if(session.getAttribute("listaCarrello") == null) {
-			  List<Carrello> lcs = new ArrayList<>();
-			session.setAttribute("listaCarrello",lcs);
+			  List<ProdottoNelCarrello> lpc = new ArrayList<>();
+			session.setAttribute("listaCarrello",lpc);
 		  }
-		model.addAttribute("listaCarello",(List<Carrello>) session.getAttribute("listaCarrello"));
-	
-	model.addAttribute("totale",prodottoService.calcolaPrezzo((List<Carrello>) session.getAttribute("listaCarrello")));
+	List<ProdottoNelCarrello> lpc =(List<ProdottoNelCarrello>) session.getAttribute("listaCarrello");
+		
+	model.addAttribute("listaCarello",lpc);
+	model.addAttribute("totale",prodottoService.calcolaPrezzo(lpc));
 	model.addAttribute("loggato", session.getAttribute("loggato"));
 	return "carrello";
 	}
@@ -41,39 +44,46 @@ public class CarrelloController {
 	@GetMapping("/prodottoInOrdine")
 	  public String aggiungiProdotto(HttpServletRequest request, HttpSession session)
 	  {		
+		  boolean logUtente;
+			boolean logAdmin;
+			if(session.getAttribute("logUtente") == null)
+			session.setAttribute("logUtente", false);	
+			if(session.getAttribute("logAdmin") == null)
+				session.setAttribute("logAdmin", false);
+			logUtente = (boolean) session.getAttribute("logUtente");
+			logAdmin = (boolean) session.getAttribute("logAdmin");
+			if(!logUtente || logAdmin)
+				return "redirect:/registrazione/login";
+
 		  
 		  if(session.getAttribute("listaCarrello") == null) {
-			  List<Carrello> lcs = new ArrayList<>();
-			session.setAttribute("listaCarrello",lcs);
+			  List<ProdottoNelCarrello> lpc = new ArrayList<>();
+			session.setAttribute("listaCarrello",lpc);
 		  }
 		  
 		  
 		  int id = 0;
 		  id = Integer.parseInt(request.getParameter("id"));
 		  
-		  List<Carrello> lc;
-			
-		  	lc = (List<Carrello>) session.getAttribute("listaCarrello");
+		  List<ProdottoNelCarrello> lpc = (List<ProdottoNelCarrello>) session.getAttribute("listaCarrello");
 		  
-		  
-		  if(!prodottoService.confrontaProdotti(id,lc)) {
+		  if(!prodottoService.confrontaProdotti(id,lpc)) {
 			  
 			  if(prodottoService.getProdottoById(id) !=null) {
 			  
-				  Carrello c = new Carrello();
+				  ProdottoNelCarrello c = new ProdottoNelCarrello();
 				  c.setId_prodotto(id);
 				  c.setQuantita(1);
 				  c.setNome(prodottoService.getProdottoById(id).getNome());
 				  c.setPrezzo(prodottoService.getProdottoById(id).getPrezzo());
-				  lc.add(c);
-				  session.setAttribute("listaCarrello", lc);
+				  lpc.add(c);
+				  session.setAttribute("listaCarrello", lpc);
 			  }
 			  
 		  }else {
-			  int index = prodottoService.trovaIndex(lc, id);
-			  lc.get(index).setQuantita(lc.get(index).getQuantita()+1);
+			  int index = prodottoService.trovaIndex(lpc, id);
+			  lpc.get(index).setQuantita(lpc.get(index).getQuantita()+1);
 			  
-			
 		  }
 		 
 			  return "redirect:/carrello";   
@@ -82,48 +92,45 @@ public class CarrelloController {
 	  
 	  
 	  
-	  @SuppressWarnings({ "unchecked"})
+	  @SuppressWarnings({"unchecked"})
 	  @GetMapping("/eliminaDalCarrello")
 	  public String eliminaDalCarrello(
 			  @RequestParam("id")int id,HttpServletRequest request, HttpSession session) {
 		  
-		List<Carrello>lcs = (List<Carrello>) session.getAttribute("listaCarrello");
+		List<ProdottoNelCarrello> lpc = (List<ProdottoNelCarrello>) session.getAttribute("listaCarrello");
 		  
-		 lcs.remove(prodottoService.trovaIndex(lcs,id));
+		lpc.remove(prodottoService.trovaIndex(lpc,id));
 		 
-		 session.setAttribute("listaCarrello", lcs);
+		 session.setAttribute("listaCarrello", lpc);
 		 
 		  return "redirect:/carrello";
 	  }
 	  
-	  
+	  @SuppressWarnings({"unchecked"})
 	  @GetMapping("/aumentaQuantita")
 	  public String aumentaQuantita(
 			  @RequestParam("id")int id,HttpServletRequest request, HttpSession session) {
 		  
-		  @SuppressWarnings("unchecked")
-		List<Carrello>lcs = (List<Carrello>) session.getAttribute("listaCarrello");
-		  int index = prodottoService.trovaIndex(lcs, id);
-		  lcs.get(index).setQuantita(lcs.get(index).getQuantita()+1);
-		  
+		List<ProdottoNelCarrello> lpc = (List<ProdottoNelCarrello>) session.getAttribute("listaCarrello");
+		int index = prodottoService.trovaIndex(lpc, id);
+		lpc.get(index).setQuantita(lpc.get(index).getQuantita()+1);
 		  
 		  return "redirect:/carrello";
 	  }
 	  
 	
-	  @SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked")
 	@GetMapping("/diminuisciQuantita")
 	  public String diminuisciQuantita(
 			  @RequestParam("id")int id,HttpServletRequest request, HttpSession session){
-				  
-		  List<Carrello> lcs;
-		  	lcs = (List<Carrello>) session.getAttribute("listaCarrello");
+			
+		   List<ProdottoNelCarrello> lpc = (List<ProdottoNelCarrello>) session.getAttribute("listaCarrello");
 		  
-		  	int index = prodottoService.trovaIndex(lcs, id);
-			  lcs.get(index).setQuantita(lcs.get(index).getQuantita()-1);
+		  	int index = prodottoService.trovaIndex(lpc, id);
+		  	lpc.get(index).setQuantita(lpc.get(index).getQuantita()-1);
 		  
-			  if(lcs.get(index).getQuantita() < 1) {
-				  lcs.remove(index);
+			  if(lpc.get(index).getQuantita() <= 0) {
+				  lpc.remove(index);
 				  
 			  }
 		  		
@@ -132,6 +139,45 @@ public class CarrelloController {
 			  }
 	  
 	  
+	@SuppressWarnings("unchecked")
+	@GetMapping("/acquisto")
+	String getPageAcquisto(HttpServletRequest request, HttpSession session) {
+		boolean logUtente;
+		boolean logAdmin;
+		List<ProdottoNelCarrello>lista;
+		lista = (List<ProdottoNelCarrello>) session.getAttribute("listaCarrello");
+		if(session.getAttribute("logUtente") == null)
+		session.setAttribute("logUtente", false);	
+		if(session.getAttribute("logAdmin") == null)
+			session.setAttribute("logAdmin", false);
+		logUtente = (boolean) session.getAttribute("logUtente");
+		logAdmin = (boolean) session.getAttribute("logAdmin");
+		if(!logUtente || lista==null)
+			return "redirect:/prodotti";
+		
+	
+		return "form-paypal";
+	}
+	
+		@PostMapping
+		String concludiPagamento(HttpServletRequest request, HttpSession session) {
+			
+			Date orario_ritiro = new Date();
+			Date data_ritiro = new Date();
+			
+			orario_ritiro.setHours(16);
+			orario_ritiro.setMinutes(30);
+			orario_ritiro.setSeconds(16);
+			
+			
+			data_ritiro.setDate(23);
+			
+			
+			
+			
+			
+			return "/riepilogo";
+		}
 	  
 	  
 }

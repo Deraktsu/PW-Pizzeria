@@ -61,7 +61,7 @@
 							</td>
 							
 							<td class="text-left" >
-							<c:if test="${loggato}">
+							<c:if test="${logUtente}">
 							<a href='<spring:url value="/carrello/acquisto" />' class="btn btn-primary btn-sm ">
 								Concludi l'acquisto
 							</a>

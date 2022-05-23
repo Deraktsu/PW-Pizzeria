@@ -37,7 +37,6 @@ public class ProdottiController {
 		String path2 = path + "static\\images\\"+String.valueOf(id)+".png";
 		File file = new File(path2);
 		
-		
 		model.addAttribute("prodotto",prodottoService.getProdottoById(id));
 		model.addAttribute("immagine", file);
 		return "info-prodotti";

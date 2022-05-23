@@ -2,17 +2,22 @@ package it.pw.model;
 
 import java.io.Serializable;
 
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "prodotti")
 public class Prodotto implements Serializable{
-
+	
 	private static final long serialVersionUID = 2999766654118374688L;
 	
 	@Id
@@ -26,6 +31,31 @@ public class Prodotto implements Serializable{
 	@Column(name = "prezzo", length = 255, nullable = false)
 	private double prezzo;
 	
+	@OneToOne
+	(
+			mappedBy = "prodotti", 
+			cascade = CascadeType.ALL,
+			fetch = FetchType.EAGER,
+			orphanRemoval = true
+		)
+	private Ordini ordini;
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public Ordini getOrdini() {
+		return ordini;
+	}
+	public void setOrdini(Ordini ordini) {
+		this.ordini = ordini;
+	}
 	public int getId_prodotto() {
 		return id_prodotto;
 	}

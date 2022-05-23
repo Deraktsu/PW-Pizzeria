@@ -2,11 +2,14 @@ package it.pw.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 
@@ -39,6 +42,24 @@ public class Utente implements Serializable{
 	@Pattern(regexp = "[a-zA-Z1-9טיעאשל\\s'!#]{1,255}",message = "{user.form.error.general}")
 	@Column(name = "password", length = 255, nullable = false)
 	private String password;
+
+	@OneToOne
+		(
+			mappedBy = "utente", 
+			cascade = CascadeType.ALL,
+			fetch = FetchType.EAGER,
+			orphanRemoval = true
+		)
+	private Carrello carrello;
+	
+	
+	public Carrello getCarrello() {
+		return carrello;
+	}
+
+	public void setCarrello(Carrello carrello) {
+		this.carrello = carrello;
+	}
 
 	public int getId_utente() {
 		return id_utente;
