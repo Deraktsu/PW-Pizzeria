@@ -43,25 +43,27 @@
 
         function recuperaData() {
             let data = new Date(); //istanza di un oggetto di tipo Date();
+            let giorno = zero(data.getDate());
             let ore = zero(data.getHours());
             let minuti = zero(data.getMinutes());
 
             let stringaOrario = parseFloat(ore + "." + minuti);
-            let stringaOrario2 = 12.30;
+            let stringaOrario2 = 24.00;
             let orari = ["11.30","12.00","12.30","13.00","13.30","14.00","14.30","15.00","15.30","16.00","16.30","17.00","17.30","18.00","18.30","19.00","19.30","20.00","20.30","21.00","21.30","22.00","22.30","23.00"];
             let i = 0;
+            
             document.getElementById("destra").style.display = "block";
 
-            if (stringaOrario2 < 11.30 || stringaOrario2 > 23) {
+            if (stringaOrario < 11.30 || stringaOrario > 23) {
                 document.getElementById("destra").style.backgroundColor = "red";
                 document.getElementById("destra").innerHTML = 'Impossibile prenotare! Il ristorante attualmente è chiuso';
             } else{
                 document.getElementById("destra").style.backgroundColor = "green";
                 document.getElementById("selezionaOrario").innerHTML ='<label class="form-label" for="select"> Seleziona una fascia oraria in cui ritirare la tua ordinazione: </label><select class="form-select form-select-lg"name="orario" id="select">';
                 for(i; i < orari.length; i++) {
-                    if(stringaOrario2 < parseFloat(orari[i])) {
+                    if(stringaOrario < parseFloat(orari[i])) {
                         if (i !== orari.length-1) {
-                            if (stringaOrario2 < 15.01) {
+                            if (stringaOrario < 15.01) {
 
                             }
                             document.getElementById("select").innerHTML += '<option value="' + orari[i] + '">' + orari[i] + ' - ' + orari[i+1] + '</option>';
