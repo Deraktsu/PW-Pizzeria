@@ -56,7 +56,7 @@ public class Ordini implements Serializable{
 
 	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	@JoinTable
-		(	
+		(									
 				name = "ordini_prodotti",
 				joinColumns = @JoinColumn(name = "id_ordine", referencedColumnName = "id_ordine"),
 				inverseJoinColumns = @JoinColumn(name = "id_prodotto", referencedColumnName = "id_prodotto")

@@ -131,7 +131,7 @@ public class CarrelloController {
 		  return "redirect:/carrello";
 	  }
 	  
-	
+	  
 	@SuppressWarnings("unchecked")
 	@GetMapping("/diminuisciQuantita")
 	  public String diminuisciQuantita(

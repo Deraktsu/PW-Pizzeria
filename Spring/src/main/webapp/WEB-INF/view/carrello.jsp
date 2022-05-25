@@ -8,7 +8,7 @@
 	</div>
 	
 </div>
-
+<br><br><br><br>
 <div class="row">
 	<div class="col-4">
 		<table class="table table-striped table-responsive">
@@ -55,7 +55,7 @@
 		/>
 		</td>
 		<td class="text-left" >
-							<a href='<spring:url value="/prodotti/" />' class="btn btn-primary btn-sm ">
+							<a href='<spring:url value="/prodotti" />' class="btn btn-primary btn-sm ">
 								Ritorna al menu
 							</a>
 							</td>
