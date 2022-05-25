@@ -6,6 +6,7 @@
     --clr5:limegreen;
 }
 body {
+	font-family:transport;
     margin:0;
     padding:0;
     top:0;
@@ -26,7 +27,7 @@ html::-webkit-scrollbar-thumb {
     background: #f42f1d;
 }
 .head {
-    position:fixed;
+    position:relative;
     left:0;
     right:0;
     z-index: 1000;

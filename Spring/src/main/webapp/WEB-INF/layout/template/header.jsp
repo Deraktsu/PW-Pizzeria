@@ -36,10 +36,10 @@
             <a href="#contatti">CONTATTI</a>
         </nav>
         <div class="side-bar">
-            <i class="fas fa-user-secret" title="Area amministratore"></i>
-            <a href="area_riservata.html"><i class="fas fa-user" id="user" title="Area riservata"></i></a>
+            <a href="/pizzeria/loginAdmin"><i class="fas fa-user-secret" title="Area amministratore"></i></a>
+            <a href="/pizzeria/areaClienti"><i class="fas fa-user" id="user" title="Area riservata"></i></a>
             <!-- solo se loggati -->
-            <a href="carrello.html"><i class="fas fa-regular fa-cart-shopping" id="cart" title="Vai al carrello" ></i></a>
+            <a href="/pizzeria/carrello"><i class="fas fa-regular fa-cart-shopping" id="cart" title="Vai al carrello" ></i></a>
         </div>
     </header>
     

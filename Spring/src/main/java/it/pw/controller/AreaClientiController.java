@@ -25,7 +25,7 @@ public class AreaClientiController {
 	
 	@GetMapping
 	String getPage(HttpServletRequest request, HttpSession session, Model model) {
-			
+		
 		boolean logUtente;
 		boolean logAdmin;
 		if(session.getAttribute("logUtente") == null)

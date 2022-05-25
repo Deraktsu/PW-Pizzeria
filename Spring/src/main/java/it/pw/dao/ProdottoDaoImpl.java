@@ -52,6 +52,17 @@ public class ProdottoDaoImpl implements ProdottoDao{
 	
 		return manager.find(Prodotto.class, id);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
 	
 	

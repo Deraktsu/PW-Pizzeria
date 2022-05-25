@@ -2,7 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<br><br><br><br>
 
+<br><br><br>
 <div class="row justify-content-center">
 	<div class="col-6">
 	
@@ -11,7 +13,7 @@
   Impossibile aggiornare: username già in uso.
 </div>
 </c:if>
-
+<br><br><br>
 		<form:form method="POST" modelAttribute="utente" acceptCharset="ISO-8859-1">
 			<div class="row">
 				<div class="col-6">

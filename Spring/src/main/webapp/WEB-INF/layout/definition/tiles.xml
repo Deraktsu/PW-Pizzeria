@@ -16,9 +16,9 @@
  <put-attribute name="content" value="/WEB-INF/view/home.jsp" />
  </definition>
  
- <definition name="index" extends="baseLayout">
+ <definition name="prodotti" extends="baseLayout">
  <put-attribute name="title" value="Prodotti" />
- <put-attribute name="content" value="/WEB-INF/view/index.jsp" />
+ <put-attribute name="content" value="/WEB-INF/view/prodotti.jsp" />
  </definition>
  
  <definition name="info-prodotti" extends="baseLayout">
