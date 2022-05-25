@@ -33,7 +33,7 @@
 							</td>
 							
 							<td class="text-left" >
-							<a href='<spring:url value="/adminUtenti/formModificaUtenti?id=${utente.id_utente}" />' class="btn btn-primary btn-sm ">
+							<a href='<spring:url value="/adminUtenti/modificaUtente?id=${utente.id_utente}" />' class="btn btn-primary btn-sm ">
 								modifica
 							</a>
 						</td>

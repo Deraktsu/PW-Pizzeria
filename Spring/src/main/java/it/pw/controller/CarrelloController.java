@@ -1,6 +1,8 @@
 package it.pw.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +17,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import it.pw.model.Carrello;
+import it.pw.model.Ordini;
+import it.pw.model.Prodotto;
 import it.pw.model.ProdottoNelCarrello;
+import it.pw.model.Utente;
+import it.pw.service.CarrelloService;
+import it.pw.service.OrdiniService;
 import it.pw.service.ProdottoService;
 
 @Controller
@@ -24,6 +32,11 @@ public class CarrelloController {
 
 	@Autowired
 	ProdottoService prodottoService;
+	@Autowired
+	CarrelloService carrelloService;
+	
+	@Autowired
+	OrdiniService ordiniService;
 
 	@SuppressWarnings("unchecked")
 	@GetMapping
@@ -143,7 +156,6 @@ public class CarrelloController {
 	@GetMapping("/acquisto")
 	String getPageAcquisto(HttpServletRequest request, HttpSession session) {
 		boolean logUtente;
-		boolean logAdmin;
 		List<ProdottoNelCarrello>lista;
 		lista = (List<ProdottoNelCarrello>) session.getAttribute("listaCarrello");
 		if(session.getAttribute("logUtente") == null)
@@ -151,32 +163,51 @@ public class CarrelloController {
 		if(session.getAttribute("logAdmin") == null)
 			session.setAttribute("logAdmin", false);
 		logUtente = (boolean) session.getAttribute("logUtente");
-		logAdmin = (boolean) session.getAttribute("logAdmin");
 		if(!logUtente || lista==null)
 			return "redirect:/prodotti";
 		
 	
 		return "form-paypal";
 	}
+	// http://localhost:8080/pizzeria/carrello/riepilogo
 	
-		@PostMapping
+		@GetMapping("/riepilogo")
 		String concludiPagamento(HttpServletRequest request, HttpSession session) {
-			
-			Date orario_ritiro = new Date();
-			Date data_ritiro = new Date();
-			
-			orario_ritiro.setHours(16);
-			orario_ritiro.setMinutes(30);
-			orario_ritiro.setSeconds(16);
+			Ordini ordine = new Ordini();
+			Utente utente = (Utente) session.getAttribute("Utente");
 			
 			
-			data_ritiro.setDate(23);
+			Calendar data = Calendar.getInstance();
+			data.set(Calendar.YEAR, 2022);
+			data.set(Calendar.MONTH, 5);
+			data.set(Calendar.DAY_OF_MONTH, 24);
+			Date data_ritiro = data.getTime();
+			
+			String orario_ritiro = "17:30 - 18:00";
+			int quantita = 0;
+			
+			@SuppressWarnings("unchecked")
+			List<ProdottoNelCarrello> lista = (List<ProdottoNelCarrello>) session.getAttribute("listaCarrello");
+			List<Prodotto> listaAcquisto = new ArrayList<>();
 			
 			
+			for(ProdottoNelCarrello p : lista) {
+				quantita = p.getQuantita();
+				
+				for(int i = 0;i < quantita;i++ ) {
+					listaAcquisto.add(prodottoService.getProdottoById(p.getId_prodotto()));
+				}
+				
+			}
+				ordine.setDataOrdine(data_ritiro);
+				ordine.setOrarioRitiro(orario_ritiro);
+				ordine.setPrezzoTotale(prodottoService.calcolaPrezzo(lista));
+				ordine.setUtente(utente);
+				ordine.setProdotti(listaAcquisto);
+				ordiniService.create(ordine);
+				session.removeAttribute("listaCarrello");
 			
-			
-			
-			return "/riepilogo";
+			return "redirect:/home";
 		}
 	  
 	  

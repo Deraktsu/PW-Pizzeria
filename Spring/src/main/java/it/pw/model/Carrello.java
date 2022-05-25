@@ -1,7 +1,9 @@
 package it.pw.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,37 +13,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "carrello")
 public class Carrello implements Serializable{
 
 
 	private static final long serialVersionUID = 6634095732301309175L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private int id_carrello;
 	
-	@Column(name = "data_ordine", nullable = false)
+	
 	private Date data_ordine;
 	
-	@Column(name = "orario_ordine", nullable = false)
+	
 	private Date orario_ordine;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="id_utente",referencedColumnName="id_utente")
-	private Utente utente;
 	
-
-	@OneToOne(
-			mappedBy = "carrello", 
-			cascade = CascadeType.ALL,
-			fetch = FetchType.EAGER,
-			orphanRemoval = true
-		)
-	private Ordini ordini;
 
 	
 	
@@ -69,16 +58,6 @@ public class Carrello implements Serializable{
 		this.orario_ordine = orario_ordine;
 	}
 
-	
-
-	public Ordini getOrdini() {
-		return ordini;
-	}
-
-	public void setOrdini(Ordini ordini) {
-		this.ordini = ordini;
-	}
-	
 	
 	
 }

@@ -1,15 +1,24 @@
 package it.pw.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "ordini")
@@ -22,43 +31,6 @@ public class Ordini implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_ordine;
 	
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_prodotto", referencedColumnName = "id_prodotto")
-	private Prodotto prodotti;
-	
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_carrello", referencedColumnName = "id_carrello")
-	private Carrello carrello;
-	
-
-
-	private int quantita;
-
-
-
-
-	public Prodotto getProdotti() {
-		return prodotti;
-	}
-
-
-	public void setProdotti(Prodotto prodotti) {
-		this.prodotti = prodotti;
-	}
-
-
-	public Carrello getCarrello() {
-		return carrello;
-	}
-
-
-	public void setCarrello(Carrello carrello) {
-		this.carrello = carrello;
-	}
-
-
 	public int getId_ordine() {
 		return id_ordine;
 	}
@@ -69,17 +41,85 @@ public class Ordini implements Serializable{
 	}
 
 
-
-	public int getQuantita() {
-		return quantita;
-	}
-
-
-	public void setQuantita(int quantita) {
-		this.quantita = quantita;
-	}
+	@Column(name = "data_ordine", length = 255, nullable = false)
+	@Temporal(TemporalType.DATE)
+	private Date dataOrdine;
+	@Column(name = "orario_ritiro", length = 255, nullable = false)
+	private String orarioRitiro;
+	@Column(name = "prezzo_totale", length = 255, nullable = false)
+	private double prezzoTotale;
 
 
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "id_utente", referencedColumnName = "id_utente")
+	private Utente utente;
+
+	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	@JoinTable
+		(	
+				name = "ordini_prodotti",
+				joinColumns = @JoinColumn(name = "id_ordine", referencedColumnName = "id_ordine"),
+				inverseJoinColumns = @JoinColumn(name = "id_prodotto", referencedColumnName = "id_prodotto")
+		)
+	List<Prodotto> prodotti = new ArrayList<>();
 	
+ 
+
+
+
+
+
+	public Date getDataOrdine() {
+		return dataOrdine;
+	}
+
+
+	public void setDataOrdine(Date dataOrdine) {
+		this.dataOrdine = dataOrdine;
+	}
+
+
+	public String getOrarioRitiro() {
+		return orarioRitiro;
+	}
+
+
+	public void setOrarioRitiro(String orarioRitiro) {
+		this.orarioRitiro = orarioRitiro;
+	}
+
+
+	public double getPrezzoTotale() {
+		return prezzoTotale;
+	}
+
+
+	public void setPrezzoTotale(double prezzoTotale) {
+		this.prezzoTotale = prezzoTotale;
+	}
+
+
+	public List<Prodotto> getProdotti() {
+		return prodotti;
+	}
+
+
+	public void setProdotti(List<Prodotto> prodotti) {
+		this.prodotti = prodotti;
+	}
+
+
+	public Utente getUtente() {
+		return utente;
+	}
+
+
+	public void setUtente(Utente utente) {
+		this.utente = utente;
+	}
+
+
+
+
 
 }

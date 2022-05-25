@@ -4,5 +4,5 @@ import it.pw.model.Carrello;
 
 public interface CarrelloService {
 
-	void create(Carrello c);
+	Carrello create(Carrello c);
 }

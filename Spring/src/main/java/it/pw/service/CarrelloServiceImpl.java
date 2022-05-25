@@ -14,8 +14,8 @@ public class CarrelloServiceImpl implements CarrelloService {
 	
 	
 	@Override
-	public void create(Carrello c) {
-		carrelloDao.create(c);
+	public Carrello create(Carrello c) {
+		return carrelloDao.create(c);
 		
 	}
 

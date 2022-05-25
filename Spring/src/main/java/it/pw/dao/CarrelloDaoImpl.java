@@ -1,12 +1,14 @@
 package it.pw.dao;
 
 import javax.persistence.EntityManager;
+
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
 import it.pw.model.Carrello;
+
 @Repository
 public class CarrelloDaoImpl implements CarrelloDao {
 
@@ -15,9 +17,13 @@ public class CarrelloDaoImpl implements CarrelloDao {
 	
 	@Override
 	@Transactional
-	public void create(Carrello c) {
-		manager.persist(c);
+	public Carrello create(Carrello c) {
+		manager.merge(c);
+		manager.flush();
 		
+		
+
+		return c;
 	}
 
 }

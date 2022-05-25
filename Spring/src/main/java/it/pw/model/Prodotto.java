@@ -1,7 +1,8 @@
 package it.pw.model;
 
 import java.io.Serializable;
-
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,8 +11,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import javax.persistence.OneToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -31,29 +33,21 @@ public class Prodotto implements Serializable{
 	@Column(name = "prezzo", length = 255, nullable = false)
 	private double prezzo;
 	
-	@OneToOne
-	(
-			mappedBy = "prodotti", 
-			cascade = CascadeType.ALL,
-			fetch = FetchType.EAGER,
-			orphanRemoval = true
+	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	@JoinTable
+		(
+				name = "ordini_prodotti",
+				joinColumns = @JoinColumn(name = "id_prodotto", referencedColumnName = "id_prodotto"),
+				inverseJoinColumns = @JoinColumn(name = "id_ordine", referencedColumnName = "id_ordine")
 		)
-	private Ordini ordini;
-
+	private List<Ordini> ordini = new ArrayList<>();
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	public Ordini getOrdini() {
+	public List<Ordini> getOrdini() {
 		return ordini;
 	}
-	public void setOrdini(Ordini ordini) {
+	public void setOrdini(List<Ordini> ordini) {
 		this.ordini = ordini;
 	}
 	public int getId_prodotto() {
