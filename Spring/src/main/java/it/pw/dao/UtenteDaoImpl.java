@@ -73,7 +73,18 @@ public class UtenteDaoImpl implements UtenteDao {
 		manager.merge(u);
 		
 	}
-
+	
+	@Override
+	@Transactional
+	public void delete(Utente u)
+	{
+		manager.remove(manager.merge(u));
+	}
+	
+	
+	public Utente getutenteById(int id) {
+		return manager.find(Utente.class, id);
+	}
 
 	
 	}

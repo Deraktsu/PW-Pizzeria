@@ -11,4 +11,5 @@ public interface OrdiniDao  {
 	void create(Ordini o);
 	void update(Ordini o);
 	void delete(Ordini o);
+	Ordini getOrdineById(int id);
 }

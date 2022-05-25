@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.pw.service.ProdottoService;
 
 @Controller
-@RequestMapping("/prodotti") 
+@RequestMapping("/prodotti2") 
 public class ProdottiController {
 
 	@Autowired
@@ -28,7 +28,7 @@ public class ProdottiController {
 		
 		model.addAttribute("prodotti",prodottoService.vediTutti());
 		
-		return "prodotti";
+		return "index";
 	}
 	
 	@GetMapping("/infoProdotto")

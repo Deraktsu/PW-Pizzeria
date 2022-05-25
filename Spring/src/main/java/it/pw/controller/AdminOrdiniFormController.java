@@ -7,22 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import it.pw.dao.UtenteDao;
-import it.pw.service.UtenteService;
+import it.pw.dao.OrdiniDao;
 
-@Controller
-@RequestMapping("/adminUtenti")
-public class AdminUtenteFormController {
+
+	@Controller
+	@RequestMapping("/adminOrdini")
+	public class AdminOrdiniFormController {
 
 	@Autowired
-	UtenteDao utenteDao;
+	OrdiniDao ordiniDao;
 	
 	@GetMapping
 	String getPage(Model model) {
-		model.addAttribute("utenti",utenteDao.leggiTutti());
+		model.addAttribute("utenti",ordiniDao.vediTutti());
 		
 		
 		
@@ -34,16 +33,12 @@ public class AdminUtenteFormController {
 	String eliminaUtente(HttpServletRequest request, HttpSession session, Model model) {
 		int id = 0;		
 		id= Integer.parseInt(request.getParameter("id"));
-		utenteDao.delete(utenteDao.getutenteById(id));
+		ordiniDao.delete(ordiniDao.getOrdineById(id));
 		
 		
 		return "redirect:/adminUtenti";
 		
-		
-		
-		
+	}
 	}
 	
-	
-	
-}
+

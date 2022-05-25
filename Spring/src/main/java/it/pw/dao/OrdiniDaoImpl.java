@@ -49,4 +49,10 @@ public class OrdiniDaoImpl implements OrdiniDao {
 		
 	}
 
+	@Override
+	public Ordini getOrdineById(int id) {
+		
+		return manager.find(Ordini.class, id);
+	}
+
 }

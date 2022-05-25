@@ -12,5 +12,7 @@ public interface UtenteDao {
 	List<Utente>leggiTutti();
 	Utente getUtenteByUsername(String username);
 	void update(Utente u);
+	void delete(Utente u);
+	Utente getutenteById(int id);
 	
 }

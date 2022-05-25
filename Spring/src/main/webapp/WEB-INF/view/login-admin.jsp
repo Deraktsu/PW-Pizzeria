@@ -41,13 +41,13 @@ FORM LOGIN ADMIN
 				<br>
 				<br>
 				<br>
-				<a href='<spring:url value="/admin-prodotti" />' class="btn btn-primary btn-sm ">
+				<a href='<spring:url value="/adminProdotti" />' class="btn btn-primary btn-sm ">
 								Gestisci PRODOTTI
 				</a>
-				<a href='<spring:url value="admin-utenti" />' class="btn btn-primary btn-sm ">
+				<a href='<spring:url value="adminUtenti" />' class="btn btn-primary btn-sm ">
 								Gestisci UTENTI
 				</a>
-				<a href='<spring:url value="admin-ordini" />' class="btn btn-primary btn-sm ">
+				<a href='<spring:url value="adminOrdini" />' class="btn btn-primary btn-sm ">
 								Gestisci ORDINI
 				</a>
 				

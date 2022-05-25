@@ -1,7 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+<script>
+        // impostare file con tutti gli script
+        let actImm = 0;
+        let limite = 4;
+
+        function cambia() {
+            if (actImm === limite)
+                actImm = 0;
+           
+            document.getElementById('logo').src="${pageContext.request.contextPath}/static/images/"
+            document.getElementById('logo').src+=++actImm+".png"
+            setTimeout('cambia()', 1000)
+        }
+
+        //si poteva omettere (document).ready (che in JS corrisponderebbe al body.onload) in quanto
+        //il codice è posto al termine della pagina e non verrà eseguito prima del caricamento della page
+        $(document).ready(function(){
+            $("#flip").click(function(){
+                $("#panel1").slideToggle("slow");
+            });
+        });
+    </script>
+
+<header class="head">
+
+        <a onclick="cambia()">
+            <img style="width:175px;" src="<c:url value="/static/images/4.png" />" id="logo" alt="logo 5uaglioni">
+        </a>
+        <nav class="navbar">
+            <a href="#benvenuto">CHI SIAMO</a>
+            <a href="#menu">MENU'</a>
+            <a href="#contatti">CONTATTI</a>
+        </nav>
+        <div class="side-bar">
+            <i class="fas fa-user-secret" title="Area amministratore"></i>
+            <a href="area_riservata.html"><i class="fas fa-user" id="user" title="Area riservata"></i></a>
+            <!-- solo se loggati -->
+            <a href="carrello.html"><i class="fas fa-regular fa-cart-shopping" id="cart" title="Vai al carrello" ></i></a>
+        </div>
+    </header>
+    
+    
+
+
+       <%--  <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar
     	
@@ -50,4 +95,4 @@
   <div class="card-img-overlay">
     
   </div>
-</div>
+</div> --%>

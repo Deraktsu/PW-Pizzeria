@@ -39,6 +39,7 @@ public class ProdottoDaoImpl implements ProdottoDao{
 		manager.merge(p);
 		
 	}
+	
 	@Override
 	@Transactional
 	public void delete(Prodotto p) 

@@ -20,7 +20,6 @@
 				<c:forEach items="${prodotti}" var="prodotto">
 					<tr>
 						<td class="text-left">
-							${articolo.id}
 								${prodotto.nome}
 							</td>
 							<td class="text-left">
