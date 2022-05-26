@@ -32,7 +32,7 @@ import it.pw.model.Utente;
 	@GetMapping
 	String getPage(Model model) {
 		model.addAttribute("prodotti",prodottoDao.vediTutti());
-		
+		model.addAttribute("esitoRegistrazione",true);
 		
 		
 		return "admin-prodotti";
@@ -58,11 +58,17 @@ import it.pw.model.Utente;
 	
 	@GetMapping("/modificaProdotto")
 	String modificaProdotto(HttpServletRequest request, HttpSession session, Model model) {
-		
 		int id = 0;		
 		id= Integer.parseInt(request.getParameter("id"));
+		if(ordiniDao.confrontaDataProdotto(prodottoDao.getProdottoById(id))) {
+			model.addAttribute("esitoRegistrazione",false);
+			model.addAttribute("prodotti",prodottoDao.vediTutti());
+			return "redirect:/adminProdotti";
+		}
+		
+		
 		model.addAttribute("aggiornaProdottoForm",prodottoDao.getProdottoById(id));
-		session.setAttribute(null, model);
+		session.setAttribute("prodottoId", prodottoDao.getProdottoById(id));
 		
 		return "admin-prodotti-form";
 		
@@ -70,10 +76,12 @@ import it.pw.model.Utente;
 	
 	
 	@PostMapping("/modificaProdotto")
-	String modificaProdotto(@Valid @ModelAttribute("aggiornaProdottoForm") Prodotto prodotto, BindingResult result,Model model,
+	String modificaProdotto(@Valid @ModelAttribute("aggiornaProdottoForm") Prodotto newprodotto, BindingResult result,Model model,
 			HttpServletRequest request, HttpSession session) {
+		Prodotto oldProdotto = (Prodotto) session.getAttribute("prodottoId");
+		newprodotto.setId_prodotto(oldProdotto.getId_prodotto());
 		
-			prodottoDao.update(prodotto);
+			prodottoDao.update(newprodotto);
 		
 		return "redirect:/adminProdotti";
 	}
@@ -82,8 +90,11 @@ import it.pw.model.Utente;
 	@GetMapping("/eliminaProdotto")
 	String eliminaProdotto(@RequestParam("id")int id, HttpSession session, Model model) {	
 		Prodotto prodotto = prodottoDao.getProdottoById(id);
-		if(ordiniDao.confrontaDataProdotto(prodotto))
+		if(ordiniDao.confrontaDataProdotto(prodotto)) {
+			model.addAttribute("esitoRegistrazione",false);
+			model.addAttribute("prodotti",prodottoDao.vediTutti());
 			return "redirect:/adminProdotti";
+		}
 		
 			prodottoDao.delete(prodotto);
 			return "redirect:/adminProdotti";

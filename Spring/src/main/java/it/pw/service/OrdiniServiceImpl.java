@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.pw.dao.OrdiniDao;
-import it.pw.model.Ordini;
+import it.pw.model.Ordine;
 
 @Service
 public class OrdiniServiceImpl implements OrdiniService {
@@ -15,25 +15,25 @@ public class OrdiniServiceImpl implements OrdiniService {
 	OrdiniDao ordiniDao;
 	
 	@Override
-	public List<Ordini> vediTutti() {
+	public List<Ordine> vediTutti() {
 		
 		return ordiniDao.vediTutti();
 	}
 
 	@Override
-	public void create(Ordini o) {
+	public void create(Ordine o) {
 		ordiniDao.create(o);
 		
 	}
 
 	@Override
-	public void update(Ordini o) {
+	public void update(Ordine o) {
 		ordiniDao.update(o);
 		
 	}
 
 	@Override
-	public void delete(Ordini o) {
+	public void delete(Ordine o) {
 		ordiniDao.delete(o);
 		
 	}

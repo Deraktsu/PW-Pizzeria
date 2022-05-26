@@ -2,20 +2,28 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     		
+<c:if test="${!esitoRegistrazione}">
+<div class="alert alert-danger" role="alert">
+  Impossibile modificare: Il prodotto fa parte di un ordine in corso.
+</div>
+</c:if>
+    <div class="row">
+	<div class="col-5">
 	<br><br><br>
 	<a href='<spring:url value="/adminProdotti/creaProdotto?id=${prodotto.id_prodotto}"/>' class="btn btn-primary btn-sm ">
 								crea Prodotto
 							</a>
-    <div class="row">
-	<div class="col-5">
 		<table class="table table-striped table-responsive">
 			<thead>
 			</thead>
 			<tbody>
 				<c:forEach items="${prodotti}" var="prodotto">
 					<tr>
+					<td class="text-left">
+								${prodotto.id_prodotto}
+							</td>
 						<td class="text-left">
 								${prodotto.nome}
 							</td>

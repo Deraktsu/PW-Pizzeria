@@ -28,8 +28,10 @@ public class Prodotto implements Serializable{
 	
 	@Column(name = "nome", length = 255, nullable = false)
 	private String nome;
+	
 	@Column(name = "descrizione", length = 255, nullable = false)
 	private String descrizione;
+	
 	@Column(name = "prezzo", length = 255, nullable = false)
 	private double prezzo;
 	
@@ -40,14 +42,14 @@ public class Prodotto implements Serializable{
 				joinColumns = @JoinColumn(name = "id_prodotto", referencedColumnName = "id_prodotto"),
 				inverseJoinColumns = @JoinColumn(name = "id_ordine", referencedColumnName = "id_ordine")
 		)
-	private List<Ordini> ordini = new ArrayList<>();
+	private List<Ordine> ordini = new ArrayList<>();
 	
 	
 	
-	public List<Ordini> getOrdini() {
+	public List<Ordine> getOrdini() {
 		return ordini;
 	}
-	public void setOrdini(List<Ordini> ordini) {
+	public void setOrdini(List<Ordine> ordini) {
 		this.ordini = ordini;
 	}
 	public int getId_prodotto() {

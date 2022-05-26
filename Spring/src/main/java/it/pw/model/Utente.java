@@ -53,16 +53,16 @@ public class Utente implements Serializable{
 			fetch = FetchType.EAGER,
 			orphanRemoval = true
 		)
-	private List<Ordini> ordini = new ArrayList<>();;
+	private List<Ordine> ordini = new ArrayList<>();;
 	
 
 
 
-	public List<Ordini> getOrdini() {
+	public List<Ordine> getOrdini() {
 		return ordini;
 	}
 
-	public void setOrdini(List<Ordini> ordini) {
+	public void setOrdini(List<Ordine> ordini) {
 		this.ordini = ordini;
 	}
 
@@ -70,8 +70,8 @@ public class Utente implements Serializable{
 		return id_utente;
 	}
 
-	public void setId_utente(int id_utente) {
-		this.id_utente = id_utente;
+	public void setId_utente(int id) {
+		this.id_utente = id;
 	}
 
 	public String getNome() {

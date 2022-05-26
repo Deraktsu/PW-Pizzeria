@@ -26,18 +26,14 @@ public class AreaClientiController {
 	@GetMapping
 	String getPage(HttpServletRequest request, HttpSession session, Model model) {
 		
-		boolean logUtente;
-		boolean logAdmin;
 		if(session.getAttribute("logUtente") == null)
 		session.setAttribute("logUtente", false);	
 		if(session.getAttribute("logAdmin") == null)
 			session.setAttribute("logAdmin", false);
-		logUtente = (boolean) session.getAttribute("logUtente");
-		logAdmin = (boolean) session.getAttribute("logAdmin");
-		if(!logUtente)
+		
+		if(!(boolean) session.getAttribute("logUtente"))
 			return "redirect:/registrazione/login";
-		if(logAdmin)
-			return "redirect:/home";
+		
 		
 		model.addAttribute("areaClientiForm",session.getAttribute("Utente"));	
 		model.addAttribute("esitoUpdate",true);

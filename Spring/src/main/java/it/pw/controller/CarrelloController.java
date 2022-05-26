@@ -17,12 +17,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import it.pw.model.Carrello;
-import it.pw.model.Ordini;
+
+import it.pw.model.Ordine;
 import it.pw.model.Prodotto;
 import it.pw.model.ProdottoNelCarrello;
 import it.pw.model.Utente;
-import it.pw.service.CarrelloService;
 import it.pw.service.OrdiniService;
 import it.pw.service.ProdottoService;
 
@@ -32,9 +31,7 @@ public class CarrelloController {
 
 	@Autowired
 	ProdottoService prodottoService;
-	@Autowired
-	CarrelloService carrelloService;
-	
+
 	@Autowired
 	OrdiniService ordiniService;
 
@@ -164,7 +161,7 @@ public class CarrelloController {
 			session.setAttribute("logAdmin", false);
 		logUtente = (boolean) session.getAttribute("logUtente");
 		if(!logUtente || lista==null)
-			return "redirect:/prodotti";
+			return "redirect:/home";
 		
 	
 		return "form-paypal";
@@ -173,14 +170,14 @@ public class CarrelloController {
 	
 		@GetMapping("/riepilogo")
 		String concludiPagamento(HttpServletRequest request, HttpSession session) {
-			Ordini ordine = new Ordini();
+			Ordine ordine = new Ordine();
 			Utente utente = (Utente) session.getAttribute("Utente");
 			
 			
 			Calendar data = Calendar.getInstance();
 			data.set(Calendar.YEAR, 2022);
 			data.set(Calendar.MONTH, 5);
-			data.set(Calendar.DAY_OF_MONTH, 24);
+			data.set(Calendar.DAY_OF_MONTH, 30);
 			Date data_ritiro = data.getTime();
 			
 			String orario_ritiro = "17:30 - 18:00";

@@ -16,9 +16,9 @@
  <put-attribute name="content" value="/WEB-INF/view/home.jsp" />
  </definition>
  
- <definition name="prodotti" extends="baseLayout">
- <put-attribute name="title" value="Prodotti" />
- <put-attribute name="content" value="/WEB-INF/view/prodotti.jsp" />
+ <definition name="test" extends="baseLayout">
+ <put-attribute name="title" value="Test" />
+ <put-attribute name="content" value="/WEB-INF/view/test.jsp" />
  </definition>
  
  <definition name="info-prodotti" extends="baseLayout">
@@ -54,6 +54,16 @@
  <definition name="admin-utenti" extends="baseLayout">
  <put-attribute name="title" value="Admin Utenti" />
  <put-attribute name="content" value="/WEB-INF/view/admin-utenti.jsp" />
+ </definition>
+ 
+ <definition name="admin-prodotti" extends="baseLayout">
+ <put-attribute name="title" value="Admin Prodotti" />
+ <put-attribute name="content" value="/WEB-INF/view/admin-prodotti.jsp" />
+ </definition>
+ 
+ <definition name="admin-ordini" extends="baseLayout">
+ <put-attribute name="title" value="Admin Ordini" />
+ <put-attribute name="content" value="/WEB-INF/view/admin-ordini.jsp" />
  </definition>
  
 

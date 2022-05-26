@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "ordini")
-public class Ordini implements Serializable{
+public class Ordine implements Serializable{
 	
 
 	private static final long serialVersionUID = -7960474985968887272L;
@@ -31,15 +31,7 @@ public class Ordini implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_ordine;
 	
-	public int getId_ordine() {
-		return id_ordine;
-	}
-
-
-	public void setId_ordine(int id_ordine) {
-		this.id_ordine = id_ordine;
-	}
-
+	
 
 	@Column(name = "data_ordine", length = 255, nullable = false)
 	@Temporal(TemporalType.DATE)
@@ -50,7 +42,7 @@ public class Ordini implements Serializable{
 	private double prezzoTotale;
 
 
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne
 	@JoinColumn(name = "id_utente", referencedColumnName = "id_utente")
 	private Utente utente;
 
@@ -65,8 +57,14 @@ public class Ordini implements Serializable{
 	
  
 
+	public int getId_ordine() {
+		return id_ordine;
+	}
 
 
+	public void setId_ordine(int id) {
+		this.id_ordine = id;
+	}
 
 
 	public Date getDataOrdine() {

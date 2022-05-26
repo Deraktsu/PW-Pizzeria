@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import it.pw.model.Ordini;
+import it.pw.model.Ordine;
 import it.pw.model.Prodotto;
 import it.pw.model.Utente;
 
@@ -23,77 +23,56 @@ public class OrdiniDaoImpl implements OrdiniDao {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Ordini> vediTutti() {
-		List<Ordini>ordini = new ArrayList<>();
+	public List<Ordine> vediTutti() {
+		List<Ordine>ordine = new ArrayList<>();
 		
-		String jpql = "SELECT p FROM Ordini p";
-		ordini = manager.createQuery(jpql).getResultList();
-		return ordini;
+		String jpql = "SELECT p FROM Ordine p";
+		ordine = manager.createQuery(jpql).getResultList();
+		return ordine;
 	}
 
 	@Override
 	@Transactional
-	public void create(Ordini o) {
+	public void create(Ordine o) {
 		manager.persist(o);
 		
 	}
 
 	@Override
 	@Transactional
-	public void update(Ordini o) {
+	public void update(Ordine o) {
 		manager.merge(o);
 		
 	}
 
 	@Override
 	@Transactional
-	public void delete(Ordini o) {
+	public void delete(Ordine o) {
 		manager.remove(manager.merge(o));
 		
 	}
 
 	@Override
-	public Ordini getOrdineById(int id) {
+	public Ordine getOrdineById(int id) {
 		
-		return manager.find(Ordini.class, id);
+		return manager.find(Ordine.class, id);
 	}
 	
-	@Override
-	public boolean confrontaDataOrdine(Ordini ordine) {
-		Date dataCorrente = new Date();
-		if(ordine.getDataOrdine().after(dataCorrente)){
-			System.out.println("IMPOSSIBILE CANCELLARE");
-			return true;
-		}
-		
-		return false;
-	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public boolean confrontaDataProdotto(Prodotto id_prodotto) {
+	public boolean confrontaDataProdotto(Prodotto prodotto) {
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		List<Ordini>ordini = new ArrayList<>();
+		List<Ordine>ordine = prodotto.getOrdini();
 		Date dataCorrente = new Date();
-		//select distinct o from Distributor o  join o.towns town join u.district district where
-		String jpql2 = "SELECT ordini_prodotti.id_ordine FROM ordini_prodotti where id_prodotto=1";
-		String jpql = "SELECT o FROM Ordini o JOIN ordini.prodotti prodotto WHERE id_prodotto=?1";
-		ordini = manager.createQuery(jpql).setParameter(1, id_prodotto.getId_prodotto()).
-				getResultList();
 		
-		for(Ordini o : ordini) {
+		
+		for(Ordine o : ordine) {
 			if(o.getDataOrdine().after(dataCorrente)) {
 				System.out.println("IMPOSSIBILE CANCELLARE");
 			return true; 	
 			}
+			
 		}
 		return false;
 	}
@@ -101,14 +80,14 @@ public class OrdiniDaoImpl implements OrdiniDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean confrontaDataUtente(Utente utente) {
-		List<Ordini>ordini = new ArrayList<>();
+		List<Ordine>ordini = new ArrayList<>();
 		Date dataCorrente = new Date();
 		
-		String jpql = "SELECT u FROM Ordini u WHERE utente=?1";
+		String jpql = "SELECT u FROM Ordine u WHERE utente=?1";
 		ordini = manager.createQuery(jpql).setParameter(1, utente).
 				getResultList();
 		
-		for(Ordini o : ordini) {
+		for(Ordine o : ordini) {
 			if(o.getDataOrdine().after(dataCorrente)) {
 			System.out.println("IMPOSSIBILE CANCELLARE");
 			return true; 

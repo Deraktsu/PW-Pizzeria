@@ -79,10 +79,10 @@ public class RegistrazioneController {
 		logAdmin = (boolean) session.getAttribute("logAdmin");
 		
 		if(logUtente || logAdmin)
-			return "redirect:/home";
+			return "redirect:/areaClienti";
 		
 		model.addAttribute("user", new Utente());
-		model.addAttribute("esitoLogin",true);
+		model.addAttribute("esitoLogin", true);
 		return "login";
 		
 	}
@@ -107,7 +107,7 @@ public class RegistrazioneController {
 			
 			
 			
-		return "redirect:/prodotti";
+		return "redirect:/home";
 		
 	}
 	

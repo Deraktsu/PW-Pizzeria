@@ -2,9 +2,9 @@ package it.pw.model;
 
 public class ProdottoNelCarrello {  
 
-	private int id_ordine;
+	private int idOrdine;
 	
-	private int id_prodotto;
+	private int idProdotto;
 	private String nome;
 	private Double prezzo;
 	private int quantita;
@@ -21,17 +21,17 @@ public class ProdottoNelCarrello {
 	public void setPrezzo(Double prezzo) {
 		this.prezzo = prezzo;
 	}
-	public int getId_ordine() {
-		return id_ordine;
+	public int getIdOrdine() {
+		return idOrdine;
 	}
-	public void setId_ordine(int id_ordine) {
-		this.id_ordine = id_ordine;
+	public void setId_ordine(int idOrdine) {
+		this.idOrdine = idOrdine;
 	}
 	public int getId_prodotto() {
-		return id_prodotto;
+		return idProdotto;
 	}
-	public void setId_prodotto(int id_prodotto) {
-		this.id_prodotto = id_prodotto;
+	public void setId_prodotto(int idProdotto) {
+		this.idProdotto = idProdotto;
 	}
 	public int getQuantita() {
 		return quantita;

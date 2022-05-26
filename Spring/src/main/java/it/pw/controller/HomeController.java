@@ -1,41 +1,48 @@
 package it.pw.controller;
 
-import java.util.Date;
+import java.io.File;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
+import it.pw.service.ProdottoService;
 
 @Controller
-@RequestMapping(path = {"/","/index","/home"})
+@RequestMapping("/home") 
 public class HomeController {
-	
-	@GetMapping
-	public String getPage(Model model,HttpServletRequest request, HttpSession session) {
-		if(session.getAttribute("logUtente") == null)
-		session.setAttribute("logUtente", false);
-		
-		if(session.getAttribute("logAdmin") == null)
-		session.setAttribute("logAdmin", false);
-		
-		Date data = new Date();
-		model.addAttribute("data",data);
-		
-		return "home";
-	}
-	
-	@PostMapping
-	public String logout(Model model,HttpServletRequest request, HttpSession session) {
-		session.removeAttribute("logUtente");
-		session.removeAttribute("logAdmin");
-		session.removeAttribute("listaCarrello");
-		session.removeAttribute("Utente");
-		return "home";
-	}
 
+	@Autowired
+	private ProdottoService prodottoService;
+
+	
+	// http:localhost:8080/pizzeria/prodotti
+	@GetMapping
+	public String getPage(Model model) {
+		
+		model.addAttribute("prodotti",prodottoService.vediTutti());
+		
+		return "home";
+	}
+	
+	@GetMapping("/infoProdotto")
+	public String getProdotti(Model model,@RequestParam("id") int id,HttpSession session) {
+		String path = session.getServletContext().getRealPath("/");
+		String path2 = path + "static\\images\\"+String.valueOf(id)+".png";
+		File file = new File(path2);
+		
+		model.addAttribute("prodotto",prodottoService.getProdottoById(id));
+		model.addAttribute("immagine", file);
+		return "info-prodotti";
+	}
+	
+	
 }
+	
+	

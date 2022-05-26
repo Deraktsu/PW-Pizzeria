@@ -38,6 +38,8 @@
         <div class="side-bar">
             <a href="/pizzeria/loginAdmin"><i class="fas fa-user-secret" title="Area amministratore"></i></a>
             <a href="/pizzeria/areaClienti"><i class="fas fa-user" id="user" title="Area riservata"></i></a>
+            <a href="/pizzeria/registrazione"><i class="fas fa-user" id="user" title="Registrazione"></i></a>
+            
             <!-- solo se loggati -->
             <a href="/pizzeria/carrello"><i class="fas fa-regular fa-cart-shopping" id="cart" title="Vai al carrello" ></i></a>
         </div>
