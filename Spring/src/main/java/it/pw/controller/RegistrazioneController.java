@@ -52,7 +52,7 @@ public class RegistrazioneController {
 			return "registrazione";
 		}else {
 			
-			  if(!utenteService.verficaUsername(utente.getUsername())){
+			  if(!utenteService.verficaUsername(utente.getEmail())){
 				 
 			   utenteService.create(utente);
 				 
@@ -91,11 +91,11 @@ public class RegistrazioneController {
 	public String comparaCredenziali(@ModelAttribute("user") Utente utente, Model model,
 			HttpServletRequest request, HttpSession session) {	
 			
-		if(utenteService.verificaLogin(utente.getUsername(), utente.getPassword())) {
+		if(utenteService.verificaLogin(utente.getEmail(), utente.getPassword())) {
 			
 			session.setAttribute("logUtente", true);
 			
-			session.setAttribute("Utente", utenteService.getUtenteByUsername(utente.getUsername()));
+			session.setAttribute("Utente", utenteService.getUtenteByUsername(utente.getEmail()));
 			
 			
 		}else {
@@ -104,7 +104,7 @@ public class RegistrazioneController {
 			model.addAttribute("esitoLogin",false);
 			return "login";
 		}
-			
+		
 			
 			
 		return "redirect:/home";

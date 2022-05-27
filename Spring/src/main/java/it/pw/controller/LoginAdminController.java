@@ -23,10 +23,13 @@ public class LoginAdminController {
 	
 	@GetMapping
 	public String getPage(Model model,
-			HttpServletRequest request, HttpSession session) {
+		HttpServletRequest request, HttpSession session) {
 		model.addAttribute("admin", new Admin());
 		model.addAttribute("esitoLoginAdmin",true);
+		
+		if(session.getAttribute("logAdmin") == null) {
 		session.setAttribute("logAdmin", false);
+		}
 		
 		return "login-admin";
 	}

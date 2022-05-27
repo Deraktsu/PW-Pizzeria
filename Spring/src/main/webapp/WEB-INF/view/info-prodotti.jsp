@@ -17,7 +17,7 @@
 					<tr>
 					<td>
 					<img class="img-thumbnail" style="width: 180px; height: 250px;max-width: 180px; max-height: 250px;" 
-							alt="Book Image" src="<c:url value="/static/images/${prodotto.id_prodotto}.png" />">
+							alt="Book Image" src="<c:url value="/static/pizze/${prodotto.id_prodotto}.png" />">
 					</td>
 					<td class="text-left" >
 								${prodotto.descrizione}

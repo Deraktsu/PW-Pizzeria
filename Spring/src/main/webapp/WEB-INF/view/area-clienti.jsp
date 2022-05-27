@@ -37,9 +37,9 @@
 			</div>
 			<div class="row">
 				<div class="col-4">
-					<label for="username">Username</label>
-					<form:input path="username" id="cap" type="text" cssClass="form-control" required="required" />
-					<form:errors path="username" id="capError" cssClass="text-danger"/>
+					<label for="email">Email</label>
+					<form:input path="email" id="cap" type="text" cssClass="form-control" required="required" />
+					<form:errors path="email" id="capError" cssClass="text-danger"/>
 				</div>
 				<div class="col-8">
 					<label for="password">Password</label>
@@ -49,7 +49,7 @@
 			</div>
 			<div class="row mt-4">
 				<div class="col-12 text-center">
-					<a href='<spring:url value="/prodotti" />' class="btn btn-secondary btn-lg">Torna a Prodotti</a>&emsp;
+					<a href='<spring:url value="/home" />' class="btn btn-secondary btn-lg">Torna a Prodotti</a>&emsp;
 					<input type="submit" value="Aggiorna Cliente" class="btn btn-primary btn-lg">
 				</div>
 			</div>

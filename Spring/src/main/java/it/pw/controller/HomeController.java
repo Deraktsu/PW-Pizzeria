@@ -22,19 +22,18 @@ public class HomeController {
 	private ProdottoService prodottoService;
 
 	
-	// http:localhost:8080/pizzeria/prodotti
+	// http:localhost:8080/pizzeria/home
 	@GetMapping
 	public String getPage(Model model) {
 		
 		model.addAttribute("prodotti",prodottoService.vediTutti());
-		
 		return "home";
 	}
 	
 	@GetMapping("/infoProdotto")
 	public String getProdotti(Model model,@RequestParam("id") int id,HttpSession session) {
 		String path = session.getServletContext().getRealPath("/");
-		String path2 = path + "static\\images\\"+String.valueOf(id)+".png";
+		String path2 = path + "static\\pizze\\"+String.valueOf(id)+".png";
 		File file = new File(path2);
 		
 		model.addAttribute("prodotto",prodottoService.getProdottoById(id));

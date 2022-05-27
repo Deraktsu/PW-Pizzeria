@@ -47,6 +47,13 @@ public class CarrelloController {
 	model.addAttribute("listaCarello",lpc);
 	model.addAttribute("totale",prodottoService.calcolaPrezzo(lpc));
 	model.addAttribute("loggato", session.getAttribute("loggato"));
+	model.addAttribute("nomeUtente",session.getAttribute("Utente"));
+	
+	if(lpc.isEmpty()) {
+		model.addAttribute("carrelloVuoto",true);
+	}else {
+		model.addAttribute("carrelloVuoto",false);
+	}
 	return "carrello";
 	}
 
@@ -62,15 +69,17 @@ public class CarrelloController {
 				session.setAttribute("logAdmin", false);
 			logUtente = (boolean) session.getAttribute("logUtente");
 			logAdmin = (boolean) session.getAttribute("logAdmin");
-			if(!logUtente || logAdmin)
-				return "redirect:/registrazione/login";
 
+			 
+			if(!logUtente || logAdmin)
+				
+				return "redirect:/registrazione/login";
+				
 		  
 		  if(session.getAttribute("listaCarrello") == null) {
 			  List<ProdottoNelCarrello> lpc = new ArrayList<>();
 			session.setAttribute("listaCarrello",lpc);
 		  }
-		  
 		  
 		  int id = 0;
 		  id = Integer.parseInt(request.getParameter("id"));
@@ -96,7 +105,7 @@ public class CarrelloController {
 			  
 		  }
 		 
-			  return "redirect:/carrello";   
+			  return "redirect:/home#menu";   
 		  }
 
 	  
@@ -137,13 +146,11 @@ public class CarrelloController {
 		   List<ProdottoNelCarrello> lpc = (List<ProdottoNelCarrello>) session.getAttribute("listaCarrello");
 		  
 		  	int index = prodottoService.trovaIndex(lpc, id);
-		  	lpc.get(index).setQuantita(lpc.get(index).getQuantita()-1);
+		  	 if(lpc.get(index).getQuantita() > 1) {
+		  		 lpc.get(index).setQuantita(lpc.get(index).getQuantita()-1);
 		  
-			  if(lpc.get(index).getQuantita() <= 0) {
-				  lpc.remove(index);
-				  
 			  }
-		  		
+		  		//mettere alert
 				  
 				  return "redirect:/carrello";
 			  }
@@ -169,18 +176,10 @@ public class CarrelloController {
 	// http://localhost:8080/pizzeria/carrello/riepilogo
 	
 		@GetMapping("/riepilogo")
-		String concludiPagamento(HttpServletRequest request, HttpSession session) {
+		String concludiPagamento(@RequestParam("data")Date data_ritiro,@RequestParam("orario")String orario_ritiro,Model model, HttpServletRequest request, HttpSession session) {
 			Ordine ordine = new Ordine();
 			Utente utente = (Utente) session.getAttribute("Utente");
 			
-			
-			Calendar data = Calendar.getInstance();
-			data.set(Calendar.YEAR, 2022);
-			data.set(Calendar.MONTH, 5);
-			data.set(Calendar.DAY_OF_MONTH, 30);
-			Date data_ritiro = data.getTime();
-			
-			String orario_ritiro = "17:30 - 18:00";
 			int quantita = 0;
 			
 			@SuppressWarnings("unchecked")
@@ -196,6 +195,11 @@ public class CarrelloController {
 				}
 				
 			}
+			model.addAttribute("listaRiepilogo", listaAcquisto);
+			model.addAttribute("dataRiepilogo", data_ritiro);
+			model.addAttribute("orarioRiepilogo", orario_ritiro);
+			model.addAttribute("totaleRiepilogo",prodottoService.calcolaPrezzo(lista));
+			
 				ordine.setDataOrdine(data_ritiro);
 				ordine.setOrarioRitiro(orario_ritiro);
 				ordine.setPrezzoTotale(prodottoService.calcolaPrezzo(lista));
@@ -204,7 +208,7 @@ public class CarrelloController {
 				ordiniService.create(ordine);
 				session.removeAttribute("listaCarrello");
 			
-			return "redirect:/home";
+			return "riepilogo";
 		}
 	  
 	  

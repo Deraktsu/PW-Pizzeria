@@ -36,6 +36,15 @@ public class AdminUtenteFormController {
 	
 	@GetMapping("/eliminaUtente")
 	String eliminaUtente(HttpServletRequest request, HttpSession session, Model model) {
+		try {
+			if(!(boolean) session.getAttribute("logAdmin")){
+				return"redirect:/login-admin";
+			}
+			}catch (Exception e) {
+				return "redirect:/loginAdmin";
+			}
+		
+		
 		int id = 0;		
 		id= Integer.parseInt(request.getParameter("id"));
 		

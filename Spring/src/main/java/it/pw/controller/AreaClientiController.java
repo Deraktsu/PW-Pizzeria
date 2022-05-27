@@ -45,14 +45,14 @@ public class AreaClientiController {
 			HttpServletRequest request, HttpSession session) {
 		Utente oldUtente = (Utente) session.getAttribute("Utente");
 		if (result.hasErrors()) 
-			return "areaClienti";
+			return "area-clienti";
 			
-		if(oldUtente.getUsername().equalsIgnoreCase(utente.getUsername())) {
+		if(oldUtente.getEmail().equalsIgnoreCase(utente.getEmail())) {
 			utente.setId_utente(oldUtente.getId_utente());
 			utenteService.update(utente);
 			session.setAttribute("Utente", utente);
 		}else {
-			if(!utenteService.verficaUsername(utente.getUsername())) {
+			if(!utenteService.verficaUsername(utente.getEmail())) {
 				utente.setId_utente(oldUtente.getId_utente());
 				utenteService.update(utente);
 				session.setAttribute("Utente", utente);

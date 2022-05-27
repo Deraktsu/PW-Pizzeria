@@ -27,18 +27,18 @@ public class UtenteDaoImpl implements UtenteDao {
 	
 	
 	@Override
-	public boolean verificaLogin(String username, String password) {
+	public boolean verificaLogin(String email, String password) {
 	
 	return leggiTutti().stream().
-			anyMatch(x -> x.getUsername().equalsIgnoreCase(username)&&
+			anyMatch(x -> x.getEmail().equalsIgnoreCase(email)&&
 			x.getPassword().equals(password));	}
 	
 	
 	@Override
-	public boolean verficaUsername(String username) {
+	public boolean verficaUsername(String email) {
 		
 		return leggiTutti().stream().
-				anyMatch(x -> x.getUsername().equalsIgnoreCase(username));
+				anyMatch(x -> x.getEmail().equalsIgnoreCase(email));
 	}
 	
 	
@@ -55,13 +55,13 @@ public class UtenteDaoImpl implements UtenteDao {
 
 	
 	@Override
-	public Utente getUtenteByUsername(String username) {
+	public Utente getUtenteByUsername(String email) {
 		
-		String jpql = "SELECT u FROM Utente u WHERE username=?1";
+		String jpql = "SELECT u FROM Utente u WHERE email=?1";
 		
 		Utente u= new Utente();
 		u = (Utente) manager.createQuery(jpql)
-		.setParameter(1, username)
+		.setParameter(1, email)
 		.getSingleResult();
 
 		return u;

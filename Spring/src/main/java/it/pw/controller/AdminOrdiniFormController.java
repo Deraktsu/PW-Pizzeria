@@ -26,17 +26,33 @@ import it.pw.model.Ordine;
 	OrdiniDao ordiniDao;
 	
 	@GetMapping
-	String getPage(Model model) {
+	String getPage(Model model,HttpSession session) {
 		model.addAttribute("ordini",ordiniDao.vediTutti());
 		model.addAttribute("esitoRegistrazione",true);
 		
+		try {
+		if(!(boolean) session.getAttribute("logAdmin")){
+			return"redirect:/login-admin";
+		}
+		}catch (Exception e) {
+			return "redirect:/loginAdmin";
+		}
 		
 		return "admin-ordini";
 	}
 	
 	
 	@GetMapping("/eliminaOrdine")
-	String eliminaOrdine(@RequestParam("id")int id,Model model) {
+	String eliminaOrdine(@RequestParam("id")int id,Model model, HttpSession session) {
+		try {
+			if(!(boolean) session.getAttribute("logAdmin")){
+				return"redirect:/login-admin";
+			}
+			}catch (Exception e) {
+				return "redirect:/loginAdmin";
+			}
+		
+		
 		Ordine ordine = ordiniDao.getOrdineById(id);
 		Date dataCorrente = new Date();
 		if(ordine.getDataOrdine().after(dataCorrente)) {

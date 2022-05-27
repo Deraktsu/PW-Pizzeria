@@ -125,7 +125,8 @@
                             <div class="">
                                 <div class="logo-footer">
                                     <a href="#" title="">
-                                        <img style="width:100px;" src="image/logo.jpg">
+                                    
+                                        <img style="width:100px;" src='<c:url value="/static/images/image/logo.jpg" />'>
                                     </a>
                                     <p>Più di 100 anni di storia e bontà, nel rispetto della tradizione</p>
                                     <br>

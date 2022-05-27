@@ -33,13 +33,13 @@ public class Utente implements Serializable{
 	@Column(name = "cognome", length = 255, nullable = false)
 	private String cognome;
 	
-	@Pattern(regexp = "[1-9]{1,255}",message = "{user.form.error.general}")
+	@Pattern(regexp = "[+_\\s0-9-]{1,255}",message = "{user.form.error.general}")
 	@Column(name = "telefono", length = 255, nullable = false)
 	private String telefono;
 	
-	@Pattern(regexp = "[a-zA-Z1-9Zטיעאשל\\s']{1,255}",message = "{user.form.error.general}")
-	@Column(name = "username", length = 255, nullable = false)
-	private String username;
+	@Pattern(regexp = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$",message = "{user.form.error.general}")
+	@Column(name = "email", length = 255, nullable = false)
+	private String email;
 	
 	@Pattern(regexp = "[a-zA-Z1-9טיעאשל\\s'!#]{1,255}",message = "{user.form.error.general}")
 	@Column(name = "password", length = 255, nullable = false)
@@ -99,11 +99,19 @@ public class Utente implements Serializable{
 	}
 
 	public String getUsername() {
-		return username;
+		return getEmail();
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public String getEmail() {
+		return email;
+	}
+
+	public void setUsername(String email) {
+		setEmail(email);
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {

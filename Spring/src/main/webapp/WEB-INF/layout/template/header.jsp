@@ -25,7 +25,7 @@
         });
     </script>
 
-<header class="head">
+<header class="headb">
 
         <a onclick="cambia()">
             <img style="width:175px;" src="<c:url value="/static/images/4.png" />" id="logo" alt="logo 5uaglioni">

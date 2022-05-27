@@ -1,5 +1,8 @@
 package it.pw.controller;
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -12,7 +15,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import it.pw.dao.OrdiniDao;
 import it.pw.dao.ProdottoDao;
@@ -30,16 +36,30 @@ import it.pw.model.Utente;
 	OrdiniDao ordiniDao;
 	
 	@GetMapping
-	String getPage(Model model) {
+	String getPage(Model model,HttpSession session) {
 		model.addAttribute("prodotti",prodottoDao.vediTutti());
 		model.addAttribute("esitoRegistrazione",true);
-		
+		try {
+			if(!(boolean) session.getAttribute("logAdmin")){
+				return"redirect:/login-admin";
+			}
+			}catch (Exception e) {
+				return "redirect:/loginAdmin";
+			}
 		
 		return "admin-prodotti";
 	}
 	
 	@GetMapping("/creaProdotto")
-	String creaProdotto(Model model) {
+	String creaProdotto(Model model,HttpSession session) {
+		try {
+			if(!(boolean) session.getAttribute("logAdmin")){
+				return"redirect:/login-admin";
+			}
+			}catch (Exception e) {
+				return "redirect:/loginAdmin";
+			}
+		
 		Prodotto prodotto= new Prodotto();
 		model.addAttribute("aggiornaProdottoForm",prodotto);
 		
@@ -55,40 +75,67 @@ import it.pw.model.Utente;
 		
 		return "redirect:/adminProdotti";
 	}
-	
-	@GetMapping("/modificaProdotto")
-	String modificaProdotto(HttpServletRequest request, HttpSession session, Model model) {
-		int id = 0;		
-		id= Integer.parseInt(request.getParameter("id"));
-		if(ordiniDao.confrontaDataProdotto(prodottoDao.getProdottoById(id))) {
-			model.addAttribute("esitoRegistrazione",false);
-			model.addAttribute("prodotti",prodottoDao.vediTutti());
-			return "redirect:/adminProdotti";
-		}
-		
-		
-		model.addAttribute("aggiornaProdottoForm",prodottoDao.getProdottoById(id));
-		session.setAttribute("prodottoId", prodottoDao.getProdottoById(id));
-		
-		return "admin-prodotti-form";
-		
-	}
-	
-	
-	@PostMapping("/modificaProdotto")
-	String modificaProdotto(@Valid @ModelAttribute("aggiornaProdottoForm") Prodotto newprodotto, BindingResult result,Model model,
-			HttpServletRequest request, HttpSession session) {
-		Prodotto oldProdotto = (Prodotto) session.getAttribute("prodottoId");
-		newprodotto.setId_prodotto(oldProdotto.getId_prodotto());
-		
-			prodottoDao.update(newprodotto);
-		
-		return "redirect:/adminProdotti";
-	}
-	
+	/*
+	 * @GetMapping("/modificaProdotto") String modificaProdotto(HttpServletRequest
+	 * request, HttpSession session, Model model) { int id = 0; id=
+	 * Integer.parseInt(request.getParameter("id"));
+	 * 
+	 * boolean hasImage = false;
+	 * 
+	 * try { String rootDir = session.getServletContext().getRealPath("/"); String
+	 * filePath = rootDir + "static\\pizze\\" + String.valueOf(id) + ".png"; File
+	 * file = new File(filePath); hasImage = file.exists(); } catch (Exception e) {
+	 * hasImage = false; }
+	 * 
+	 * 
+	 * model.addAttribute("aggiornaProdottoForm",prodottoDao.getProdottoById(id));
+	 * session.setAttribute("prodottoId", prodottoDao.getProdottoById(id));
+	 * model.addAttribute("hasImage", hasImage); model.addAttribute("prodottoId",
+	 * String.valueOf(id)); return "admin-prodotti-form";
+	 * 
+	 * }
+	 * 
+	 * 
+	 * @PostMapping("/modificaProdotto") String
+	 * modificaProdotto(@Valid @ModelAttribute("aggiornaProdottoForm") Prodotto
+	 * newprodotto, BindingResult result,Model model, HttpServletRequest request,
+	 * HttpSession session) { Prodotto oldProdotto = (Prodotto)
+	 * session.getAttribute("prodottoId");
+	 * newprodotto.setId_prodotto(oldProdotto.getId_prodotto());
+	 * 
+	 * 
+	 * 
+	 * 
+	 * prodottoDao.update(newprodotto);
+	 * 
+	 * return "redirect:/adminProdotti"; }
+	 * 
+	 * 
+	 * @PostMapping("/modificaProdotto/upload") public String
+	 * imageUpload(@RequestParam("image") MultipartFile
+	 * image,@RequestParam("fileName") String fileName,BindingResult result,
+	 * HttpSession session) {
+	 * 
+	 * 
+	 * if (image != null && !image.isEmpty()) { String rootDir =
+	 * session.getServletContext().getRealPath("/"); String filePath = rootDir +
+	 * "static\\pizze\\" + fileName + ".png"; try { image.transferTo(new
+	 * File(filePath)); } catch (IllegalStateException e) { e.printStackTrace(); }
+	 * catch (IOException e) { e.printStackTrace(); } } return
+	 * "redirect:/AdminProdotti/modificaProdotto?id=" + Integer.parseInt(fileName);
+	 * }
+	 */
 	
 	@GetMapping("/eliminaProdotto")
 	String eliminaProdotto(@RequestParam("id")int id, HttpSession session, Model model) {	
+		try {
+			if(!(boolean) session.getAttribute("logAdmin")){
+				return"redirect:/login-admin";
+			}
+			}catch (Exception e) {
+				return "redirect:/loginAdmin";
+			}
+		
 		Prodotto prodotto = prodottoDao.getProdottoById(id);
 		if(ordiniDao.confrontaDataProdotto(prodotto)) {
 			model.addAttribute("esitoRegistrazione",false);
@@ -103,5 +150,28 @@ import it.pw.model.Utente;
 		
 		
 	}
+	
+	@GetMapping("/cancellaImmagine")
+	String cancellaImmagine(HttpServletRequest request,HttpSession session) {
+		try {
+			if(!(boolean) session.getAttribute("logAdmin")){
+				return"redirect:/login-admin";
+			}
+			}catch (Exception e) {
+				return "redirect:/loginAdmin";
+			}
+		
+		String name = (String) request.getParameter("id");
+		
+		String rootDir = session.getServletContext().getRealPath("/");
+		String filePath = rootDir + "static\\books\\" + name + ".png";
+		File file = new File(filePath);
+		if (file.exists()) file.delete();
+		
+		
+		return "redirect:/adminProdotti/modificaProdotto?id=" + Integer.parseInt(name);
+	}
+	
+	
 	
 }

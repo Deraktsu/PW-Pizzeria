@@ -5,6 +5,7 @@ import java.util.Properties;
 
 import javax.persistence.SharedCacheMode;
 import javax.persistence.ValidationMode;
+import javax.servlet.MultipartConfigElement;
 import javax.sql.DataSource;
 
 import static org.hibernate.cfg.AvailableSettings.C3P0_MIN_SIZE;
@@ -32,6 +33,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -124,6 +126,8 @@ public class ContextConfiguration implements WebMvcConfigurer
 		
 		return dataSource;
 	}
+	
+	
 	
 	//bean per lavorare con jdbcTemplate
 	@Bean

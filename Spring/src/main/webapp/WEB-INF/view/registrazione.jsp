@@ -1,108 +1,82 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12 col-lg-12" id="cont1">
-        
-            <img id="img_signUp" src="<c:url value="/static/images/julia-roberts-pizza.gif" />" alt="">
+
+<c:if test="${!esitoRegistrazione}"> <div class="alert alert-danger" role="alert">   Impossibile aggiornare: email già in uso. </div> </c:if>
+
+	<div class="row">
+        <div class="col-12" id="titolo_signUp">
+            <h2>REGISTRATI</h2>
         </div>
-<c:if test="${!esitoRegistrazione}">
-<div class="alert alert-danger" role="alert">
-  Impossibile aggiornare: username già in uso.
-</div>
-</c:if>
+
+        <div class="col-sm-6 col-lg-12" id="cont1">
+                           
+                <img id="imgSignUp" src="${pageContext.request.contextPath}/static/images/pizza_signup.jpg" alt="">
+            
+        </div>
+
         <div class="col-sm-6 col-lg-12" id="cont2">
-        <div id="form_SigIn">
-        <div class="row g-3">
-                <form:form method="POST" modelAttribute="utente" acceptCharset="ISO-8859-1">
-                	<div class="col-md-6">
-					<label for="nome">Nome:</label>
-					<form:input path="nome" id="nomeSigIn" type="text" cssClass="form-control" required="required" />
-					<form:errors path="nome" id="nameError" cssClass="text-danger"/>
-				</div>
-				<div class="col-md-6">
-					<label for="cognome">Cognome:</label>
-					<form:input path="cognome" id="name" type="text" cssClass="form-control" required="required" />
-					<form:errors path="cognome" id="nameError" cssClass="text-danger"/>
-				</div>
-                <!-- asdasdasdsddasdds -->
-                    
-				<div class="col-md-6">
-					<label for="telefono">telefono</label>
-					<form:input path="telefono" id="mail" type="mail" cssClass="form-control" required="required" />
-					<form:errors path="telefono" id="mailError" cssClass="text-danger"/>
-				</div>
-				
-			
-			
-				<div class="col-md-6">
-					<label for="username">Username</label>
-					<form:input path="username" id="cap" type="text" cssClass="form-control" required="required" />
-					<form:errors path="username" id="capError" cssClass="text-danger"/>
-				</div>
-				<div class="col-md-6">
-					<label for="password">Password</label>
-					<form:input path="password" id="town" type="text" cssClass="form-control" required="required" />
-					<form:errors path="password" id="townError" cssClass="text-danger"/>
-				</div>
-			
+            <div id="formSignUp">
+                <form:form class="row g-3"  method="POST" modelAttribute="utente" acceptCharset="ISO-8859-1">
 
-                    <!-- <div class="col-md-4">
-                        <label for="inputState" class="form-label">State</label>
-                        <select id="inputState" class="form-select">
-                            <option selected>Choose...</option>
-                            <option>...</option>
-                        </select>
-                    </div> -->
+                    <div class="col-md-6">
+                        <label class="form-label">Nome: </label>
+                        <form:input path="nome" class="form-control" id="nomeSigIn" required="required" placeholder=""/>
+                        <form:errors path="nome" id="nameError" cssClass="text-danger"/>
+                    </div>
 
-                   <!--  <div class="col-md-6">
-                        <label class="form-label">Genere: </label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                   id="flexRadioDefault1" value="option1" checked>
-                            <label class="form-check-label">
-                                Donna
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                   value="option2">
-                            <label class="form-check-label">
-                                Uomo
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                   value="option3">
-                            <label class="form-check-label">
-                                Altro
-                            </label>
-                        </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Cognome: </label>
+                        <form:input path="cognome" id="name" class="form-control" required="required" placeholder=""/>
+                        <form:errors path="cognome" id="nameError" cssClass="text-danger"/>
+                    </div>
 
-                    </div> -->
+                    <div class="col-md-6">
+                        <label class="form-label">Email</label>
+                        <form:input path="username" id="cap" class="form-control" required="required"/>
+                        <form:errors path="username" id="capError" cssClass="text-danger"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputPassword4" class="form-label">Password</label>
+                        <form:input path="password" id="town" class="form-control" required="required"/>
+                        <form:errors path="password" id="townError" cssClass="text-danger"/>
+                    </div>
 
-                    <!-- <div class="col-md-12">
-                        <label class="form-label">Carta di credito: </label>
-                        <input type="text" class="form-control" id="inputCartaCredito" placeholder="">
-                    </div> -->
+                    <div class="col-md-6">
+                        <label class="form-label">Telefono: </label>
+                        <form:input path="telefono" class="form-control" id="telefSigIn" required="required" placeholder=""/>
+                    </div>
+
+                    <br/><br/><br/>
 
                     <div class="col-12">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="privacy">
-                            <label class="form-check-label" >
+                            <label class="form-check-label">
                                 Accetto i Termini e le Condizioni
                             </label>
                         </div>
                     </div>
-                    <div class="col-12 text-center">
-					<a href='<spring:url value="/home" />' class="btn btn-secondary btn-lg" id="button_form">Torna alla home</a>&emsp;
-					<input type="submit" value="Sign up" class="btn btn-primary btn-lg">
-					</div>
+                    <div class="col-12">
+                        <button type="submit" disabled="true" class="btn btn-primary" id="button_form">Sign up</button>
+                    </div>
                 </form:form>
             </div>
         </div>
     </div>
-</div>
-</div>
+    <script>
+        let casella = document.getElementById("privacy");
+        casella.addEventListener("click",controlla);
+
+        function controlla() {
+            if (casella.checked) { //checked funciona como un true 
+                document.getElementById("button_form").disabled=false;
+            }
+            else {
+                document.getElementById("button_form").disabled=true;
+            }
+        }     
+    </script>
+    

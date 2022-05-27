@@ -12,19 +12,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet" >
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" >
 
-<%-- <link href="${pageContext.request.contextPath}/static/css/miocss.css" rel="stylesheet" /> --%>
-<link rel="stylesheet" href="/resources/demos/style.css">
-
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" >
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet"  />
 <link href="${pageContext.request.contextPath}/static/css/bootstrap.css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/static/css/bootstrap.min.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/static/css/miocss.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
 <script>
         // impostare file con tutti gli script
         let actImm = 0;
@@ -85,7 +86,7 @@
                 document.getElementById("destra").style.backgroundColor = "white";
                 document.getElementById("destra").innerHTML += '<div  id="avviso" style="padding: 10px; text-align: center;">' +
                     'Il ristorante ha chiuso alle 22.00, vuoi effettuare la tua prenotazione un altro giorno?</div>' +
-                    '<div class="row" id="siOno"><div class="col-6"><a href="/pizzeria/carrello" class="btn" role="button">NO</a></div> ' +
+                    '<div class="row"><div class="col-6"><a href="/pizzeria/carrello" class="btn" role="button">NO</a></div> ' +
                     '<div class="col-6"><a class="btn" role="button" onclick="mostragiorni()"> SI </a></div></div> '
             } else if (stringaOrario2 < 11.00) {
                 document.getElementById("destra").style.backgroundColor = "darkcyan";
@@ -126,7 +127,6 @@
         // funzione che si avvia SOLO se un utente chiede di prenotare un altro giorno
         function mostragiorni() {
             document.getElementById("avviso").style.display = "none";
-            document.getElementById("siOno").style.display = "none";
             document.getElementById("destra").style.backgroundColor = "green";
             document.getElementById("titoloFormSeleziona").innerHTML += 'Seleziona giorno e orario in cui desideri effettuare la prenotazione:';
             $( function() {
@@ -155,9 +155,9 @@
             } else {
                 let data_scelta = document.getElementById("datepicker").value;
                 let orario_scelto = document.getElementById("orarid").value;
-			
+
                 document.getElementById("orario_finale").style.padding = "10px";
-                document.getElementById("orario_finale").innerHTML = " ${Utente.nome}, confermi che ritirerai tuo ordine il ";
+                document.getElementById("orario_finale").innerHTML = "Edgar, confermi che ritirerai tuo ordine il ";
                 document.getElementById("orario_finale").innerHTML += data_scelta;
                 document.getElementById("orario_finale").innerHTML += " alle ore ";
                 document.getElementById("orario_finale").innerHTML += orario_scelto;

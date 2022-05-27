@@ -21,7 +21,7 @@
 			<td class="text-left" >NOME</td>
 			<td class="text-left" >COGNOME</td>
 			<td class="text-left" >TELEFONO</td>
-			<td class="text-left" >USERNAME</td>
+			<td class="text-left" >EMAIL</td>
 			<td class="text-left" >PASSWORD</td>
 			<td></td>
 			</tr>
@@ -40,7 +40,7 @@
 							${utente.telefono}
 							</td>
 							<td class="text-left" >
-							${utente.username}
+							${utente.email}
 							</td>
 							<td class="text-left" >
 							${utente.password}

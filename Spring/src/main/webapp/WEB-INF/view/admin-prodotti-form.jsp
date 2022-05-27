@@ -3,9 +3,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-
-
-
 	<form:form method="POST" modelAttribute="aggiornaProdottoForm" acceptCharset="ISO-8859-1">
 
 			<div class="row">
@@ -37,5 +34,41 @@
 				</div>
 			</div>
 		</form:form>
-
-
+		
+		
+		
+		<div class="col-2"></div>
+	<div class="col-4">
+		<div class="row mt-4">
+			<div class="col-12 text-center">
+				<form action="/pizzeria/modificaProdotto/upload"  method="POST" enctype="multipart/form-data">
+					<h6>Seleziona e salva copertina</h6>
+					<input type="hidden" id="fileName" name="fileName" value="${prodottoId}" required="required" >
+					<input type="file" class="form-control mt-2" id="image" name="image" required="required">
+					<input type="submit" class="btn btn-primary mt-3" value="Salva Immagine">
+				</form>
+			</div>
+		</div>
+		<div class="row mt-4">
+			<div class="col-12 text-center ms-2">
+				<c:choose>
+					<c:when test="${hasImage}">
+						<img class="img-thumbnail" style="width: 180px; height: 250px;max-width: 180px; max-height: 250px;" 
+							alt="Book Image" src="<c:url value="/static/pizze/${prodottoId}.png" />">
+					</c:when>
+					<c:otherwise>
+						<img class="img-thumbnail" style="width: 180px; height: 250px;max-width: 180px; max-height: 250px;" 
+							alt="Book Image" src="<c:url value="/static/pizze/markerImage.png" />">
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
+		
+		<div class="row mt-4">
+			<div class="col-12 text-center">
+				<a href='<spring:url value="/modificaProdotto/cancellaImmagine?name=${prodottoId}"></spring:url>'>
+					<img class="img-thumbnail ms-4" alt="Delete" src="<c:url value="/static/pizze/deleteIcon.png" />">
+				</a>
+			</div>
+		</div>
+	</div>
