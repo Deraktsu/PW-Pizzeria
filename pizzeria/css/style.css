@@ -25,6 +25,12 @@ html::-webkit-scrollbar {
 html::-webkit-scrollbar-thumb {
     background: #f42f1d;
 }
+#demo {
+    background-color: rgb(255,205,57,0.95);
+}
+#demo1 {
+    background-color: rgb(255,205,57,0.95);
+}
 .head {
     position:fixed;
     left:0;
@@ -39,6 +45,7 @@ html::-webkit-scrollbar-thumb {
 }
 .head .navbar a {
     color: white;
+
     text-decoration: none;
     font-size: 2.5rem;
     font-weight:600;
@@ -48,12 +55,7 @@ html::-webkit-scrollbar-thumb {
     color: #f42f1d;
     transition: .4s ease;
 }
-.head .navbar li:active {
-    font-family: Bahnschrift, serif;
-    color: #f42f1d;
-}
 .head .side-bar i {
-    padding: 1.5rem;
     font-size: 2.1rem;
     border: none;
     background: white;
@@ -65,6 +67,7 @@ html::-webkit-scrollbar-thumb {
     transition: .5s ease all;
 }
 
+
 .headb {
     position: relative;
     z-index:1;
@@ -74,7 +77,7 @@ html::-webkit-scrollbar-thumb {
     display: flex;
     background-color: rgb(255,205,57,0.95);
     color: white;
-    padding: 1.5rem 9%;
+    padding: 1.25rem 9%;
     align-items: center;
     justify-content: space-between;
 
@@ -83,9 +86,9 @@ html::-webkit-scrollbar-thumb {
     color: white;
     text-align: center;
     text-decoration: none;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-weight:600;
-    margin:0 4rem;
+    margin:0 2rem;
 }
 .headb .navbar a:hover {
     color: #f42f1d;
@@ -94,77 +97,39 @@ html::-webkit-scrollbar-thumb {
 
 .headb .side-bar i {
     padding: 1.5rem;
-    font-size: 2.1rem;
+    font-size: 2rem;
     border: none;
-    background: white;
-    color: #f42f1d;
+    color: white;
+
 }
 .headb .side-bar i:hover {
-    background-color: #f42f1d;
-    color: rgb(255,205,57);
+    color: #f42f1d;
     transition: .5s ease all;
 }
-
 
 #bars {
     display: none;
 }
 
-
-#tabella { /* css per formattare il div con id="tabella" */
+#tabella {
     background-color: white;
-    height: 100%; /* css dire al div con id="tabella" di prendere tutta l'altezza disponibile della row in cui è contenuto */
+    height: 100%;
 }
+
 #benvenuto {
     border-top: 2px solid #f42f1d;
-    height: 90%;
+    width: 50%;
+    height: 100%;
     font-size:20px;
-    background-color: white; /* ho messo il colore di sfondo solo per farti vedere quanto è grande il div con id="miele", puoi cancellarlo tranquillamente */
 }
-#benvenuto b { /* css per formattare slo ciò che è contenuto nel tag <b> del div con id="miele" */
+#benvenuto b {
     font-size:40px;
-}
-
-#julia {
-    width: 50%;
-    transition: width 3s ease;
-}
-#julia:hover {
-    width: 100%;
-}
-#menu {
-    width: 50%;
-    transition: width 3s ease;
-}
-#menu:hover {
-    left:100%;
-}
-.cella {
-    padding: 10px;
-    font-size: 20px;
-    text-align: center;
-}
-
-.btn {
-    padding: 1.3rem 4rem;
-    background-color: rgb(255,205,57);
-    color: black;
-    border: none;
-    border-radius: .5rem;
-    /* box-shadow: 0rem 2rem 2rem rgba(0, 0, 0, 0.1); */
-    transition: all 0.1s ease 0s;
 
 }
-
-.btn:hover {
-    background-color: rgb(255,205,57);
-    box-shadow: 0px .2rem 2rem rgba(255, 85, 94, 0.4);
-    color: #f42f1d;
-    transform: translateY(-.05rem);
-}
-
-.btn:active {
-    transform: translateY(-.05rem);
+@media only screen and (max-width: 768px){
+    #benvenuto{
+        width: 100%;
+    }
 }
 
 
@@ -236,30 +201,19 @@ html::-webkit-scrollbar-thumb {
     min-height: 1px;
 }
 
-
-.abbonato th{
-    background-color: #222;
-    border: 1px solid black;
-    color: #f7d913;
-    text-align: right;
-    padding: 8px;
-}
-
 #abbonato1 td {
     color: black;
-    background-color: #FFFFFF;
     border-bottom: 1px solid #f42f1d;
-    width: 100%;
+    width: 80%;
     padding: 8px;
-    box-sizing: border-box;
-    font-size: 16px;
+    font-size: 18px;
 }
+
 #abbonato2 td {
     color: black;
     background-color: #FFFFFF;
     border-bottom: 1px solid #f42f1d;
     width: 100%;
-    padding: 8px;
     box-sizing: border-box;
     font-size: 16px;
 }
@@ -270,7 +224,64 @@ html::-webkit-scrollbar-thumb {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
-    font-size: 16px;
+    font-size: 18px;
+}
+
+.cella1 {
+    padding: 10px;
+    text-align: center;
+    background-color: whitesmoke;
+}
+.cella2 {
+    padding: 10px;
+    text-align: center;
+    background-color: white;
+}
+.text-end {
+
+}
+
+.text-end .btn {
+    padding: 10px;
+    font-size: 11px;
+    text-align: center;
+    width: 80%;
+    height: 80%;
+    border-radius: 0;
+    color: black;
+    transition: all 0.1s ease 0s;
+}
+.text-end .btn i {
+    font-size: 1.4rem;
+}
+
+.text-end .btn:hover {
+    background-color: #f42f1d;
+    border: none;
+    color: rgb(255,205,57);
+    /*transform: translateY(-.05rem);*/
+}
+
+.text-end .btn:active {
+    /*transform: translateY(-.05rem);*/
+}
+
+.btn {
+    padding: 10px;
+    font-size: 11px;
+    text-align: center;
+    width: 80%;
+    height: 80%;
+    border-radius: 0;
+    color: black;
+    transition: all 0.1s ease 0s;
+}
+
+.btn:hover {
+    background-color: #f42f1d;
+    border: none;
+    color: rgb(255,205,57);
+    /*transform: translateY(-.05rem);*/
 }
 
 select {
@@ -283,7 +294,6 @@ select {
     font-size: 16px;
 }
 #destra {
-    background-color: blueviolet;
     display: none;
     color: black;
     font-size: 16px;
@@ -291,4 +301,55 @@ select {
 
 footer p {
     font-size: 16px;
+}
+
+#datepicker {
+    width: 100%;
+    color: black;
+    border-radius: 4px;
+    border: 1px solid grey;
+    text-align: center;
+    height: 40px;
+}
+#datepicker:active {
+    /*box-shadow: #0a58ca;*/
+}
+
+.oraritrasporti {
+    background-color: indianred;
+    padding: 4px;
+    width: 100%;
+}
+
+.oraritrasporti th{
+    background-color: #222;
+    border: 1px solid black;
+    color: #f7d913;
+    text-align: center;
+    padding: 20px;
+}
+
+.caption {
+    background-color: #b0c4de;
+    border: 1px solid black;
+    border-radius: 2px;
+    color: black;
+    text-align: center;
+    padding: 8px;
+}
+
+#orariMetro td {
+    background-color: #FFFFFF;
+    border: 1px solid black;
+    text-align: center;
+    margin: auto;
+    padding: 8px;
+}
+
+#orariBus td {
+    background-color: #FFFFFF;
+    border: 1px solid black;
+    text-align: center;
+    padding: 8px;
+
 }
