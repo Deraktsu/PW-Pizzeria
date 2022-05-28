@@ -32,7 +32,7 @@
 								${prodotto.prezzo}€
 							</td>
 							<td class="text-left">
-							<a href='<spring:url value="/modificaProdotto?id=${prodotto.id_prodotto}"/>' class="btn btn-primary btn-sm ">
+							<a href='<spring:url value="/adminProdotti/modificaProdotto?id=${prodotto.id_prodotto}"/>' class="btn btn-primary btn-sm ">
 								Modifica prodotto
 							</a>
 						</td>

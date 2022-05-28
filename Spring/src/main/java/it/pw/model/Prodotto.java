@@ -35,6 +35,8 @@ public class Prodotto implements Serializable{
 	@Column(name = "prezzo", length = 255, nullable = false)
 	private double prezzo;
 	
+	
+	
 	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	@JoinTable
 		(

@@ -1,6 +1,8 @@
 package it.pw.controller;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import it.pw.model.ProdottoNelCarrello;
 import it.pw.service.ProdottoService;
 
 @Controller
@@ -23,10 +25,25 @@ public class HomeController {
 
 	
 	// http:localhost:8080/pizzeria/home
+	@SuppressWarnings("unchecked")
 	@GetMapping
-	public String getPage(Model model) {
-		
+	public String getPage(Model model,HttpSession session) {
+		if(session.getAttribute("prodottoAggiunto") == null) {
+			session.setAttribute("prodottoAggiunto", false);
+		}
+		model.addAttribute("prodottoAggiunto",(boolean) session.getAttribute("prodottoAggiunto"));
 		model.addAttribute("prodotti",prodottoService.vediTutti());
+		
+		
+		if(session.getAttribute("listaCarrello") != null) {
+		List<ProdottoNelCarrello> lpc = (List<ProdottoNelCarrello>) session.getAttribute("listaCarrello");
+		model.addAttribute("listaCarrello",lpc);
+		model.addAttribute("totale",prodottoService.calcolaPrezzo(lpc));
+		model.addAttribute("lista",true);
+		}else {
+			model.addAttribute("lista",false);
+		}
+		
 		return "home";
 	}
 	

@@ -1,11 +1,16 @@
 package it.pw.controller;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -44,7 +49,7 @@ public class CarrelloController {
 		  }
 	List<ProdottoNelCarrello> lpc =(List<ProdottoNelCarrello>) session.getAttribute("listaCarrello");
 		
-	model.addAttribute("listaCarello",lpc);
+	model.addAttribute("listaCarrello",lpc);
 	model.addAttribute("totale",prodottoService.calcolaPrezzo(lpc));
 	model.addAttribute("loggato", session.getAttribute("loggato"));
 	model.addAttribute("nomeUtente",session.getAttribute("Utente"));
@@ -59,30 +64,22 @@ public class CarrelloController {
 
 	  @SuppressWarnings("unchecked")
 	@GetMapping("/prodottoInOrdine")
-	  public String aggiungiProdotto(HttpServletRequest request, HttpSession session)
+	  public String aggiungiProdotto(HttpServletRequest request, HttpSession session,Model model)
 	  {		
-		  boolean logUtente;
-			boolean logAdmin;
-			if(session.getAttribute("logUtente") == null)
-			session.setAttribute("logUtente", false);	
-			if(session.getAttribute("logAdmin") == null)
-				session.setAttribute("logAdmin", false);
-			logUtente = (boolean) session.getAttribute("logUtente");
-			logAdmin = (boolean) session.getAttribute("logAdmin");
-
-			 
-			if(!logUtente || logAdmin)
-				
-				return "redirect:/registrazione/login";
-				
+		  try {
+				if(!(boolean) session.getAttribute("logUtente")){
+					return"redirect:/home";
+				}
+				}catch (Exception e) {
+					return "redirect:/home";
+				}
 		  
 		  if(session.getAttribute("listaCarrello") == null) {
 			  List<ProdottoNelCarrello> lpc = new ArrayList<>();
 			session.setAttribute("listaCarrello",lpc);
 		  }
-		  
-		  int id = 0;
-		  id = Integer.parseInt(request.getParameter("id"));
+	
+		  int id = Integer.parseInt(request.getParameter("id"));
 		  
 		  List<ProdottoNelCarrello> lpc = (List<ProdottoNelCarrello>) session.getAttribute("listaCarrello");
 		  
@@ -104,8 +101,18 @@ public class CarrelloController {
 			  lpc.get(index).setQuantita(lpc.get(index).getQuantita()+1);
 			  
 		  }
-		 
-			  return "redirect:/home#menu";   
+			/*
+			 * ScriptEngineManager manager = new ScriptEngineManager(); ScriptEngine engine
+			 * = manager.getEngineByName("JavaScript");
+			 * 
+			 * try { engine.eval(new FileReader("addCart.js")); } catch (Exception e) {
+			 * 
+			 * 
+			 * }
+			 */
+		  
+		  session.setAttribute("prodottoAggiunto",true);
+			  return "redirect:/home";   
 		  }
 
 	  

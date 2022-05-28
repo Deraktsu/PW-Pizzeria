@@ -166,7 +166,7 @@ html::-webkit-scrollbar-thumb {
     background-color: #e5eecc;
     width: 100%;
     height: auto;
-    display: none;
+    display: inline-block;
 }
 
 #panel1 p{

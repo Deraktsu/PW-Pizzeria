@@ -2,32 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<script>
-        // impostare file con tutti gli script
-        let actImm = 0;
-        let limite = 4;
-
-        function cambia() {
-            if (actImm === limite)
-                actImm = 0;
-           
-            document.getElementById('logo').src="${pageContext.request.contextPath}/static/images/"
-            document.getElementById('logo').src+=++actImm+".png"
-            setTimeout('cambia()', 1000)
-        }
-
-        //si poteva omettere (document).ready (che in JS corrisponderebbe al body.onload) in quanto
-        //il codice è posto al termine della pagina e non verrà eseguito prima del caricamento della page
-        $(document).ready(function(){
-            $("#flip").click(function(){
-                $("#panel1").slideToggle("slow");
-            });
-        });
-    </script>
 
 <header class="headb">
 
-        <a onclick="cambia()">
+        <a >
             <img style="width:175px;" src="<c:url value="/static/images/4.png" />" id="logo" alt="logo 5uaglioni">
         </a>
         <nav class="navbar">
@@ -36,7 +14,7 @@
             <a href="#contatti">CONTATTI</a>
         </nav>
         <div class="side-bar">
-            <a href="/pizzeria/loginAdmin"><i class="fas fa-user-secret" title="Area amministratore"></i></a>
+            <a  href="/pizzeria/loginAdmin"><i class="fas fa-user-secret" title="Area amministratore"></i></a>
             <a href="/pizzeria/areaClienti"><i class="fas fa-user" id="user" title="Area riservata"></i></a>
             <a href="/pizzeria/registrazione"><i class="fas fa-user" id="user" title="Registrazione"></i></a>
             

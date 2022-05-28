@@ -6,7 +6,7 @@
 
 
 
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div  id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="<c:url value="/static/images/slideshow-1.jpg" />" class="d-block w-100" alt="...">
@@ -55,10 +55,67 @@
             </p>
         </div>
     </div>
+    <c:if test="${lista}">
+    <table class="table table-striped" style="width:10%;">
+                <thead>
+                <tr>
+                    <th>Prodotti</th>
+                    <th>Modifiche</th>
+                    <th>Quantità</th>
+                    <th>Prezzo</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${listaCarrello}" var="carrello">
+                <tr>
+                    <td>${carrello.nome}</td>
+                    <td></td>
+                    <td>${carrello.quantita}</td>
+                    <td>${carrello.prezzo} €</td>
+                	<td title="Dimunisci quantita di 1" class="text-left">
+							<a href='<spring:url  value="/carrello/diminuisciQuantita?id=${carrello.id_prodotto}" />' class="btn">
+								<i class="fas fa-regular fa-circle-minus"></i>
+							</a>
+						</td>
+						<td class="text-left" title="Aumenta quantita di 1">
+							<a href='<spring:url value="/carrello/aumentaQuantita?id=${carrello.id_prodotto}" />' class="btn">
+								<i class="fas fa-regular fa-circle-plus"></i>
+							</a>
+						</td>
+						<td class="text-left" title="Elimina tutte le ${carrello.nome}">
+							<a href='<spring:url value="/carrello/eliminaDalCarrello?id=${carrello.id_prodotto}" />' class="btn ">
+								<i class="fas fa-regular fa-trash-can"></i>
+							</a>
+						</td>
+                </tr>
+                </c:forEach>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <th>Totale:</th>
+                    <td><fmt:formatNumber 
+			value="${totale}" 
+			type="currency" 
+			currencyCode="EUR" 
+			currencySymbol="€" 
+			maxFractionDigits="2" 
+			minFractionDigits="2"
+		/></td>
+                </tr>
+                
+                </tfoot>
+            </table>
+            </c:if>
     <div class="row" style="margin-top: 10px;" id="menu">
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div id="flip"><a> MENU' <br/> Clicca qui per espandere o per ridurre </a></div>
-            <div id="panel1">
+            <div class="trigger" id="flip"><a> MENU' <br/> Clicca qui per espandere o per ridurre </a></div>
+            <div id="">
                 <div class="row">
                     <div class="trigger col-xs-4 col-md-4 col-sm-4"><a href="#trigger1" id="trigger1" ><h1>PIZZE</h1></a></div>
                     <div class="trigger col-xs-4 col-md-4 col-sm-4"><a href="#trigger2" id="trigger2" ><h1>CALZONI</h1></a></div>
@@ -80,10 +137,10 @@
                                                 Più dettagli
                                             </a>
                                         </td>
-                                        <td class="text-end">
-                                            <a href='<spring:url value="/carrello/prodottoInOrdine?id=${prodotto.id_prodotto}"/>' class="btn  btn-lg"> <!-- href='<spring:url value="/bookcard?id=${book.id }" />' -->
-                                                Aggiungi al carrello
-                                            </a>
+                                        <td class="text-end" id="aggiuntoAlCarrello">
+                                           <a href='<spring:url value="/carrello/prodottoInOrdine?id=${prodotto.id_prodotto}"/>' class="btn " >
+                                           		aggiunto al carrello
+                                           </a>
                                         </td>
                                     </tr>
                                     </c:forEach>
@@ -97,24 +154,15 @@
                 </div>
 
                 <script>
-                    $(document).ready(function(){
-                        $("#trigger1").on('click', function(){
-                            $("#info1 ").slideToggle();
-                        });
-                        $("#trigger2").on('click', function(){
-                            $("#info2 ").slideToggle();
-                        });
-                        $("#trigger3").on('click', function(){
-                            $("#info3 ").slideToggle();
-                        });
-                    });
+                    
                 </script>
 
                 <hr> <!--fine prima riga pizze !-->
          <!--    </div>
         </div>
     </div> -->
-
+   
+   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">   <div class="offcanvas-header">     <h5 id="offcanvasRightLabel">Il tuo carrello</h5>     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>   </div>   <div class="offcanvas-body" id="offcanvas-corpo">    </div> </div>
     <!-------------------------------------------contact Section-------------->
     <footer class="contact" id="contatti">
         <div class="container">
@@ -169,3 +217,14 @@
             </div>
         </div>
     </footer>
+    
+                
+               
+                    <fmt:formatNumber
+			value="${totale}" 
+			type="currency" 
+			currencyCode="EUR" 
+			currencySymbol="€" 
+			maxFractionDigits="2" 
+			minFractionDigits="2"
+		/>

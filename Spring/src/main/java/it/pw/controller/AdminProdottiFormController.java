@@ -36,7 +36,7 @@ import it.pw.model.Utente;
 	OrdiniDao ordiniDao;
 	
 	@GetMapping
-	String getPage(Model model,HttpSession session) {
+	public String getPage(Model model,HttpSession session) {
 		model.addAttribute("prodotti",prodottoDao.vediTutti());
 		model.addAttribute("esitoRegistrazione",true);
 		try {
@@ -51,7 +51,7 @@ import it.pw.model.Utente;
 	}
 	
 	@GetMapping("/creaProdotto")
-	String creaProdotto(Model model,HttpSession session) {
+	public String creaProdotto(Model model,HttpSession session) {
 		try {
 			if(!(boolean) session.getAttribute("logAdmin")){
 				return"redirect:/login-admin";
@@ -67,7 +67,7 @@ import it.pw.model.Utente;
 	}
 	
 	@PostMapping("/creaProdotto")
-	String creazioneProdotto(@Valid @ModelAttribute("aggiornaProdottoForm") Prodotto prodotto, BindingResult result,Model model) {
+	public String creazioneProdotto(@Valid @ModelAttribute("aggiornaProdottoForm") Prodotto prodotto, BindingResult result,Model model) {
 		if(result.hasErrors())
 			return "/creaProdotto";
 		
@@ -75,59 +75,88 @@ import it.pw.model.Utente;
 		
 		return "redirect:/adminProdotti";
 	}
-	/*
-	 * @GetMapping("/modificaProdotto") String modificaProdotto(HttpServletRequest
-	 * request, HttpSession session, Model model) { int id = 0; id=
-	 * Integer.parseInt(request.getParameter("id"));
-	 * 
-	 * boolean hasImage = false;
-	 * 
-	 * try { String rootDir = session.getServletContext().getRealPath("/"); String
-	 * filePath = rootDir + "static\\pizze\\" + String.valueOf(id) + ".png"; File
-	 * file = new File(filePath); hasImage = file.exists(); } catch (Exception e) {
-	 * hasImage = false; }
-	 * 
-	 * 
-	 * model.addAttribute("aggiornaProdottoForm",prodottoDao.getProdottoById(id));
-	 * session.setAttribute("prodottoId", prodottoDao.getProdottoById(id));
-	 * model.addAttribute("hasImage", hasImage); model.addAttribute("prodottoId",
-	 * String.valueOf(id)); return "admin-prodotti-form";
-	 * 
-	 * }
-	 * 
-	 * 
-	 * @PostMapping("/modificaProdotto") String
-	 * modificaProdotto(@Valid @ModelAttribute("aggiornaProdottoForm") Prodotto
-	 * newprodotto, BindingResult result,Model model, HttpServletRequest request,
-	 * HttpSession session) { Prodotto oldProdotto = (Prodotto)
-	 * session.getAttribute("prodottoId");
-	 * newprodotto.setId_prodotto(oldProdotto.getId_prodotto());
-	 * 
-	 * 
-	 * 
-	 * 
-	 * prodottoDao.update(newprodotto);
-	 * 
-	 * return "redirect:/adminProdotti"; }
-	 * 
-	 * 
-	 * @PostMapping("/modificaProdotto/upload") public String
-	 * imageUpload(@RequestParam("image") MultipartFile
-	 * image,@RequestParam("fileName") String fileName,BindingResult result,
-	 * HttpSession session) {
-	 * 
-	 * 
-	 * if (image != null && !image.isEmpty()) { String rootDir =
-	 * session.getServletContext().getRealPath("/"); String filePath = rootDir +
-	 * "static\\pizze\\" + fileName + ".png"; try { image.transferTo(new
-	 * File(filePath)); } catch (IllegalStateException e) { e.printStackTrace(); }
-	 * catch (IOException e) { e.printStackTrace(); } } return
-	 * "redirect:/AdminProdotti/modificaProdotto?id=" + Integer.parseInt(fileName);
-	 * }
-	 */
+	
+	  @GetMapping("/modificaProdotto") 
+	  public String modificaProdotto(HttpServletRequest
+	  request, HttpSession session, Model model) {
+		  try {
+				if(!(boolean) session.getAttribute("logAdmin")){
+					return"redirect:/loginAdmin";
+				}
+				}catch (Exception e) {
+					return "redirect:/loginAdmin";
+				}
+			
+			int id = 0;		
+			id= Integer.parseInt(request.getParameter("id"));
+			
+			boolean hasImage = false;
+			
+			try 
+			{
+				String rootDir = session.getServletContext().getRealPath("/");
+				String filePath = rootDir + "static\\pizze\\" + String.valueOf(id) + ".png";
+				File file = new File(filePath);
+				hasImage = file.exists();
+			} 
+			catch (Exception e) 
+			{
+				hasImage = false;
+			}
+			
+			
+			model.addAttribute("aggiornaProdottoForm",prodottoDao.getProdottoById(id));
+			session.setAttribute("prodottoId", prodottoDao.getProdottoById(id));
+			model.addAttribute("hasImage", hasImage);
+			model.addAttribute("prodottoId", String.valueOf(id));
+			return "admin-prodotti-form";
+			
+		}
+	  
+	  
+	  @PostMapping("/modificaProdotto")
+	 public String modificaProdotto(@Valid @ModelAttribute("aggiornaProdottoForm") Prodotto
+	  newprodotto, BindingResult result,Model model, HttpServletRequest request,
+	  HttpSession session) { Prodotto oldProdotto = (Prodotto)
+	  session.getAttribute("prodottoId");
+	  newprodotto.setId_prodotto(oldProdotto.getId_prodotto());
+	  
+	  
+	  
+	  
+	  prodottoDao.update(newprodotto);
+	  
+	  return "redirect:/adminProdotti"; }
+	  
+	  
+	  @PostMapping("/upload")
+	  public String imageUpload(@RequestParam("image") MultipartFile image,
+			  					@RequestParam("fileName") String fileName, HttpSession session) {
+	  
+	  
+		  if (image != null && !image.isEmpty())
+			{
+				String rootDir = session.getServletContext().getRealPath("/");
+				String filePath = rootDir + "static\\pizze\\" + fileName + ".png";
+				try 
+				{
+					image.transferTo(new File(filePath));
+				} 
+				catch (IllegalStateException e) 
+				{
+					e.printStackTrace();
+				} 
+				catch (IOException e) 
+				{
+					e.printStackTrace();
+				}
+			}
+			return "redirect:/adminProdotti/modificaProdotto?id=" + Integer.parseInt(fileName);
+		}
+	 
 	
 	@GetMapping("/eliminaProdotto")
-	String eliminaProdotto(@RequestParam("id")int id, HttpSession session, Model model) {	
+	public String eliminaProdotto(@RequestParam("id")int id, HttpSession session, Model model) {	
 		try {
 			if(!(boolean) session.getAttribute("logAdmin")){
 				return"redirect:/login-admin";
@@ -152,7 +181,7 @@ import it.pw.model.Utente;
 	}
 	
 	@GetMapping("/cancellaImmagine")
-	String cancellaImmagine(HttpServletRequest request,HttpSession session) {
+	String cancellaImmagine(@RequestParam("name")String name,HttpServletRequest request,HttpSession session) {
 		try {
 			if(!(boolean) session.getAttribute("logAdmin")){
 				return"redirect:/login-admin";
@@ -161,10 +190,8 @@ import it.pw.model.Utente;
 				return "redirect:/loginAdmin";
 			}
 		
-		String name = (String) request.getParameter("id");
-		
 		String rootDir = session.getServletContext().getRealPath("/");
-		String filePath = rootDir + "static\\books\\" + name + ".png";
+		String filePath = rootDir + "static\\pizze\\" + name + ".png";
 		File file = new File(filePath);
 		if (file.exists()) file.delete();
 		
