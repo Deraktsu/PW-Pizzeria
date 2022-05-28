@@ -16,13 +16,13 @@
         <h2>BENVENUTO!</h2>
     </div>
 
-    <div class="col-sm-6 col-lg-12" id="cont1">
+    <div class="col-sm-6 col-xs-12" id="cont1">
                        
-            <img id="imgSignUp" src="${pageContext.request.contextPath}/images/pizza_sigup.jpg" alt="">
+            <img id="imgSignUp" src="${pageContext.request.contextPath}/static/images/pizza_signup.jpg" style="width:auto; height:auto;" alt="">
         
     </div>
 
-    <div class="col-sm-6 col-lg-12" id="cont2">
+    <div class="col-sm-6 col-xs-12" id="cont2">
         <div id="formSignUp">
             <form:form method="POST" modelAttribute="user" acceptCharset="ISO-8859-1" class="row g-3" >                   
                 <form:errors path="*" cssClass="alert alert-danger" element="div" id="generalAlert"/>
@@ -45,16 +45,16 @@
             </form:form>
 
             <br/><br/>
-            <div class="col-md-12" >
-                <a href="#"><p class="testo_link">Password dimenticata?</p></a>
-            </div>
+            
 
             <div class="col-md-12" >
                 <p id="non_account">Non hai un account?</p>
             </div>
 
-            <div class="col-md-12" >
-                <a href="#"><p class="testo_link">Registrati</p></a>
+            <div class="col-md-12 testo_link ">
+                <a href="#" >
+                Registrati
+                </a>
             </div>
         </div>
     </div>

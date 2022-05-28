@@ -1,12 +1,12 @@
 
 //impostare file con tutti gli script
-
+/*
 $(document).ready(function(){
     $("#flip").on('click',function(){
         $("#panel1").slideToggle("slow");
        });
 });
-
+*/
 
 $(document).ready(function(){
                         $("#trigger1").on('click', function(){
@@ -26,15 +26,15 @@ let limite = 4;
 
 
 
-
 function cambia() {
     if (actImm === limite)
         actImm = 0;
    
-    document.getElementById('logo').src="static/images/"
+    document.getElementById('logo').src="/pizzeria/static/images/"
     document.getElementById('logo').src+=++actImm+".png"
     setTimeout('cambia()', 1000)
 }
+
 
 //si poteva omettere (document).ready (che in JS corrisponderebbe al body.onload) in quanto
 //il codice è posto al termine della pagina e non verrà eseguito prima del caricamento della page
@@ -160,7 +160,7 @@ function cambia() {
             } else {
                 let data_scelta = document.getElementById("datepicker").value;
                 let orario_scelto = document.getElementById("orarid").value;
-			
+			z
                 document.getElementById("orario_finale").style.padding = "10px";
                 document.getElementById("orario_finale").innerHTML = " ${Utente.nome}, confermi che ritirerai tuo ordine il ";
                 document.getElementById("orario_finale").innerHTML += data_scelta;
@@ -168,8 +168,8 @@ function cambia() {
                 document.getElementById("orario_finale").innerHTML += orario_scelto;
                 document.getElementById("orario_finale").innerHTML += " ? ";
                 													/* '<button href="<spring:url value="/carrello/riepilogo" />"   type="button" id="pulsante1">Conferma orario di ritiro </button>' */
-       			document.getElementById("orario_finale").innerHTML += '<button id="pulsante1">';
-                document.getElementById("pulsante1").innerHTML = '<a href=' + '<spring:url value="/carrello/riepilogo/?data=' +data_scelta+ '&orario='+ orario_scelto + '"/>' + '>Conferma orario di ritiro</a></button>'
+       			document.getElementById("orario_finale").innerHTML += "<button id='pulsante1'>";
+                document.getElementById("pulsante1").innerHTML = "<a href=' "+ "<spring:url value='/carrello/riepilogo/?data=" + data_scelta + "&orario=" + orario_scelto + "'/>" + ">Conferma orario di ritiro</a></button>";
                 // orario_scelto E' LA VARIABILE DA SELEZIONARE E INVIARE AL DATABASE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             }
 
@@ -185,7 +185,7 @@ function cambia() {
         
         function addCart() {
 		num_prodotti_selezionati++;
-		document.getElementById("aggiuntoAlCarrello").innerHTML+=' <a href='+ '<spring:url  value="/carrello/prodottoInOrdine?id=${prodotto.id_prodotto} "/>' +' class="btn"   >' +
+		document.getElementById("aggiuntoAlCarrello").innerHTML+=' <a href=' + '<spring:url  value="/carrello/prodottoInOrdine?id=${prodotto.id_prodotto} "/>' +' class="btn"   >' +
                                                'Aggiungi al carrello' +
                                             ' </a>';
                                             

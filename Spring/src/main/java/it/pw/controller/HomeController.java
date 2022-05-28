@@ -31,16 +31,41 @@ public class HomeController {
 		if(session.getAttribute("prodottoAggiunto") == null) {
 			session.setAttribute("prodottoAggiunto", false);
 		}
+		try {
+		if((boolean) session.getAttribute("logUtente")) {
+            model.addAttribute("logUtente",true);
+            
+        }else {
+            model.addAttribute("logUtente",false);
+        }
+		}catch (Exception e) {
+			model.addAttribute("logUtente",false);
+		}
+		
+		try {
+			if((boolean) session.getAttribute("logAdmin")) {
+	            model.addAttribute("logAdmin",true);
+	            
+	        }else {
+	            model.addAttribute("logAdmin",false);
+	        }
+			}catch (Exception e) {
+				model.addAttribute("logAdmin",false);
+			}
+		
+		List<ProdottoNelCarrello> lpc = (List<ProdottoNelCarrello>) session.getAttribute("listaCarrello");
+		model.addAttribute("listaCarrello",lpc);
 		model.addAttribute("prodottoAggiunto",(boolean) session.getAttribute("prodottoAggiunto"));
 		model.addAttribute("prodotti",prodottoService.vediTutti());
 		
-		
-		if(session.getAttribute("listaCarrello") != null) {
-		List<ProdottoNelCarrello> lpc = (List<ProdottoNelCarrello>) session.getAttribute("listaCarrello");
-		model.addAttribute("listaCarrello",lpc);
+		try {
+		if((boolean) session.getAttribute("listaCarrello")) {
 		model.addAttribute("totale",prodottoService.calcolaPrezzo(lpc));
 		model.addAttribute("lista",true);
 		}else {
+			model.addAttribute("lista",false);
+		}
+		}catch (Exception e) {
 			model.addAttribute("lista",false);
 		}
 		
@@ -55,7 +80,15 @@ public class HomeController {
 		
 		model.addAttribute("prodotto",prodottoService.getProdottoById(id));
 		model.addAttribute("immagine", file);
+		
+		
 		return "info-prodotti";
+	}
+	
+	@GetMapping("/doveSiamo")
+	public String dovesiamo() {
+	
+		return "doveSiamo";
 	}
 	
 	

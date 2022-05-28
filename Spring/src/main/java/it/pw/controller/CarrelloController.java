@@ -52,7 +52,7 @@ public class CarrelloController {
 	model.addAttribute("listaCarrello",lpc);
 	model.addAttribute("totale",prodottoService.calcolaPrezzo(lpc));
 	model.addAttribute("loggato", session.getAttribute("loggato"));
-	model.addAttribute("nomeUtente",session.getAttribute("Utente"));
+	model.addAttribute("Utente",session.getAttribute("Utente"));
 	
 	if(lpc.isEmpty()) {
 		model.addAttribute("carrelloVuoto",true);
@@ -68,10 +68,10 @@ public class CarrelloController {
 	  {		
 		  try {
 				if(!(boolean) session.getAttribute("logUtente")){
-					return"redirect:/home";
+					return"redirect:/registrazione/login";
 				}
 				}catch (Exception e) {
-					return "redirect:/home";
+					return "redirect:/registrazione/login";
 				}
 		  
 		  if(session.getAttribute("listaCarrello") == null) {

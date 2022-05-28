@@ -115,7 +115,7 @@
     <div class="row" style="margin-top: 10px;" id="menu">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="trigger" id="flip"><a> MENU' <br/> Clicca qui per espandere o per ridurre </a></div>
-            <div id="">
+            <div id="panel1">
                 <div class="row">
                     <div class="trigger col-xs-4 col-md-4 col-sm-4"><a href="#trigger1" id="trigger1" ><h1>PIZZE</h1></a></div>
                     <div class="trigger col-xs-4 col-md-4 col-sm-4"><a href="#trigger2" id="trigger2" ><h1>CALZONI</h1></a></div>
@@ -174,7 +174,7 @@
                                 <div class="logo-footer">
                                     <a href="#" title="">
                                     
-                                        <img style="width:100px;" src='<c:url value="/static/images/image/logo.jpg" />'>
+                                        <img style="width:100px;" src='<c:url value="/static/images/logo.jpg" />'>
                                     </a>
                                     <p>Più di 100 anni di storia e bontà, nel rispetto della tradizione</p>
                                     <br>

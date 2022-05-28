@@ -29,13 +29,13 @@ public class TestController {
 		return "test";
 	}
 	
-	@PostMapping
+	@GetMapping("/logout")
 	public String logout(Model model,HttpServletRequest request, HttpSession session) {
 		session.removeAttribute("logUtente");
 		session.removeAttribute("logAdmin");
 		session.removeAttribute("listaCarrello");
 		session.removeAttribute("Utente");
-		return "test";
+		return "redirect:/home";
 	}
 
 }
