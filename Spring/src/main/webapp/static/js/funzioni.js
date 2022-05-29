@@ -1,12 +1,12 @@
 
 //impostare file con tutti gli script
-/*
+
 $(document).ready(function(){
     $("#flip").on('click',function(){
         $("#panel1").slideToggle("slow");
        });
 });
-*/
+
 
 $(document).ready(function(){
                         $("#trigger1").on('click', function(){
@@ -26,6 +26,7 @@ let limite = 4;
 
 
 
+
 function cambia() {
     if (actImm === limite)
         actImm = 0;
@@ -34,7 +35,6 @@ function cambia() {
     document.getElementById('logo').src+=++actImm+".png"
     setTimeout('cambia()', 1000)
 }
-
 
 //si poteva omettere (document).ready (che in JS corrisponderebbe al body.onload) in quanto
 //il codice è posto al termine della pagina e non verrà eseguito prima del caricamento della page
@@ -68,7 +68,7 @@ function cambia() {
         let i = 0;
 
         let stringaOrario = parseFloat(ore + "." + minuti);
-        let stringaOrario2 = 23.00;
+        let stringaOrario2 = 13.00;
 
         function modStringaOrario() {
             stringaOrario = 11.00;
@@ -90,7 +90,7 @@ function cambia() {
                 document.getElementById("destra").style.backgroundColor = "white";
                 document.getElementById("destra").innerHTML += '<div  id="avviso" style="padding: 10px; text-align: center;">' +
                     'Il ristorante ha chiuso alle 22.00, vuoi effettuare la tua prenotazione un altro giorno?</div>' +
-                    '<div class="row" id="siOno"><div class="col-6"><a href="/pizzeria/carrello" class="btn" role="button">NO</a></div> ' +
+                    '<div class="row" id="sceltaYN"><div class="col-6"><a href="/pizzeria/carrello" class="btn" role="button">NO</a></div> ' +
                     '<div class="col-6"><a class="btn" role="button" onclick="mostragiorni()"> SI </a></div></div> '
             } else if (stringaOrario2 < 11.00) {
                 document.getElementById("destra").style.backgroundColor = "darkcyan";
@@ -131,7 +131,7 @@ function cambia() {
         // funzione che si avvia SOLO se un utente chiede di prenotare un altro giorno
         function mostragiorni() {
             document.getElementById("avviso").style.display = "none";
-            document.getElementById("siOno").style.display = "none";
+            document.getElementById("sceltaYN").style.display = "none";
             document.getElementById("destra").style.backgroundColor = "green";
             document.getElementById("titoloFormSeleziona").innerHTML += 'Seleziona giorno e orario in cui desideri effettuare la prenotazione:';
             $( function() {
@@ -160,7 +160,7 @@ function cambia() {
             } else {
                 let data_scelta = document.getElementById("datepicker").value;
                 let orario_scelto = document.getElementById("orarid").value;
-			z
+			
                 document.getElementById("orario_finale").style.padding = "10px";
                 document.getElementById("orario_finale").innerHTML = " ${Utente.nome}, confermi che ritirerai tuo ordine il ";
                 document.getElementById("orario_finale").innerHTML += data_scelta;
@@ -168,34 +168,11 @@ function cambia() {
                 document.getElementById("orario_finale").innerHTML += orario_scelto;
                 document.getElementById("orario_finale").innerHTML += " ? ";
                 													/* '<button href="<spring:url value="/carrello/riepilogo" />"   type="button" id="pulsante1">Conferma orario di ritiro </button>' */
-       			document.getElementById("orario_finale").innerHTML += "<button id='pulsante1'>";
-                document.getElementById("pulsante1").innerHTML = "<a href=' "+ "<spring:url value='/carrello/riepilogo/?data=" + data_scelta + "&orario=" + orario_scelto + "'/>" + ">Conferma orario di ritiro</a></button>";
+       			document.getElementById("orario_finale").innerHTML += '<button id="pulsante1">';
+                document.getElementById("pulsante1").innerHTML      = '<a href=' + '<spring:url value="/carrello/riepilogo/?data=' +data_scelta+ '&orario='+ orario_scelto + '"/>' + '>Conferma orario di ritiro</a></button>'
                 // orario_scelto E' LA VARIABILE DA SELEZIONARE E INVIARE AL DATABASE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             }
 
-        }
-
-        function stampa_data() {
-
-        }
-        
-        
-        let num_prodotti_selezionati=0;
-        
-        
-        function addCart() {
-		num_prodotti_selezionati++;
-		document.getElementById("aggiuntoAlCarrello").innerHTML+=' <a href=' + '<spring:url  value="/carrello/prodottoInOrdine?id=${prodotto.id_prodotto} "/>' +' class="btn"   >' +
-                                               'Aggiungi al carrello' +
-                                            ' </a>';
-                                            
-		for (let i = 0; i < num_prodotti_selezionati; i++) {
-		document.getElementById("offcanvas-corpo").innerHTML+='       prodotto inserito = <input className="form-check-input" type="checkbox" value="' + document.getElementsByClassName("text-end").button.value +'" checked>';
-		document.getElementById("offcanvas-corpo").innerHTML+='  <label class="form-check-label" ">\n' +
-		document.getElementById("acqua_nat").value + '\n' +
-		'  </label>';
-		
-		}
         }
         
         
