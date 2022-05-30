@@ -54,6 +54,18 @@ public class CarrelloController {
 	model.addAttribute("loggato", session.getAttribute("loggato"));
 	model.addAttribute("Utente",session.getAttribute("Utente"));
 	
+	try {
+		if((boolean) session.getAttribute("logUtente")) {
+            model.addAttribute("logUtente",true);
+            model.addAttribute("utente",session.getAttribute("Utente"));
+            
+        }else {
+            model.addAttribute("logUtente",false);
+        }
+		}catch (Exception e) {
+			model.addAttribute("logUtente",false);
+		}
+	
 	if(lpc.isEmpty()) {
 		model.addAttribute("carrelloVuoto",true);
 	}else {
@@ -222,6 +234,19 @@ public class CarrelloController {
 		
 		@GetMapping("riepilogoInfo")
 		public String getRiepilogo(Model model, HttpSession session) {
+			
+			try {
+				if((boolean) session.getAttribute("logUtente")) {
+		            model.addAttribute("logUtente",true);
+		            model.addAttribute("utente",session.getAttribute("Utente"));
+		            
+		        }else {
+		            model.addAttribute("logUtente",false);
+		        }
+				}catch (Exception e) {
+					model.addAttribute("logUtente",false);
+				}
+			
 			model.addAttribute("listaRiepilogo", session.getAttribute("sessionLista"));
 			model.addAttribute("dataRiepilogo", session.getAttribute("sessionData"));
 			model.addAttribute("orarioRiepilogo", session.getAttribute("sessionOrario"));

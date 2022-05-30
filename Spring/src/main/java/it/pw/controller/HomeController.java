@@ -91,6 +91,18 @@ public class HomeController {
 	
 	@GetMapping("/infoProdotto")
 	public String getProdotti(Model model,@RequestParam("id") int id,HttpSession session) {
+		try {
+			if((boolean) session.getAttribute("logUtente")) {
+	            model.addAttribute("logUtente",true);
+	            model.addAttribute("utente",session.getAttribute("Utente"));
+	            
+	        }else {
+	            model.addAttribute("logUtente",false);
+	        }
+			}catch (Exception e) {
+				model.addAttribute("logUtente",false);
+			}
+		
 		String path = session.getServletContext().getRealPath("/");
 		String path2 = path + "static\\pizze\\"+String.valueOf(id)+".png";
 		File file = new File(path2);
@@ -103,7 +115,19 @@ public class HomeController {
 	}
 	
 	@GetMapping("/doveSiamo")
-	public String dovesiamo() {
+	public String dovesiamo(Model model, HttpSession session) {
+		
+		try {
+			if((boolean) session.getAttribute("logUtente")) {
+	            model.addAttribute("logUtente",true);
+	            model.addAttribute("utente",session.getAttribute("Utente"));
+	            
+	        }else {
+	            model.addAttribute("logUtente",false);
+	        }
+			}catch (Exception e) {
+				model.addAttribute("logUtente",false);
+			}
 	
 		return "doveSiamo";
 	}

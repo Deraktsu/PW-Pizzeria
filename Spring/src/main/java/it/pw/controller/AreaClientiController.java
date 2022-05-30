@@ -30,6 +30,19 @@ public class AreaClientiController {
 	@GetMapping
 	String getPage(HttpServletRequest request, HttpSession session, Model model) {
 		
+		try {
+			if((boolean) session.getAttribute("logUtente")) {
+	            model.addAttribute("logUtente",true);
+	            model.addAttribute("utente",session.getAttribute("Utente"));
+	            
+	        }else {
+	            model.addAttribute("logUtente",false);
+	        }
+			}catch (Exception e) {
+				model.addAttribute("logUtente",false);
+			}
+		
+		
 		if(session.getAttribute("logUtente") == null)
 		session.setAttribute("logUtente", false);	
 		if(session.getAttribute("logAdmin") == null)
