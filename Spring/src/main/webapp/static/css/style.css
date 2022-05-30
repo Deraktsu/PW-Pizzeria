@@ -1,3 +1,10 @@
+:root {
+    --clr1:#f95b11;
+    --clr2:#fff;
+    --clr3:#000;
+    --clr4:#f42f1d;
+    --clr5:limegreen;
+}
 body {
     margin:0;
     padding:0;
@@ -7,7 +14,300 @@ body {
     box-sizing: border-box;
     text-decoration: none;
 }
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 8rem;
+    overflow-x: hidden;
+}
+html::-webkit-scrollbar {
+    width:1rem;
+}
+html::-webkit-scrollbar-thumb {
+    background: #f42f1d;
+}
+#demo {
+    background-color: rgb(255,205,57,0.95);
+}
+#demo1 {
+    background-color: rgb(255,205,57,0.95);
+}
+.head {
+    position:fixed;
+    left:0;
+    right:0;
+    z-index: 1000;
+    display: flex;
+    background-color: rgb(255,205,57,0.95);
+    color: white;
+    padding: 1.5rem 9%;
+    align-items: center;
+    justify-content: space-between;
+}
+.head .navbar a {
+    color: white;
 
+    text-decoration: none;
+    font-size: 2.5rem;
+    font-weight:600;
+    margin:0 4rem;
+}
+.head .navbar a:hover {
+    color: #f42f1d;
+    transition: .4s ease;
+}
+.head .side-bar i {
+    font-size: 2.1rem;
+    border: none;
+    background-color: white;
+    color: #f42f1d;
+}
+.head .side-bar i:hover {
+    background-color: #f42f1d;
+    color: rgb(255,205,57);
+    transition: .5s ease all;
+}
+
+
+.headb {
+    position: fixed;
+    z-index:100;
+    left:0;
+    right:0;
+    margin: 0;
+    display: flex;
+    background-color: rgb(255,205,57,0.95);
+    color: white;
+    padding: 1.25rem 9%;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.headb .navbar a {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight:600;
+    margin:0 2rem;
+}
+.headb .navbar a:hover {
+    color: #f42f1d;
+    transition: .4s ease;
+}
+
+.headb .side-bar i {
+    padding: 1.5rem;
+    font-size: 2rem;
+    border: none;
+    color: white;
+
+}
+.headb .side-bar i:hover {
+    color: #f42f1d;
+    transition: .5s ease all;
+}
+
+#bars {
+    display: none;
+}
+
+#tabella {
+    background-color: white;
+    height: 100%;
+}
+
+#benvenuto {
+    border-top: 2px solid #f42f1d;
+    width: 50%;
+    height: 100%;
+    font-size:20px;
+}
+#benvenuto b {
+    font-size:40px;
+
+}
+
+#flip {
+    padding: 20px;
+    background-color: white;
+    width: 100%;
+    color: #f42f1d;
+    text-align: center;
+}
+#flip:hover {
+    background-color: #f42f1d;
+    color: #f7d913;
+    transition: 2.4s ease;
+}
+
+#flip a {
+    text-align: center;
+    text-decoration: none;
+    font-size: 2.5rem;
+    font-weight:600;
+}
+/*
+#flip a:hover {
+    color: white;
+    transition: .4s ease;
+}
+ */
+
+#panel1 {
+    padding: 20px;
+    margin-top: -1px;
+    text-align: center;
+    background-color: #e5eecc;
+    width: 100%;
+    height: auto;
+    display: none;
+}
+
+#panel1 p{
+    text-decoration: none;
+    display:inline;
+}
+
+#panel1 a{
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.trigger a {
+    background-color: white;
+    color: #f42f1d;
+    padding: 10px;
+}
+.trigger a:hover{
+    background-color: #f42f1d;
+    color: #f7d913;
+    transition: .4s ease;
+}
+.trigger:active{
+    background-color: #f42f1d;
+    color: #f7d913;
+}
+.panel1 {
+    width: 100%;
+    display: inline-block;
+    min-height: 1px;
+}
+
+/* ho provato con una classe prodotti ma non funziona */
+#prodotti1 td {
+    color: black;
+    border-bottom: 1px solid #f42f1d;
+    width: 100%;
+    font-size: 18px;
+    padding: 8px;
+}
+
+#prodotti2 td {
+    color: black;
+    border-bottom: 1px solid #f42f1d;
+    width: 100%;
+    font-size: 18px;
+    padding: 8px;
+}
+#prodotti3 td {
+    color: black;
+    border-bottom: 1px solid #f42f1d;
+    width: 100%;
+    font-size: 18px;
+    padding: 8px;
+}
+
+.cella1 {
+    background-color: whitesmoke;
+    border-bottom: 1px solid #f42f1d;
+}
+.cella2 {
+    background-color: white;
+    border-bottom: 1px solid #f42f1d;
+}
+
+.btn i {
+    background-color: transparent;
+    font-size: 1.4rem;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    color: black;
+    transition: all 0.1s ease 0s;
+}
+
+.btn i:hover {
+    border: none;
+    border-radius: 5px;
+    background-color: #f42f1d;
+    color: rgb(255,205,57);
+    box-shadow: 0rem 0.1rem 0.1rem rgba(0, 0, 0, 0.5);
+
+}
+
+/*.btn {
+    padding: 10px;
+    font-size: 11px;
+    text-align: center;
+    width: 80%;
+    height: 80%;
+    border-radius: 0;
+    color: black;
+    transition: ease 0s;
+}
+
+.btn:hover {
+    background-color: #f42f1d;
+    border: none;
+    color: rgb(255,205,57);
+    !*transform: translateY(-.05rem);*!
+}*/
+
+select {
+    text-align: center;
+}
+
+#sinistra {
+    background-color: #f2e7c3;
+    color: black;
+    font-size: 16px;
+}
+#destra {
+    display: none;
+    color: black;
+    font-size: 16px;
+}
+
+footer p {
+    font-size: 16px;
+}
+
+#datepicker {
+    width: 100%;
+    color: black;
+    border-radius: 4px;
+    border: 1px solid grey;
+    text-align: center;
+    height: 40px;
+}
+
+@media only screen and (max-width: 768px){
+    #benvenuto{
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 1052px){
+    #prodotti1 td {
+        width: 10%;
+    }
+}
+
+
+/* CSS Edgar */
 #cont2 {
     background-color: white;
     width: 450px;
@@ -21,7 +321,7 @@ body {
 
 #button_cont{
     margin-left: 10%;
-    margin-right: auto;    
+    margin-right: auto;
 }
 
 #button_SignUp{
@@ -37,18 +337,6 @@ body {
     text-align: center;
     color: black;
 }
-
-@font-face {
-    font-family: 'Helsinki';
-    src: url('fonts/Helsinki.eot');
-    src: url('fonts/Helsinki.eot?#iefix') format('embedded-opentype'),
-        url('fonts/Helsinki.woff2') format('woff2'),
-        url('fonts/Helsinki.woff') format('woff'),
-        url('fonts/Helsinki.ttf') format('truetype'),
-        url('fonts/Helsinki.svg#Helsinki') format('svg');
-}
-
-
 
 @media only screen and (max-width: 950px) {
     #cont1 {
@@ -117,345 +405,4 @@ body {
     font-style: italic;
     color: rgb(244, 47, 29);
     font-family: Helsinki;
-}
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 8rem;
-    overflow-x: hidden;
-}
-html::-webkit-scrollbar {
-    width:1rem;
-}
-html::-webkit-scrollbar-thumb {
-    background: #f42f1d;
-}
-#demo {
-    background-color: rgb(255,205,57,0.95);
-}
-#demo1 {
-    background-color: rgb(255,205,57,0.95);
-}
-.head {
-    position:fixed;
-    left:0;
-    right:0;
-    z-index: 1000;
-    display: flex;
-    background-color: rgb(255,205,57,0.95);
-    color: white;
-    padding: 1.5rem 9%;
-    align-items: center;
-    justify-content: space-between;
-}
-.head .navbar a {
-    color: white;
-	position:relative;
-    text-decoration: none;
-    font-size: 2.5rem;
-    font-weight:600;
-    margin:0 4rem;
-}
-.head .navbar a:hover {
-    color: #f42f1d;
-    transition: .4s ease;
-}
-.head .side-bar i {
-    font-size: 2.1rem;
-    border: none;
-    background: white;
-    color: #f42f1d;
-}
-.head .side-bar i:hover {
-    background-color: #f42f1d;
-    color: rgb(255,205,57);
-    transition: .5s ease all;
-}
-
-
-.headb {
-    position: relative;
-    z-index:1;
-    left:0;
-    right:0;
-    margin: 0;
-    display: flex;
-    background-color: rgb(255,205,57,0.95);
-    color: white;
-    padding: 1.25rem 9%;
-    align-items: center;
-    justify-content: space-between;
-
-}
-.headb .navbar a {
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    font-size: 1.5rem;
-    font-weight:600;
-    margin:0 2rem;
-}
-.headb .navbar a:hover {
-    color: #f42f1d;
-    transition: .4s ease;
-}
-
-.headb .side-bar i {
-    padding: 1.5rem;
-    font-size: 2rem;
-    border: none;
-    color: white;
-
-}
-.headb .side-bar i:hover {
-    color: #f42f1d;
-    transition: .5s ease all;
-}
-
-#bars {
-    display: none;
-}
-
-#tabella {
-    background-color: white;
-    height: 100%;
-}
-
-#benvenuto {
-    border-top: 2px solid #f42f1d;
-    width: 50%;
-    height: 100%;
-    font-size:20px;
-}
-#benvenuto b {
-    font-size:40px;
-
-}
-@media only screen and (max-width: 768px){
-    #benvenuto{
-        width: 100%;
-    }
-}
-
-
-#flip {
-    padding: 20px;
-    background-color: white;
-    width: 100%;
-    color: #f42f1d;
-    text-align: center;
-}
-#flip:hover {
-    background-color: #f42f1d;
-    color: #f7d913;
-    transition: 2.4s ease;
-}
-
-#flip a {
-    text-align: center;
-    text-decoration: none;
-    font-size: 2.5rem;
-    font-weight:600;
-}
-/*
-#flip a:hover {
-    color: white;
-    transition: .4s ease;
-}
- */
-
-#panel1 {
-    padding: 20px;
-    margin-top: -1px;
-    text-align: center;
-    background-color: #e5eecc;
-    width: 100%;
-    height: auto;
-    display: inline-block;
-}
-
-#panel1 p{
-    text-decoration: none;
-    display:inline;
-}
-
-#panel1 a{
-    text-decoration: none;
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-}
-
-.trigger a {
-    background-color: white;
-    color: #f42f1d;
-    padding: 10px;
-}
-.trigger a:hover{
-    background-color: #f42f1d;
-    color: #f7d913;
-    transition: .4s ease;
-}
-.trigger:active{
-    background-color: #f42f1d;
-    color: #f7d913;
-}
-.panel1 {
-    width: 100%;
-    display: inline-block;
-    min-height: 1px;
-}
-
-#abbonato1 td {
-    color: black;
-    border-bottom: 1px solid #f42f1d;
-    width: 80%;
-    padding: 8px;
-    font-size: 18px;
-}
-
-#abbonato2 td {
-    color: black;
-    background-color: #FFFFFF;
-    border-bottom: 1px solid #f42f1d;
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 16px;
-}
-#abbonato3 td {
-    color: black;
-    background-color: #FFFFFF;
-    border-bottom: 1px solid #f42f1d;
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    font-size: 18px;
-}
-
-.cella1 {
-    padding: 10px;
-    text-align: center;
-    background-color: whitesmoke;
-}
-.cella2 {
-    padding: 10px;
-    text-align: center;
-    background-color: white;
-}
-.text-end {
-
-}
-
-.text-end .btn {
-    padding: 10px;
-    font-size: 11px;
-    text-align: center;
-    width: 80%;
-    height: 80%;
-    border-radius: 0;
-    color: black;
-    transition: all 0.1s ease 0s;
-}
-.text-end .btn i {
-    font-size: 1.4rem;
-}
-
-.text-end .btn:hover {
-    background-color: #f42f1d;
-    border: none;
-    color: rgb(255,205,57);
-    /*transform: translateY(-.05rem);*/
-}
-
-.text-end .btn:active {
-    /*transform: translateY(-.05rem);*/
-}
-
-.btn {
- 
-   
-}
-
-.btn:hover {
- 
-    
-    /*transform: translateY(-.05rem);*/
-}
-.text-left .btn{
-
-}
-
-.text-left .btn:hover{
-
-	
-}
-
-
-select {
-    text-align: center;
-}
-
-#sinistra {
-    background-color: #f2e7c3;
-    color: black;
-    font-size: 16px;
-}
-#destra {
-    display: none;
-    color: black;
-    font-size: 16px;
-}
-
-footer p {
-    font-size: 16px;
-}
-
-#datepicker {
-    width: 100%;
-    color: black;
-    border-radius: 4px;
-    border: 1px solid grey;
-    text-align: center;
-    height: 40px;
-}
-#datepicker:active {
-    /*box-shadow: #0a58ca;*/
-}
-
-.oraritrasporti {
-    background-color: indianred;
-    padding: 4px;
-    width: 100%;
-}
-
-.oraritrasporti th{
-    background-color: #222;
-    border: 1px solid black;
-    color: #f7d913;
-    text-align: center;
-    padding: 20px;
-}
-
-.caption {
-    background-color: #b0c4de;
-    border: 1px solid black;
-    border-radius: 2px;
-    color: black;
-    text-align: center;
-    padding: 8px;
-}
-
-#orariMetro td {
-    background-color: #FFFFFF;
-    border: 1px solid black;
-    text-align: center;
-    margin: auto;
-    padding: 8px;
-}
-
-#orariBus td {
-    background-color: #FFFFFF;
-    border: 1px solid black;
-    text-align: center;
-    padding: 8px;
-
 }
