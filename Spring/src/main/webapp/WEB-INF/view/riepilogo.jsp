@@ -6,6 +6,51 @@
 
 <div class="col-xs-6 col-md-8" id="sinistra">
 <table class="table table-striped">
+                
+             	<thead>
+             	<tr>  
+                	
+                </tr>
+                </thead>	         
+                <tbody>
+                
+               
+                <tr>
+                	<th>DATA</th>
+                    <td>${dataRiepilogo}</td>
+                	<td></td>
+                	
+                </tr>
+                
+                    <tr>
+                    <th>ORARIO</th>
+					<td>${orarioRiepilogo}</td>
+					
+				</tr>
+				<tr>
+					<th>PREZZO</th>
+					<td>${totaleRiepilogo}</td>
+					
+				</tr>
+				<tr>
+				</tr>
+				<tr>
+					<th>PRODOTTI:</th>
+					
+					<c:forEach items="${listaRiepilogo}" var="prodotto">
+					<tr>
+					<td>${prodotto.nome}</td>
+					</tr>
+					</c:forEach>
+					
+					</tr>
+				</tbody>
+				
+				</table>
+
+
+
+<table class="table table-striped">
                 <thead>
                 <tr>
                     <th>Nome</th>                   
@@ -22,7 +67,11 @@
                 <tfoot>
                 <tr>
                 <td>
-                ${dataRiepilogo}
+                <fmt:formatDate value="${dataRiepilogo}"
+                pattern="dd-MM-yyyy"
+              
+                />
+                
                 </td>
                 </tr>
                 <tr>
@@ -47,4 +96,5 @@
                 </tfoot>
             </table>
             </div>
+            
 

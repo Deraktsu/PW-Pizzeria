@@ -73,5 +73,14 @@
  <put-attribute name="content" value="/WEB-INF/view/doveSiamo.jsp" />
  </definition>
  
-
+ <definition name="riepilogo" extends="baseLayout">
+ <put-attribute name="title" value="Riepilogo" />
+ <put-attribute name="content" value="/WEB-INF/view/riepilogo.jsp" />
+ </definition>
+ 
+ <definition name="admin-prodotti-form" extends="baseLayout">
+ <put-attribute name="title" value="Riepilogo" />
+ <put-attribute name="content" value="/WEB-INF/view/admin-prodotti-form.jsp" />
+ </definition>
+ 
  </tiles-definitions>

@@ -112,7 +112,7 @@ public class CarrelloController {
 			 */
 		  
 		  session.setAttribute("prodottoAggiunto",true);
-			  return "redirect:/home";   
+			  return "redirect:/home#menu";   
 		  }
 
 	  
@@ -202,10 +202,12 @@ public class CarrelloController {
 				}
 				
 			}
-			model.addAttribute("listaRiepilogo", listaAcquisto);
-			model.addAttribute("dataRiepilogo", data_ritiro);
-			model.addAttribute("orarioRiepilogo", orario_ritiro);
-			model.addAttribute("totaleRiepilogo",prodottoService.calcolaPrezzo(lista));
+			session.setAttribute("sessionLista", listaAcquisto);
+			session.setAttribute("sessionData", data_ritiro);
+			session.setAttribute("sessionOrario", orario_ritiro);
+			session.setAttribute("sessionTotale", prodottoService.calcolaPrezzo(lista));
+			
+			
 			
 				ordine.setDataOrdine(data_ritiro);
 				ordine.setOrarioRitiro(orario_ritiro);
@@ -215,6 +217,15 @@ public class CarrelloController {
 				ordiniService.create(ordine);
 				session.removeAttribute("listaCarrello");
 			
+			return "redirect:/carrello/riepilogoInfo";
+		}
+		
+		@GetMapping("riepilogoInfo")
+		public String getRiepilogo(Model model, HttpSession session) {
+			model.addAttribute("listaRiepilogo", session.getAttribute("sessionLista"));
+			model.addAttribute("dataRiepilogo", session.getAttribute("sessionData"));
+			model.addAttribute("orarioRiepilogo", session.getAttribute("sessionOrario"));
+			model.addAttribute("totaleRiepilogo", session.getAttribute("sessionTotale"));
 			return "riepilogo";
 		}
 	  

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import it.pw.dao.OrdiniDao;
 import it.pw.model.Ordine;
+import it.pw.model.Utente;
 
 @Service
 public class OrdiniServiceImpl implements OrdiniService {
@@ -36,6 +37,11 @@ public class OrdiniServiceImpl implements OrdiniService {
 	public void delete(Ordine o) {
 		ordiniDao.delete(o);
 		
+	}
+	
+	@Override
+	public List<Ordine>getOrdineByUtente(Utente utente){
+		return ordiniDao.getOrdineByUtente(utente);
 	}
 
 }

@@ -97,5 +97,18 @@ public class OrdiniDaoImpl implements OrdiniDao {
 		return false;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Ordine>getOrdineByUtente(Utente utente){
+		List<Ordine> lista = new ArrayList<>();
+		
+		String jpql = "SELECT o FROM Ordine o WHERE utente=?1";
+				lista = manager.createQuery(jpql).setParameter(1, utente).
+						getResultList();
+			
+		return lista;
+	}
+	
+	
+	
 
 }

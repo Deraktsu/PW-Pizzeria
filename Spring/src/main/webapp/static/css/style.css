@@ -32,7 +32,7 @@ html::-webkit-scrollbar-thumb {
     background-color: rgb(255,205,57,0.95);
 }
 .head {
-    position:fixed;
+    position:relative;
     left:0;
     right:0;
     z-index: 1000;
@@ -69,7 +69,7 @@ html::-webkit-scrollbar-thumb {
 
 
 .headb {
-    position: fixed;
+    position: relative;
     z-index:100;
     left:0;
     right:0;
@@ -196,32 +196,41 @@ html::-webkit-scrollbar-thumb {
 }
 
 /* ho provato con una classe prodotti ma non funziona */
+
+
 #prodotti1 td {
     color: black;
     border-bottom: 1px solid #f42f1d;
-    width: 100%;
-    font-size: 18px;
+    width: 80%;
+    font-size: 16px;
     padding: 8px;
 }
+
+
 
 #prodotti2 td {
     color: black;
     border-bottom: 1px solid #f42f1d;
     width: 100%;
-    font-size: 18px;
+    font-size: 16px;
     padding: 8px;
 }
 #prodotti3 td {
     color: black;
     border-bottom: 1px solid #f42f1d;
     width: 100%;
-    font-size: 18px;
+    font-size: 16px;
     padding: 8px;
 }
 
+.bottoni{
+	width:60%;
+}
+
 .cella1 {
-    background-color: whitesmoke;
+   	background-color: whitesmoke;
     border-bottom: 1px solid #f42f1d;
+
 }
 .cella2 {
     background-color: white;

@@ -12,21 +12,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet" >
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" >
-
-<%-- <link href="${pageContext.request.contextPath}/static/css/miocss.css" rel="stylesheet" /> --%>
-<link rel="stylesheet" href="/resources/demos/style.css">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.css" rel="stylesheet" >
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-<link href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet"  />
+
 <link href="${pageContext.request.contextPath}/static/css/bootstrap.css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/static/css/bootstrap.min.css" rel="stylesheet" />
 
-<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/funzioni.js"></script> --%>
+<link href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet"  />
+<script src="${pageContext.request.contextPath}/static/js/bootstrap.bundle.min.js"></script>
 
 <script>
 
@@ -211,12 +207,16 @@ function cambia() {
           document.getElementById("orarid").addEventListener("change", stampa_orario);
 
       }
-
+      let paypal=false;
       function stampa_orario() {
           if ((document.getElementById("datepicker").value === "") || (document.getElementById("datepicker").value  === "undefined")) {
               alert("Devi prima selezionare un giorno in cui effettuare la prenotazione!");
               document.getElementById("datepicker").focus();
           } else {
+        	  
+        	  
+        	 
+        	  
               let data_scelta = document.getElementById("datepicker").value;
               let orario_scelto = document.getElementById("orarid").value;
 			
@@ -227,10 +227,21 @@ function cambia() {
               document.getElementById("orario_finale").innerHTML += orario_scelto;
               document.getElementById("orario_finale").innerHTML += " ? ";
               													/* '<button href="<spring:url value="/carrello/riepilogo" />"   type="button" id="pulsante1">Conferma orario di ritiro </button>' */
-     			document.getElementById("orario_finale").innerHTML += '<button id="pulsante1">';
-              document.getElementById("pulsante1").innerHTML      = '<a href=' + '<spring:url value="/carrello/riepilogo/?data=' +data_scelta+ '&orario='+ orario_scelto + '"/>' + '>Conferma orario di ritiro</a></button>'
+     	      document.getElementById("orario_finale").innerHTML += '<button id="pulsante1">';
+              document.getElementById("pulsante1").innerHTML      = '<a href=' + '<spring:url value="/carrello/riepilogo/?data=' +data_scelta+ '&orario='+ orario_scelto + '"/>' +  '  onclick="paypalTrue()"  >Conferma orario di ritiro</a></button>'
+              
+              }
               // orario_scelto E' LA VARIABILE DA SELEZIONARE E INVIARE AL DATABASE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
           }
+          
+          function paypalTrue(){
+        	  
+        	  // simulazione pagamento paypal
+        	 // paypal = true;
+        	 // if(paypal){
+          		window.open("http://paypal.com/signin?");
+        	  
+         // }
 
       }
       

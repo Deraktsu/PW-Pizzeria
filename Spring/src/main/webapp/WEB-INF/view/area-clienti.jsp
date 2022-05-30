@@ -2,9 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-    
-    <div class="row justify-content-center">
+    <div class="container">
+    <div class="row ">
 	<div class="col-6">
 	<c:if test="${!esitoUpdate}">
 <div class="alert alert-danger" role="alert">
@@ -49,11 +50,62 @@
 			</div>
 			<div class="row mt-4">
 				<div class="col-12 text-center">
-					<a href='<spring:url value="/home" />' class="btn btn-secondary btn-lg">Torna a Prodotti</a>&emsp;
-					<input type="submit" value="Aggiorna Cliente" class="btn btn-primary btn-lg">
+
+					<input type="submit" value="Aggiorna Dati" class="btn btn-primary btn-lg">
 				</div>
 			</div>
 		</form:form>
 	</div>
+	
+	<div class="col-6 " style="overflow:visible;">
+		Riepilogo
+		<c:forEach items="${ordini}" var="ordine">
+		<table class="table table-striped">
+                
+             	<thead>
+             	<tr>
+                	<th>DETTAGLI ORDINE ${ordine.id_ordine}</th>    
+                	
+                </tr>
+                </thead>	         
+                <tbody>
+                
+               
+                <tr>
+                	<th>DATA</th>
+                    <td>${ordine.dataOrdine}</td>
+                    <c:forEach items="${ordine.prodotti}" var="prodotto">
+                	<td></td>
+                	</c:forEach>
+                </tr>
+                
+                    <tr>
+                    <th>ORARIO</th>
+					<td>${ordine.orarioRitiro}</td>
+					
+				</tr>
+				<tr>
+					<th>PREZZO</th>
+					<td>${ordine.prezzoTotale}</td>
+					
+				</tr>
+				<tr>
+					<th>PRODOTTI:</th>
+					
+					<c:forEach items="${ordine.prodotti}" var="prodotto">
+					<td>${prodotto.nome}</td>
+					</c:forEach>
+					
+					</tr>
+				</tbody>
+				
+				</table>
+				
+				
+				
+            
+			</c:forEach>
+</div>
+</div>
 </div>
     

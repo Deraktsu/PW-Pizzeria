@@ -112,50 +112,123 @@
                 </tfoot>
             </table>
             </c:if>
-    <div class="row" style="margin-top: 10px;" id="menu">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="trigger" id="flip"><a> MENU' <br/> Clicca qui per espandere o per ridurre </a></div>
-            <div id="panel1">
-                <div class="row">
-                    <div class="trigger col-xs-4 col-md-4 col-sm-4"><a href="#trigger1" id="trigger1" ><h1>PIZZE</h1></a></div>
-                    <div class="trigger col-xs-4 col-md-4 col-sm-4"><a href="#trigger2" id="trigger2" ><h1>CALZONI</h1></a></div>
-                    <div class="trigger col-xs-4 col-md-4 col-sm-4"><a href="#trigger3" id="trigger3" ><h1>BEVANDE</h1></a></div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-4 col-md-4 col-sm-4">
-                        <div class="panel1" id="info1">
-                            <div class="abbonato" id="abbonato1">
-                                <table>
-                                <!-- FOR EACH -->
-                                <c:forEach items="${prodotti}" var="prodotto">
-                                    <tr>
-                                        <td class="cella">${prodotto.nome}</td>
-                                        <td class="cella"> ${prodotto.prezzo}&nbsp;€</td>
+     <div class="container-fluid" id="index">
+    <div class="col-xs-12 col-sm-12 col-md-12" id="menu">
+  <div id="flip"><a> MENU' <br/> Clicca qui per espandere o per ridurre </a></div>
+    <div id="panel1">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
+            <div class="trigger col-12">
+              <a href="#trigger1" id="trigger1" ><h1>PIZZE</h1></a>
+            </div>
+            <div class="col-12">
+              <div class="panel1" id="info1">
+                <div id="prodotti1">
+                  <table>
+                  <tbody>
+                      <c:forEach items="${prodotti}" var="prodotto">
+                                    <tr class="cella1">
+                                        <td>${prodotto.nome}</td>
+                                        <td> ${prodotto.prezzo}&nbsp;€</td>
                                        
-                                        <td class="text-end">
-                                            <a href='<spring:url value="/home/infoProdotto?id=${prodotto.id_prodotto}"/>' class="btn  btn-lg"> <!-- href='<spring:url value="/bookcard?id=${book.id }" />' -->
-                                                Più dettagli
+                                        <td class="bottoni">
+                                            <a href='<spring:url value="/home/infoProdotto?id=${prodotto.id_prodotto}"/>' class="btn"> <!-- href='<spring:url value="/bookcard?id=${book.id }" />' -->
+                                                <i class="bi bi-info-square" title="Più dettagli"></i>
                                             </a>
                                         </td>
-                                        <td class="text-end" id="aggiuntoAlCarrello">
+                                        <td class="bottoni">
                                            <a href='<spring:url value="/carrello/prodottoInOrdine?id=${prodotto.id_prodotto}"/>' class="btn " >
-                                           		aggiunto al carrello
+                                           		<i class="bi bi-cart-plus" title="Aggiungi al carrello"></i>
                                            </a>
                                         </td>
                                     </tr>
-                                    </c:forEach>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                            </div>
-                        </div>
-                    </div>
+							</c:forEach>
+							</tbody>
+                  </table>
                 </div>
+              </div>
+            </div>
+          </div>
 
-                <script>
-                    
-                </script>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
+            <div class="trigger col-12">
+              <a href="#trigger2" id="trigger2" ><h1>CALZONI</h1></a>
+            </div>
+            <div class="col-12">
+              <div class="panel1" id="info2">
+                <div id="prodotti2">
+                  <table>
+                      <tr class="cella1">
+                        <td>Calzone classico</td>
+                        <td> 8&nbsp;€</td>
+                        <td>
+                          <a href="#" class="btn ">
+                            <i class="bi bi-info-square" title="Più dettagli"></i>
+                          </a>
+                        </td>
+                        <td>
+                          <a href="#" class="btn">
+                            <i class="bi bi-cart-plus" title="Aggiungi al carrello"></i>
+                          </a>
+                        </td>
+                      </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
+            <div class="trigger col-12">
+              <a href="#trigger3" id="trigger3" ><h1>BEVANDE</h1></a>
+            </div>
+            <div class="col-12">
+              <div class="panel1" id="info3">
+                <div id="prodotti3">
+                  <table>
+				  
+                    <tr class="cella1">
+                      <td>Acqua naturale</td>
+                      <td> 2&nbsp;€</td>
+                      <td>
+                        <a href="#" class="btn ">
+                          
+                        </a>
+                      </td>
+                      <td>
+                        <a href="#" class="btn">
+                         
+                        </a>
+                      </td>
+                    </tr>
+                    <tr class="cella2">
+                      <td>Acqua frizzante</td>
+                      <td> 2&nbsp;€</td>
+                      <td>
+                        <a href="#" class="btn" >
+                          <i class="bi bi-info-square" title="Più dettagli"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <a href="#" class="btn" >
+                          
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+                
 
                 <hr> <!--fine prima riga pizze !-->
          <!--    </div>
@@ -219,12 +292,5 @@
     </footer>
     
                 
-               
-                    <fmt:formatNumber
-			value="${totale}" 
-			type="currency" 
-			currencyCode="EUR" 
-			currencySymbol="€" 
-			maxFractionDigits="2" 
-			minFractionDigits="2"
-		/>
+           
+		</div>

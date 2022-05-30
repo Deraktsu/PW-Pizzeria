@@ -16,5 +16,6 @@ public interface OrdiniDao  {
 	Ordine getOrdineById(int id);
 	boolean confrontaDataProdotto(Prodotto p);
 	boolean confrontaDataUtente(Utente utente);
+	List<Ordine>getOrdineByUtente(Utente utente);
 	
 }

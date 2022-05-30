@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -34,6 +35,10 @@ public class Prodotto implements Serializable{
 	
 	@Column(name = "prezzo", length = 255, nullable = false)
 	private double prezzo;
+	
+	
+	//@ManyToOne(cascade = CascadeType.MERGE)
+	//private Tipologia tipologia;
 	
 	
 	
@@ -78,4 +83,12 @@ public class Prodotto implements Serializable{
 	public void setPrezzo(double prezzo) {
 		this.prezzo = prezzo;
 	}
+	/*
+	public Tipologia getTipologia() {
+		return tipologia;
+	}
+	public void setTipologia(Tipologia tipologia) {
+		this.tipologia = tipologia;
+	}
+	*/
 }

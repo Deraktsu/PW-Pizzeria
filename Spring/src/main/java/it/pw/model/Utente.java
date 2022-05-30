@@ -49,7 +49,7 @@ public class Utente implements Serializable{
 	@OneToMany
 		(
 			mappedBy = "utente", 
-			cascade = CascadeType.ALL,
+			cascade = CascadeType.REFRESH,
 			fetch = FetchType.EAGER,
 			orphanRemoval = true
 		)

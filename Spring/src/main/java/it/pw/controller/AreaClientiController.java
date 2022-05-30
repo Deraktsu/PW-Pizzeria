@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import it.pw.model.Utente;
+import it.pw.service.OrdiniService;
 import it.pw.service.UtenteService;
 
 @Controller
@@ -22,6 +23,9 @@ public class AreaClientiController {
 
 	@Autowired
 	UtenteService utenteService;
+	
+	@Autowired
+	OrdiniService ordiniService;
 	
 	@GetMapping
 	String getPage(HttpServletRequest request, HttpSession session, Model model) {
@@ -33,9 +37,11 @@ public class AreaClientiController {
 		
 		if(!(boolean) session.getAttribute("logUtente"))
 			return "redirect:/registrazione/login";
+		Utente utente = (Utente) session.getAttribute("Utente");
+		model.addAttribute("ordini",ordiniService.getOrdineByUtente(utente));
 		
 		
-		model.addAttribute("areaClientiForm",session.getAttribute("Utente"));	
+		model.addAttribute("areaClientiForm",utente);	
 		model.addAttribute("esitoUpdate",true);
 		return "area-clienti";
 	}

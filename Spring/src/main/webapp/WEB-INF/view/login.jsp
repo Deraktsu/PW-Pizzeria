@@ -52,7 +52,7 @@
             </div>
 
             <div class="col-md-12 testo_link ">
-                <a href="#" >
+                <a href='<spring:url value="/registrazione"/>'  >
                 Registrati
                 </a>
             </div>
