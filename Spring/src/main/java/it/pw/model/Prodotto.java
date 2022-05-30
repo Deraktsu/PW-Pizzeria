@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "prodotti")
@@ -36,12 +37,18 @@ public class Prodotto implements Serializable{
 	@Column(name = "prezzo", length = 255, nullable = false)
 	private double prezzo;
 	
+	@Pattern(regexp = "[a-zA-Z]{1}",message = "{user.form.error.general}")
+	@Column(name = "categoria", length = 1, nullable = false)
+	private String categoria;
 	
-	//@ManyToOne(cascade = CascadeType.MERGE)
-	//private Tipologia tipologia;
 	
 	
-	
+	public String getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
 	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	@JoinTable
 		(

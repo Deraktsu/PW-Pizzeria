@@ -58,7 +58,7 @@ import it.pw.model.Ordine;
 		if(ordine.getDataOrdine().after(dataCorrente)) {
 			model.addAttribute("esitoRegistrazione",false);
 			model.addAttribute("ordini",ordiniDao.vediTutti());
-			return "redirect:/adminOrdini";
+			return "admin-ordini";
 		}
 		
 			ordine.setUtente(null);

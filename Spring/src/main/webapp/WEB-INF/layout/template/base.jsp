@@ -29,9 +29,9 @@
 //impostare file con tutti gli script
 
 $(document).ready(function(){
-  $("#flip").on('click',function(){
+
       $("#panel1").slideToggle("slow");
-     });
+     
 });
 
 

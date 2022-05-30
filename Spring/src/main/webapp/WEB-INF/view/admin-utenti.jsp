@@ -4,27 +4,28 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<br><br><br>
+
 <c:if test="${!esitoRegistrazione}">
 <div class="alert alert-danger" role="alert">
   Impossibile modificare: L'ordine non è stato ancora evaso.
 </div>
 </c:if>
     <div class="row">
-	<div class="col-5">
+	<div class="col-12">
 		<table class="table table-striped table-responsive">
 			<thead>
-			</thead>
-			<tbody>
 			<tr>
-			<td class="text-left" >ID</td>
-			<td class="text-left" >NOME</td>
-			<td class="text-left" >COGNOME</td>
-			<td class="text-left" >TELEFONO</td>
-			<td class="text-left" >EMAIL</td>
-			<td class="text-left" >PASSWORD</td>
+			<th class="text-left" >ID</th>
+			<th class="text-left" >NOME</th>
+			<th class="text-left" >COGNOME</th>
+			<th class="text-left" >TELEFONO</th>
+			<th class="text-left" >EMAIL</th>
+			<th class="text-left" >PASSWORD</th>
 			<td></td>
 			</tr>
+			</thead>
+			<tbody>
+			
 				<c:forEach items="${utenti}" var="utente">
 					<tr>
 							<td class="text-left" >

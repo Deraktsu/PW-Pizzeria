@@ -1,10 +1,4 @@
-:root {
-    --clr1:#f95b11;
-    --clr2:#fff;
-    --clr3:#000;
-    --clr4:#f42f1d;
-    --clr5:limegreen;
-}
+
 body {
     margin:0;
     padding:0;
@@ -80,7 +74,7 @@ html::-webkit-scrollbar-thumb {
     padding: 1.25rem 9%;
     align-items: center;
     justify-content: space-between;
-
+	
 }
 .headb .navbar a {
     color: white;
@@ -105,6 +99,13 @@ html::-webkit-scrollbar-thumb {
 .headb .side-bar i:hover {
     color: #f42f1d;
     transition: .5s ease all;
+}
+
+.headb .side-bar a{
+	text-decoration: none;
+	color: white;
+	overflow: scroll;
+	
 }
 
 #bars {
@@ -198,10 +199,10 @@ html::-webkit-scrollbar-thumb {
 /* ho provato con una classe prodotti ma non funziona */
 
 
-#prodotti1 td {
+#prodotti1  {
     color: black;
     border-bottom: 1px solid #f42f1d;
-    width: 80%;
+    width: 100%;
     font-size: 16px;
     padding: 8px;
 }
@@ -309,14 +310,45 @@ footer p {
         width: 100%;
     }
 }
-@media only screen and (max-width: 1052px){
-    #prodotti1 td {
-        width: 10%;
-    }
-}
+
 
 
 /* CSS Edgar */
+
+#titolo_signUp {
+    margin-top: 3%;
+    text-align: center;
+    margin-bottom: 1%;
+    font-style: italic;
+    color: rgb(244, 47, 29);
+    font-family: Helsinki;
+}
+
+#cont1 {
+    background-color: rgb(255, 208, 67);
+    width: 450px;
+    height: 500px;
+    margin-left: auto;
+    position: relative;
+    border-style: outset;
+    border: 10px solid rgb(255, 208, 67);
+    border-right: 5px solid rgb(255, 208, 67);
+}
+
+#imgSignUp {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    min-width: auto;
+    height: auto;
+    width: 450px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
 #cont2 {
     background-color: white;
     width: 450px;
@@ -330,14 +362,14 @@ footer p {
 
 #button_cont{
     margin-left: 10%;
-    margin-right: auto;
+    margin-right: auto;    
 }
 
 #button_SignUp{
     width: 80%;
 }
 
-#testo_link{
+.testo_link{
     text-align: center;
     color: blue;
 }
@@ -346,6 +378,18 @@ footer p {
     text-align: center;
     color: black;
 }
+
+@font-face {
+    font-family: 'Helsinki';
+    src: url('fonts/Helsinki.eot');
+    src: url('fonts/Helsinki.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Helsinki.woff2') format('woff2'),
+        url('fonts/Helsinki.woff') format('woff'),
+        url('fonts/Helsinki.ttf') format('truetype'),
+        url('fonts/Helsinki.svg#Helsinki') format('svg');
+}
+
+
 
 @media only screen and (max-width: 950px) {
     #cont1 {
@@ -380,38 +424,4 @@ footer p {
     #cont2 {
         height: 650px;
     }
-}
-
-#imgSignUp {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-    min-width: auto;
-    height: auto;
-    width: 450px;
-    max-width: 100%;
-    max-height: 100%;
-}
-
-#cont1 {
-    background-color: rgb(255, 208, 67);
-    width: 450px;
-    height: 500px;
-    margin-left: auto;
-    position: relative;
-    border-style: outset;
-    border: 10px solid rgb(255, 208, 67);
-    border-right: 5px solid rgb(255, 208, 67);
-}
-
-#titolo_signUp {
-    margin-top: 3%;
-    text-align: center;
-    margin-bottom: 1%;
-    font-style: italic;
-    color: rgb(244, 47, 29);
-    font-family: Helsinki;
 }

@@ -55,24 +55,28 @@ public class RegistrazioneController {
 			  if(!utenteService.verficaUsername(utente.getEmail())){
 				 
 			   utenteService.create(utente);
-				 
 				  
 			  }else { 
 				  model.addAttribute("esitoRegistrazione",false);
 				  return "registrazione"; }
 			 
 		}
-		
-		
+		model.addAttribute("esitoRegistrazione",true);
+	
 		return"redirect:/registrazione/login";
 	}
+	
+	
+	
+	
+	
 	@GetMapping("/login")
 	public String getPageLogin(@ModelAttribute("user") Utente utente, Model model,
 			HttpServletRequest request, HttpSession session) {
 		boolean logUtente;
 		boolean logAdmin;
 		if(session.getAttribute("logUtente") == null)
-		session.setAttribute("logUtente", false);	
+			session.setAttribute("logUtente", false);	
 		if(session.getAttribute("logAdmin") == null)
 			session.setAttribute("logAdmin", false);
 		logUtente = (boolean) session.getAttribute("logUtente");
@@ -92,9 +96,7 @@ public class RegistrazioneController {
 			HttpServletRequest request, HttpSession session) {	
 			
 		if(utenteService.verificaLogin(utente.getEmail(), utente.getPassword())) {
-			
 			session.setAttribute("logUtente", true);
-			
 			session.setAttribute("Utente", utenteService.getUtenteByUsername(utente.getEmail()));
 			
 			

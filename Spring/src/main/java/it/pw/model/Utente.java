@@ -25,11 +25,11 @@ public class Utente implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_utente;
 	
-	@Pattern(regexp = "[a-zA-Zטיעאשל\\s']{1,255}",message = "{user.form.error.general}")
+	@Pattern(regexp = "[a-zA-Zטיעאשל\\s']{1,70}",message = "{user.form.error.general}")
 	@Column(name = "nome", length = 255, nullable = false)
 	private String nome;
 	
-	@Pattern(regexp = "[a-zA-Zטיעאשל\\s']{1,255}",message = "{user.form.error.general}")
+	@Pattern(regexp = "[a-zA-Zטיעאשל\\s']{1,70}",message = "{user.form.error.general}")
 	@Column(name = "cognome", length = 255, nullable = false)
 	private String cognome;
 	

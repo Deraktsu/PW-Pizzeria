@@ -8,9 +8,9 @@
   Impossibile modificare: L'ordine non è stato ancora evaso.
 </div>
 </c:if>
-<br><br><br>
+
     <div class="row">
-	<div class="col-5">
+	<div class="col-12">
 		<table class="table table-striped table-responsive">
 			<thead>
 			</thead>

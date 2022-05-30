@@ -50,51 +50,7 @@
 
 
 
-<table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Nome</th>                   
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${listaRiepilogo}" var="prodotto">
-                <tr>
-                    <td>${prodotto.nome}</td>
 
-                </tr>
-                </c:forEach>
-                </tbody>
-                <tfoot>
-                <tr>
-                <td>
-                <fmt:formatDate value="${dataRiepilogo}"
-                pattern="dd-MM-yyyy"
-              
-                />
-                
-                </td>
-                </tr>
-                <tr>
-                <td>
-                ${orarioRiepilogo}
-                </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <th>Totale:</th>
-                    <td><fmt:formatNumber 
-			value="${totaleRiepilogo}" 
-			type="currency" 
-			currencyCode="EUR" 
-			currencySymbol="€" 
-			maxFractionDigits="2" 
-			minFractionDigits="2"
-		/></td>
-                </tr>
-                
-                </tfoot>
-            </table>
             </div>
             
 

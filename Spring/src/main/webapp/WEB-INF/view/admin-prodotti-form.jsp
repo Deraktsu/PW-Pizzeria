@@ -11,12 +11,13 @@
 					<form:input path="nome" id="name" type="text" cssClass="form-control" required="required" />
 					<form:errors path="nome" id="nameError" cssClass="text-danger"/>
 				</div>
+				<div class="row">
 				<div class="col-6">
 					<label for="descrizione">Descrizione:</label>
 					<form:input path="descrizione" id="name" type="text" cssClass="form-control" required="required" />
 					<form:errors path="descrizione" id="nameError" cssClass="text-danger"/>
 				</div>
-
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-6">
@@ -26,6 +27,18 @@
 				</div>
 				
 			</div>
+			<div class="row">
+				<div class="col-6">
+					<label for="categoria">Categoria</label>
+					<form:radiobutton path="categoria" class="categoria" value="Pizza" checked="checked"/>PIZZA |
+					<form:radiobutton path="categoria" class="categoria" value="Calzone" />CALZONE |
+					<form:radiobutton path="categoria" class="categoria" value="Bevanda" />BEVANDA
+					
+				</div>
+				
+			</div>
+			<div class="col-2"></div>
+	
 			
 			<div class="row mt-4">
 				<div class="col-12 text-center">
@@ -35,10 +48,8 @@
 			</div>
 		</form:form>
 		
-		
-
-		<div class="col-2"></div>
-	<div class="col-4">
+		<c:if test="${mode}">
+		<div class="col-4">
 		<div class="row mt-4">
 			<div class="col-12 text-center">
 				<form action="upload"  method="POST" enctype="multipart/form-data">
@@ -72,3 +83,7 @@
 			</div>
 		</div>
 	</div>
+		</c:if>
+		
+
+		

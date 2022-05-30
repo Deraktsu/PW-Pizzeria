@@ -10,15 +10,19 @@
   Accesso non autorizzato.
 </div>
 </c:if>
+<c:if test="${registrazioneFatta}"> <div class="alert alert-success" role="alert"> <h2> Registrazione completata. Effettua il login. </h2> </div> </c:if>
 
 <div class="row">
     <div class="col-12" id="titolo_signUp">
+    	
+       
+        
         <h2>BENVENUTO!</h2>
     </div>
 
     <div class="col-sm-6 col-xs-12" id="cont1">
                        
-            <img id="imgSignUp" src="${pageContext.request.contextPath}/static/images/pizza_signup.jpg" style="width:auto; height:auto;" alt="">
+            <img id="imgSignUp" src="${pageContext.request.contextPath}/static/images/pizza_signup.jpg" alt="">
         
     </div>
 
@@ -33,7 +37,7 @@
                 </div>
                 <div class="col-md-12">
                     <label class="form-label">Password</label>
-                    <form:input path="password" class="form-control" id="inputPassword" required="required"/>
+                    <form:password path="password"  class="form-control" id="inputPassword" required="required"/>
                     <form:errors path="password" id="passwordSpError" cssClass="text-danger"/>
                 </div>
 

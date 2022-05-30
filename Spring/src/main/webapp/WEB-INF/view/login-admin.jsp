@@ -29,7 +29,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="inputPassword4" class="form-label">Password</label>
-                        <form:input path="password" id="passwordSp" type="text" cssClass="form-control" required="required" />
+                        <form:input path="password" id="passwordSp" type="password" cssClass="form-control" required="required" />
 						<form:errors path="password" id="passwordSpError" cssClass="text-danger"/>
                         
                     </div>

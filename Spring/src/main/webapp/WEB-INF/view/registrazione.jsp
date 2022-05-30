@@ -4,7 +4,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<c:if test="${!esitoRegistrazione}"> <div class="alert alert-danger" role="alert">   Impossibile aggiornare: email già in uso. </div> </c:if>
+
+<c:if test="${!esitoRegistrazione}"> <div class="alert alert-danger" role="alert"> ERRORE NELLA REGISTRAZIONE </div> </c:if>
 
 	<div class="row">
         <div class="col-12" id="titolo_signUp">
@@ -38,17 +39,22 @@
                         <form:input path="username" id="cap" class="form-control" required="required"/>
                         <form:errors path="username" id="capError" cssClass="text-danger"/>
                     </div>
-                    <div class="col-md-6">
+ 
+					<div class="col-md-6">
                         <label for="inputPassword4" class="form-label">Password</label>
-                        <form:input path="password" id="town" class="form-control" required="required"/>
+                        <form:password path="password" id="password" class="form-control" required="required"/>
                         <form:errors path="password" id="townError" cssClass="text-danger"/>
                     </div>
-
                     <div class="col-md-6">
                         <label class="form-label">Telefono: </label>
                         <form:input path="telefono" class="form-control" id="telefSigIn" required="required" placeholder=""/>
                     </div>
-
+                    <%-- <div class="col-md-6">
+                        <label for="inputPassword4" class="form-label">Conferma Password</label>
+                        <form:input path="password" id="password2" class="form-control" required="required"/>
+                        <form:errors path="password" id="townError" cssClass="text-danger"/>
+                    </div> --%>
+                    
                     <br/><br/><br/>
 
                     <div class="col-12">

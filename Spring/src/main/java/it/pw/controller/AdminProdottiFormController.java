@@ -69,7 +69,7 @@ import it.pw.model.Utente;
 	@PostMapping("/creaProdotto")
 	public String creazioneProdotto(@Valid @ModelAttribute("aggiornaProdottoForm") Prodotto prodotto, BindingResult result,Model model) {
 		if(result.hasErrors())
-			return "/creaProdotto";
+			return "admin-prodotti-form";
 		
 		prodottoDao.create(prodotto);
 		
@@ -169,7 +169,7 @@ import it.pw.model.Utente;
 		if(ordiniDao.confrontaDataProdotto(prodotto)) {
 			model.addAttribute("esitoRegistrazione",false);
 			model.addAttribute("prodotti",prodottoDao.vediTutti());
-			return "redirect:/adminProdotti";
+			return "admin-prodotti";
 		}
 		
 			prodottoDao.delete(prodotto);

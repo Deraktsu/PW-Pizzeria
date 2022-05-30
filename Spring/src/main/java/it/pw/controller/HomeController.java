@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.pw.model.ProdottoNelCarrello;
+import it.pw.model.Utente;
 import it.pw.service.ProdottoService;
 
 @Controller
@@ -28,12 +29,15 @@ public class HomeController {
 	@SuppressWarnings("unchecked")
 	@GetMapping
 	public String getPage(Model model,HttpSession session) {
+		Utente u = (Utente) session.getAttribute("Utente");
 		if(session.getAttribute("prodottoAggiunto") == null) {
 			session.setAttribute("prodottoAggiunto", false);
 		}
+		
 		try {
 		if((boolean) session.getAttribute("logUtente")) {
             model.addAttribute("logUtente",true);
+            model.addAttribute("utente",session.getAttribute("Utente"));
             
         }else {
             model.addAttribute("logUtente",false);
@@ -41,7 +45,7 @@ public class HomeController {
 		}catch (Exception e) {
 			model.addAttribute("logUtente",false);
 		}
-		
+			
 		try {
 			if((boolean) session.getAttribute("logAdmin")) {
 	            model.addAttribute("logAdmin",true);
@@ -52,25 +56,38 @@ public class HomeController {
 			}catch (Exception e) {
 				model.addAttribute("logAdmin",false);
 			}
+		////
+        if(session.getAttribute("listaCarrello") != null) {
+        List<ProdottoNelCarrello> lpc = (List<ProdottoNelCarrello>) session.getAttribute("listaCarrello");
+        model.addAttribute("listaCarrello",lpc);
+        model.addAttribute("totale",prodottoService.calcolaPrezzo(lpc));
+        model.addAttribute("aggiunto",true);
+        }else {
+            model.addAttribute("aggiunto",false);
+        }
 		
-		List<ProdottoNelCarrello> lpc = (List<ProdottoNelCarrello>) session.getAttribute("listaCarrello");
-		model.addAttribute("listaCarrello",lpc);
-		model.addAttribute("prodottoAggiunto",(boolean) session.getAttribute("prodottoAggiunto"));
-		model.addAttribute("prodotti",prodottoService.vediTutti());
+        
+        model.addAttribute("prodottoAggiunto",(boolean) session.getAttribute("prodottoAggiunto"));
+        model.addAttribute("prodotti",prodottoService.vediTutti());
+        //model.addAttribute("prodotti",prodottoService.vediTutti());
+        //model.addAttribute("prodotti",prodottoService.vediTutti());
+        
+
+        
 		
-		try {
-		if((boolean) session.getAttribute("listaCarrello")) {
-		model.addAttribute("totale",prodottoService.calcolaPrezzo(lpc));
-		model.addAttribute("lista",true);
-		}else {
-			model.addAttribute("lista",false);
-		}
-		}catch (Exception e) {
-			model.addAttribute("lista",false);
-		}
+		
+		
 		
 		return "home";
 	}
+	
+
+        
+
+    
+	
+	
+	
 	
 	@GetMapping("/infoProdotto")
 	public String getProdotti(Model model,@RequestParam("id") int id,HttpSession session) {

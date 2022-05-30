@@ -10,23 +10,23 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="<c:url value="/static/images/slideshow-1.jpg" />" class="d-block w-100" alt="...">
-                <div class="carousel-caption">
-                    <h2>First slide label</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="carousel-caption" >
+                    <h2 style="color: lime; background-color: rgba(0, 0, 0, 0.5);">Provate il nostro Take Away!</h2>
+                    <p style="font-size:20px ; color: lime; background-color: rgba(0, 0, 0, 0.5);">Veniteci a trovare nel nostro locale a Torino</p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="<c:url value="/static/images/slideshow-2.jpg" />" class="d-block w-100" alt="...">
                 <div class="carousel-caption">
-                    <h2>Second slide label</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <h2 style="color: white; background-color: rgba(0, 0, 0, 0.5);">Provate il nostro Take Away!</h2>
+                    <p style="font-size:20px ; color: white; background-color: rgba(0, 0, 0, 0.5);">Scopri le nostre nuove offerte</p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="<c:url value="/static/images/slideshow-3.jpg" />" class="d-block w-100" alt="...">
                 <div class="carousel-caption">
-                    <h2>Third slide label</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <h2 style="color: rgb(255,205,57);; background-color: rgba(0, 0, 0, 0.5);">Provate il nostro Take Away!</h2>
+                    <p style="font-size:20px ; color: rgb(255,205,57);; background-color: rgba(0, 0, 0, 0.5);">Raccontateci la vostra esperienza con il nostro servizio</p>
                 </div>
             </div>
 
@@ -45,7 +45,7 @@
     <div class="row" style="margin-top: 30px">
         <div class="col-6"><img src="<c:url value="/static/images/locale.jpg" />" style=" width: 100%;" alt="Julia Roberts"></div>
         <div class="col-6" id="benvenuto">
-            <b><i>Benvenuti</i> !</b>
+            <b><i>Benvenuti alla Pizzeria 5uaglioni</i> !</b>
             <p>
                 La <strong>Pizzeria 5uaglioni</strong> è un locale ricco di tradizione, dove
                 il profumo del basilico appena colto e la bontà dei nostri ingredienti saranno per voi un'esperienza da ricordare.
@@ -55,63 +55,10 @@
             </p>
         </div>
     </div>
-    <c:if test="${lista}">
-    <table class="table table-striped" style="width:10%;">
-                <thead>
-                <tr>
-                    <th>Prodotti</th>
-                    <th>Modifiche</th>
-                    <th>Quantità</th>
-                    <th>Prezzo</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${listaCarrello}" var="carrello">
-                <tr>
-                    <td>${carrello.nome}</td>
-                    <td></td>
-                    <td>${carrello.quantita}</td>
-                    <td>${carrello.prezzo} €</td>
-                	<td title="Dimunisci quantita di 1" class="text-left">
-							<a href='<spring:url  value="/carrello/diminuisciQuantita?id=${carrello.id_prodotto}" />' class="btn">
-								<i class="fas fa-regular fa-circle-minus"></i>
-							</a>
-						</td>
-						<td class="text-left" title="Aumenta quantita di 1">
-							<a href='<spring:url value="/carrello/aumentaQuantita?id=${carrello.id_prodotto}" />' class="btn">
-								<i class="fas fa-regular fa-circle-plus"></i>
-							</a>
-						</td>
-						<td class="text-left" title="Elimina tutte le ${carrello.nome}">
-							<a href='<spring:url value="/carrello/eliminaDalCarrello?id=${carrello.id_prodotto}" />' class="btn ">
-								<i class="fas fa-regular fa-trash-can"></i>
-							</a>
-						</td>
-                </tr>
-                </c:forEach>
-                </tbody>
-                <tfoot>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <th>Totale:</th>
-                    <td><fmt:formatNumber 
-			value="${totale}" 
-			type="currency" 
-			currencyCode="EUR" 
-			currencySymbol="€" 
-			maxFractionDigits="2" 
-			minFractionDigits="2"
-		/></td>
-                </tr>
-                
-                </tfoot>
-            </table>
-            </c:if>
+    
+    
+    
+    
      <div class="container-fluid" id="index">
     <div class="col-xs-12 col-sm-12 col-md-12" id="menu">
   <div id="flip"><a> MENU' <br/> Clicca qui per espandere o per ridurre </a></div>
@@ -128,10 +75,10 @@
                   <table>
                   <tbody>
                       <c:forEach items="${prodotti}" var="prodotto">
+                                    <c:if test="${prodotto.categoria == 'Pizza' }">
                                     <tr class="cella1">
                                         <td>${prodotto.nome}</td>
                                         <td> ${prodotto.prezzo}&nbsp;€</td>
-                                       
                                         <td class="bottoni">
                                             <a href='<spring:url value="/home/infoProdotto?id=${prodotto.id_prodotto}"/>' class="btn"> <!-- href='<spring:url value="/bookcard?id=${book.id }" />' -->
                                                 <i class="bi bi-info-square" title="Più dettagli"></i>
@@ -141,8 +88,9 @@
                                            <a href='<spring:url value="/carrello/prodottoInOrdine?id=${prodotto.id_prodotto}"/>' class="btn " >
                                            		<i class="bi bi-cart-plus" title="Aggiungi al carrello"></i>
                                            </a>
-                                        </td>
+                                     </td>
                                     </tr>
+                                    </c:if>
 							</c:forEach>
 							</tbody>
                   </table>
@@ -159,20 +107,25 @@
               <div class="panel1" id="info2">
                 <div id="prodotti2">
                   <table>
-                      <tr class="cella1">
-                        <td>Calzone classico</td>
-                        <td> 8&nbsp;€</td>
-                        <td>
-                          <a href="#" class="btn ">
-                            <i class="bi bi-info-square" title="Più dettagli"></i>
-                          </a>
-                        </td>
-                        <td>
-                          <a href="#" class="btn">
-                            <i class="bi bi-cart-plus" title="Aggiungi al carrello"></i>
-                          </a>
-                        </td>
-                      </tr>
+                      <c:forEach items="${prodotti}" var="prodotto">
+                                    <c:if test="${prodotto.categoria == 'Calzone' }">
+                                    <tr class="cella1">
+                                        <td>${prodotto.nome}</td>
+                                        <td> ${prodotto.prezzo}&nbsp;€</td>
+                                       
+                                        <td class="bottoni">
+                                            <a href='<spring:url value="/home/infoProdotto?id=${prodotto.id_prodotto}"/>' class="btn"> <!-- href='<spring:url value="/bookcard?id=${book.id }" />' -->
+                                                <i class="bi bi-info-square" title="Più dettagli"></i>
+                                            </a>
+                                        </td>
+                                        <td class="bottoni">
+                                           <a href='<spring:url value="/carrello/prodottoInOrdine?id=${prodotto.id_prodotto}"/>' class="btn " >
+                                           		<i class="bi bi-cart-plus" title="Aggiungi al carrello"></i>
+                                           </a>
+                                     </td>
+                                    </tr>
+                                    </c:if>
+							</c:forEach>
                   </table>
                 </div>
               </div>
@@ -187,35 +140,25 @@
               <div class="panel1" id="info3">
                 <div id="prodotti3">
                   <table>
-				  
-                    <tr class="cella1">
-                      <td>Acqua naturale</td>
-                      <td> 2&nbsp;€</td>
-                      <td>
-                        <a href="#" class="btn ">
-                          
-                        </a>
-                      </td>
-                      <td>
-                        <a href="#" class="btn">
-                         
-                        </a>
-                      </td>
-                    </tr>
-                    <tr class="cella2">
-                      <td>Acqua frizzante</td>
-                      <td> 2&nbsp;€</td>
-                      <td>
-                        <a href="#" class="btn" >
-                          <i class="bi bi-info-square" title="Più dettagli"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <a href="#" class="btn" >
-                          
-                        </a>
-                      </td>
-                    </tr>
+				   <c:forEach items="${prodotti}" var="prodotto">
+                                    <c:if test="${prodotto.categoria == 'Bevanda' }">
+                                    <tr class="cella1">
+                                        <td>${prodotto.nome}</td>
+                                        <td> ${prodotto.prezzo}&nbsp;€</td>
+                                       
+                                        <td class="bottoni">
+                                            <a href='<spring:url value="/home/infoProdotto?id=${prodotto.id_prodotto}"/>' class="btn"> <!-- href='<spring:url value="/bookcard?id=${book.id }" />' -->
+                                                <i class="bi bi-info-square" title="Più dettagli"></i>
+                                            </a>
+                                        </td>
+                                        <td class="bottoni">
+                                           <a href='<spring:url value="/carrello/prodottoInOrdine?id=${prodotto.id_prodotto}"/>' class="btn " >
+                                           		<i class="bi bi-cart-plus" title="Aggiungi al carrello"></i>
+                                           </a>
+                                     </td>
+                                    </tr>
+                                    </c:if>
+							</c:forEach>
                   </table>
                 </div>
               </div>
@@ -226,70 +169,71 @@
       </div>
     </div>
   </div>
+<div class="container">
+  <a class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo" aria-controls="offcanvasRight">
+    Toggle Right Offcanvas
+  </a>
+</div>
 
 
-                
+ 
+    <div class="offcanvas offcanvas-end" id="demo">
+  <div class="offcanvas-header">
+    <h1 class="offcanvas-title">CARRELLO</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+   <c:if test="${aggiunto}">
+           <div class="col-xs-6 col-md-8" id="">
+            
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Prodotti</th>
+                    <th>Modifiche</th>
+                    <th>Quantità</th>
+                    <th>Prezzo</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${listaCarrello}" var="carrello">
+                <tr>
+                    <td>${carrello.nome}</td>
+                    <td></td>
+                    <td>${carrello.quantita}</td>
+                    <td>${carrello.prezzo}€</td>
+				</tr>
+				</c:forEach>
+				</tbody>
+                <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <th>Totale:</th>
+                    <td><fmt:formatNumber 
+				value="${totale}" 
+				type="currency" 
+				currencyCode="EUR" 
+				currencySymbol="€" 
+				maxFractionDigits="2" 
+				minFractionDigits="2"
+		/></td>
+                </tr>
+                </tfoot>
+				</table>
+				<a href="/pizzeria/carrello" class="btn " >
+                    <i class="bi bi-cart" title="Carrello">Vai al Carrello</i>
+                </a>
+				</div>
+				
+	</c:if>	
 
-                <hr> <!--fine prima riga pizze !-->
-         <!--    </div>
-        </div>
-    </div> -->
+  </div>
+</div>
+   
    
    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">   <div class="offcanvas-header">     <h5 id="offcanvasRightLabel">Il tuo carrello</h5>     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>   </div>   <div class="offcanvas-body" id="offcanvas-corpo">    </div> </div>
     <!-------------------------------------------contact Section-------------->
-    <footer class="contact" id="contatti">
-        <div class="container">
-            <div class="row">
-                <div id="" class="col-4">
-                    <div class="">
-                        <div class="">
-                            <div class="">
-                                <div class="logo-footer">
-                                    <a href="#" title="">
-                                    
-                                        <img style="width:100px;" src='<c:url value="/static/images/logo.jpg" />'>
-                                    </a>
-                                    <p>Più di 100 anni di storia e bontà, nel rispetto della tradizione</p>
-                                    <br>
-                                    <div class="social-footer">
-                                        <h2>Seguici su</h2>
-                                        <a href="https://www.facebook.com/DonAntonioStarita/" title="Pizzeria Facebook"><img src="<c:url value="/static/images/facebook.png" />"/></a>
-                                        <a href="https://www.instagram.com/pizzeriestarita/" title="Pizzeria Instagram"><img src="<c:url value="/static/images/instagram.png" />"/></a>
-                                    </div>														
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="">
-                        <div class="">
-                            <h2 class="">Orari di apertura</h2>
-                            <div class="">
-                                <div class="">
-                                    <h6><a href="" title="">Napoli</a></h6>
-                                    <p>12-15.30 e 19-24</p>
-                                    <small>Non si effettuano prenotazioni</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="">
-                        <div class="">
-                            <h2 class="">Recensioni</h2>
-                            <div class="">
-                                <div class="">
-                                    <h6><a href="" title="">Compila la tua recensione</a></h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
     
                 
            
