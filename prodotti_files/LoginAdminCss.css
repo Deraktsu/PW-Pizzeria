@@ -1,0 +1,132 @@
+body {
+    margin:0;
+    padding:0;
+    top:0;
+    left:0;
+    right:0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 8rem;
+    overflow-x: hidden;
+}
+html::-webkit-scrollbar {
+    width:1rem;
+}
+html::-webkit-scrollbar-thumb {
+    background: #f42f1d;
+}
+#demo {
+    background-color: rgb(255,205,57,0.95);
+}
+#demo1 {
+    background-color: rgb(255,205,57,0.95);
+}
+.head {
+    position:fixed;
+    left:0;
+    right:0;
+    z-index: 1000;
+    display: flex;
+    background-color: rgb(255,205,57,0.95);
+    color: white;
+    padding: 1.5rem 9%;
+    align-items: center;
+    justify-content: space-between;
+}
+.head .navbar a {
+    color: white;
+
+    text-decoration: none;
+    font-size: 2.5rem;
+    font-weight:600;
+    margin:0 4rem;
+}
+
+.head .side-bar i {
+    font-size: 2.1rem;
+    border: none;
+    background-color: white;
+    color: #f42f1d;
+}
+.head .side-bar i:hover {
+    background-color: #f42f1d;
+    color: rgb(255,205,57);
+    transition: .5s ease all;
+}
+
+
+.headb {
+    position: relative;
+    z-index:1;
+    left:0;
+    right:0;
+    margin: 0;
+    display: flex;
+    background-color: rgb(255,205,57,0.95);
+    color: white;
+    padding: 1.25rem 9%;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.headb .navbar a {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight:600;
+    margin:0 2rem;
+}
+
+
+.headb .side-bar i {
+    padding: 1.5rem;
+    font-size: 2rem;
+    border: none;
+    color: white;
+
+}
+.headb .side-bar i:hover {
+    color: #f42f1d;
+    transition: .5s ease all;
+}
+
+#bars {
+    display: none;
+}
+
+#tabella {
+    background-color: white;
+    height: 100%;
+}
+
+#benvenuto {
+    border-top: 2px solid #f42f1d;
+    width: 50%;
+    height: 100%;
+    font-size:20px;
+}
+#benvenuto b {
+    font-size:40px;
+
+}
+
+.contResp{
+    display: none;
+}
+.container{
+
+
+
+}
+.contenitore{
+    width: 100%;
+    height: 300px;
+    margin-top: 30px;
+}
+.btn{
+    width: 90%;
+}
