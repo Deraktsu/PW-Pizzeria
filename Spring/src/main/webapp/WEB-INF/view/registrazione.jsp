@@ -5,7 +5,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 
-<c:if test="${!esitoRegistrazione}"> <div class="alert alert-danger" role="alert"> ERRORE NELLA REGISTRAZIONE </div> </c:if>
+<c:if test="${!esitoRegistrazione}"> <div class="alert alert-danger" role="alert"> Campo non valido oppure email gia' in uso </div> </c:if>
 
 	<div class="row">
         <div class="col-12" id="titolo_signUp">

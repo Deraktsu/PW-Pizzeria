@@ -46,7 +46,8 @@ public class RegistrazioneController {
 	}
 	
 	@PostMapping
-	public String registraUser(@Valid @ModelAttribute("utente") Utente utente, BindingResult result,Model model) {
+	public String registraUser(@Valid @ModelAttribute("utente") Utente utente, BindingResult result,Model model,
+			HttpSession session) {
 		
 		if (result.hasErrors()) {
 			return "registrazione";
@@ -61,8 +62,8 @@ public class RegistrazioneController {
 				  return "registrazione"; }
 			 
 		}
-		model.addAttribute("esitoRegistrazione",true);
-	
+		session.setAttribute("esitoRegistrazione", true);
+		
 		return"redirect:/registrazione/login";
 	}
 	
@@ -84,6 +85,12 @@ public class RegistrazioneController {
 		
 		if(logUtente || logAdmin)
 			return "redirect:/areaClienti";
+		if(session.getAttribute("esitoRegistrazione") == null) {
+			session.setAttribute("esitoRegistrazione",false);
+		}
+			
+		
+		model.addAttribute("registrazioneFatta",session.getAttribute("esitoRegistrazione"));
 		
 		model.addAttribute("user", new Utente());
 		model.addAttribute("esitoLogin", true);
@@ -94,7 +101,7 @@ public class RegistrazioneController {
 	@PostMapping("/login")
 	public String comparaCredenziali(@ModelAttribute("user") Utente utente, Model model,
 			HttpServletRequest request, HttpSession session) {	
-			
+			session.setAttribute("esitoRegistrazione", false);
 		if(utenteService.verificaLogin(utente.getEmail(), utente.getPassword())) {
 			session.setAttribute("logUtente", true);
 			session.setAttribute("Utente", utenteService.getUtenteByUsername(utente.getEmail()));
