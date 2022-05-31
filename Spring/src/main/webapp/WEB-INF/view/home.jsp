@@ -51,7 +51,7 @@
                 il profumo del basilico appena colto e la bontà dei nostri ingredienti saranno per voi un'esperienza da ricordare.
             </p>
             <p>
-                Per scoprirli, effettuate un'ordinazione sul nostro sito, vi stupiremo con il nostro efficiente servizio di take away!
+                Per scoprirli, effettuate un'ordinazione sul nostro sito, vi stupiremo con il nostro efficiente servizio di <strong>take away!</strong>
             </p>
         </div>
     </div>
@@ -61,7 +61,7 @@
     
      <div class="container-fluid" id="index">
     <div class="col-xs-12 col-sm-12 col-md-12" id="menu">
-  <div id="flip"><a> MENU' <br/> Clicca qui per espandere o per ridurre </a></div>
+  <div id="flip"><a> MENU' <br/>Scopri l'offerta del nostro innovativo sistema take away</a></div>
     <div id="panel1">
       <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="row">
@@ -72,28 +72,26 @@
             <div class="col-12">
               <div class="panel1" id="info1">
                 <div id="prodotti1">
-                  <table>
-                  <tbody>
-                      <c:forEach items="${prodotti}" var="prodotto">
-                                    <c:if test="${prodotto.categoria == 'Pizza' }">
-                                    <tr class="cella1">
-                                        <td>${prodotto.nome}</td>
-                                        <td> ${prodotto.prezzo}&nbsp;€</td>
-                                        <td class="bottoni">
-                                            <a href='<spring:url value="/home/infoProdotto?id=${prodotto.id_prodotto}"/>' class="btn"> <!-- href='<spring:url value="/bookcard?id=${book.id }" />' -->
+                <table>
+                  <c:forEach items="${prodotti}" var="prodotto">
+									<c:if test="${prodotto.categoria == 'Pizza' }">
+                                        <div class="d-flex justify-content-around " id="pizza">
+                                            <div class="col-xs-4 col-sm-4 col-md-4 text-center align-self-center">${prodotto.nome}</div>
+                                            <div class="col-xs-4 col-sm-4 col-md-4  text-center align-self-center">${prodotto.prezzo}&nbsp;€</div>
+                                               <div class="col-xs-2 col-sm-2 col-md-2 text-center align-self-center ">
+                                                   <a href='<spring:url value="/home/infoProdotto?id=${prodotto.id_prodotto}"/>' class="btn"> <!-- href='<spring:url value="/bookcard?id=${book.id }" />' -->
                                                 <i class="bi bi-info-square" title="Più dettagli"></i>
                                             </a>
-                                        </td>
-                                        <td class="bottoni">
-                                           <a href='<spring:url value="/carrello/prodottoInOrdine?id=${prodotto.id_prodotto}"/>' class="btn " >
+											</div>
+                                            <div class="col-xs-2 col-sm-2 col-md-2 text-center align-self-center ">
+                                                <a href='<spring:url value="/carrello/prodottoInOrdine?id=${prodotto.id_prodotto}"/>' class="btn " >
                                            		<i class="bi bi-cart-plus" title="Aggiungi al carrello"></i>
                                            </a>
-                                     </td>
-                                    </tr>
-                                    </c:if>
-							</c:forEach>
-							</tbody>
-                  </table>
+                                            </div>
+                                        </div>
+                                        </c:if>
+									</c:forEach>
+									</table>
                 </div>
               </div>
             </div>
@@ -106,27 +104,26 @@
             <div class="col-12">
               <div class="panel1" id="info2">
                 <div id="prodotti2">
-                  <table>
-                      <c:forEach items="${prodotti}" var="prodotto">
-                                    <c:if test="${prodotto.categoria == 'Calzone' }">
-                                    <tr class="cella1">
-                                        <td>${prodotto.nome}</td>
-                                        <td> ${prodotto.prezzo}&nbsp;€</td>
-                                       
-                                        <td class="bottoni">
-                                            <a href='<spring:url value="/home/infoProdotto?id=${prodotto.id_prodotto}"/>' class="btn"> <!-- href='<spring:url value="/bookcard?id=${book.id }" />' -->
+                <table>
+                  <c:forEach items="${prodotti}" var="prodotto">
+									<c:if test="${prodotto.categoria == 'Calzone' }">
+                                        <div class="d-flex justify-content-around " id="calzone">
+                                            <div class="col-xs-4 col-sm-4 col-md-4 text-center align-self-center">${prodotto.nome}</div>
+                                            <div class="col-xs-4 col-sm-4 col-md-4  text-center align-self-center">${prodotto.prezzo}&nbsp;€</div>
+                                               <div class="col-xs-2 col-sm-2 col-md-2 text-center align-self-center">
+                                                   <a href='<spring:url value="/home/infoProdotto?id=${prodotto.id_prodotto}"/>' class="btn"> <!-- href='<spring:url value="/bookcard?id=${book.id }" />' -->
                                                 <i class="bi bi-info-square" title="Più dettagli"></i>
                                             </a>
-                                        </td>
-                                        <td class="bottoni">
-                                           <a href='<spring:url value="/carrello/prodottoInOrdine?id=${prodotto.id_prodotto}"/>' class="btn " >
+											</div>
+                                            <div class="col-xs-2 col-sm-2 col-md-2 text-center align-self-center">
+                                                <a href='<spring:url value="/carrello/prodottoInOrdine?id=${prodotto.id_prodotto}"/>' class="btn " >
                                            		<i class="bi bi-cart-plus" title="Aggiungi al carrello"></i>
                                            </a>
-                                     </td>
-                                    </tr>
-                                    </c:if>
-							</c:forEach>
-                  </table>
+                                            </div>
+                                        </div>
+                                        </c:if>
+									</c:forEach>
+									</table>
                 </div>
               </div>
             </div>
@@ -139,27 +136,26 @@
             <div class="col-12">
               <div class="panel1" id="info3">
                 <div id="prodotti3">
-                  <table>
-				   <c:forEach items="${prodotti}" var="prodotto">
-                                    <c:if test="${prodotto.categoria == 'Bevanda' }">
-                                    <tr class="cella1">
-                                        <td>${prodotto.nome}</td>
-                                        <td> ${prodotto.prezzo}&nbsp;€</td>
-                                       
-                                        <td class="bottoni">
-                                            <a href='<spring:url value="/home/infoProdotto?id=${prodotto.id_prodotto}"/>' class="btn"> <!-- href='<spring:url value="/bookcard?id=${book.id }" />' -->
+                <table>
+                 <c:forEach items="${prodotti}" var="prodotto">
+									<c:if test="${prodotto.categoria == 'Bevanda' }">
+                                        <div class="d-flex justify-content-around " id="bevanda">
+                                            <div class="col-xs-4 col-sm-4 col-md-4 text-center align-self-center">${prodotto.nome}</div>
+                                            <div class="col-xs-4 col-sm-4 col-md-4  text-center align-self-center">${prodotto.prezzo}&nbsp;€</div>
+                                               <div class="col-xs-2 col-sm-2 col-md-2 text-center align-self-center ">
+                                                   <a href='<spring:url value="/home/infoProdotto?id=${prodotto.id_prodotto}"/>' class="btn"> <!-- href='<spring:url value="/bookcard?id=${book.id }" />' -->
                                                 <i class="bi bi-info-square" title="Più dettagli"></i>
                                             </a>
-                                        </td>
-                                        <td class="bottoni">
-                                           <a href='<spring:url value="/carrello/prodottoInOrdine?id=${prodotto.id_prodotto}"/>' class="btn " >
+											</div>
+                                            <div class="col-xs-2 col-sm-2 col-md-2 text-center align-self-center ">
+                                                <a href='<spring:url value="/carrello/prodottoInOrdine?id=${prodotto.id_prodotto}"/>' class="btn " >
                                            		<i class="bi bi-cart-plus" title="Aggiungi al carrello"></i>
                                            </a>
-                                     </td>
-                                    </tr>
-                                    </c:if>
-							</c:forEach>
-                  </table>
+                                            </div>
+                                        </div>
+                                        </c:if>
+									</c:forEach>
+									</table>
                 </div>
               </div>
             </div>
@@ -169,9 +165,10 @@
       </div>
     </div>
   </div>
-<div class="container">
-  <a class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo" aria-controls="offcanvasRight">
-    Toggle Right Offcanvas
+<div class="container" style=" text-align:right;">
+  <a class="btn"  data-bs-toggle="offcanvas" data-bs-target="#demo" aria-controls="offcanvasRight" style="z-index:10000;position:absolute ;width:30%; background-color: yellow; color: #f42f1d; padding: 10px;">
+    <i class="bi bi-bag-check" style="font-size:40px"></i>
+    
   </a>
 </div>
 
@@ -182,15 +179,16 @@
     <h1 class="offcanvas-title">CARRELLO</h1>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
   </div>
+  
   <div class="offcanvas-body">
    <c:if test="${aggiunto}">
-           <div class="col-xs-6 col-md-8" id="">
+           <div class="col-xs-12 col-md-12">
             
             <table class="table table-striped">
                 <thead>
                 <tr>
                     <th>Prodotti</th>
-                    <th>Modifiche</th>
+                    
                     <th>Quantità</th>
                     <th>Prezzo</th>
                 </tr>
@@ -199,17 +197,18 @@
                 <c:forEach items="${listaCarrello}" var="carrello">
                 <tr>
                     <td>${carrello.nome}</td>
-                    <td></td>
+                    
                     <td>${carrello.quantita}</td>
-                    <td>${carrello.prezzo}€</td>
+                    <td>€&nbsp;${carrello.prezzo}</td>
 				</tr>
 				</c:forEach>
 				</tbody>
                 <tfoot>
                 <tr>
-                    <td></td>
-                    <td></td>
+                    
+                    
                     <th>Totale:</th>
+                    <td></td>
                     <td><fmt:formatNumber 
 				value="${totale}" 
 				type="currency" 

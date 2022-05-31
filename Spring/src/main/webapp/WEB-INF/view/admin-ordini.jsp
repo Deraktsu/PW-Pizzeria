@@ -16,11 +16,11 @@
 			</thead>
 			<tbody>
 			<tr>
-			<td class="text-left" >ID</td>
-			<td class="text-left" >DATA ORDINE</td>
-			<td class="text-left" >ORARIO RITIRO</td>
-			<td class="text-left" >PREZZO TOTALE</td>
-			<td class="text-left" >ID UTENTE</td>
+			<th class="text-left" >ID</th>
+			<th class="text-left" >DATA ORDINE</th>
+			<th class="text-left" >ORARIO RITIRO</th>
+			<th class="text-left" >PREZZO TOTALE</th>
+			<!-- <td class="text-left" >ID UTENTE</td> -->
 			<td></td>
 			</tr>
 				<c:forEach items="${ordini}" var="ordine">
@@ -37,14 +37,14 @@
 							${ordine.orarioRitiro}
 							</td>
 							<td class="text-left" >
-							${ordine.prezzoTotale}
+							${ordine.prezzoTotale}&nbsp;€
 							</td>
-							<td class="text-left" >
+							<%-- <td class="text-left" >
 							${ordine.utente}
-							</td>
+							</td> --%>
 
 						<td class="text-left" >
-							<a href='<spring:url value="/adminOrdini/eliminaOrdine?id=${ordine.id_ordine}" />' class="btn btn-primary btn-sm ">
+							<a href='<spring:url value="/adminOrdini/eliminaOrdine?id=${ordine.id_ordine}" />' class="btn btn-primary admin2">
 								Elimina
 							</a>
 						</td>

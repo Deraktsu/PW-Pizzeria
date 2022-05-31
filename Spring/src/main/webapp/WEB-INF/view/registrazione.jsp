@@ -9,7 +9,7 @@
 
 	<div class="row">
         <div class="col-12" id="titolo_signUp">
-            <h2>REGISTRATI</h2>
+            <h2>REGISTRAZIONE</h2>
         </div>
 
         <div class="col-sm-6 col-lg-12" id="cont1">

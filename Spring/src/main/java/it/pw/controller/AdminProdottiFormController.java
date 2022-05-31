@@ -67,13 +67,15 @@ import it.pw.model.Utente;
 	}
 	
 	@PostMapping("/creaProdotto")
-	public String creazioneProdotto(@Valid @ModelAttribute("aggiornaProdottoForm") Prodotto prodotto, BindingResult result,Model model) {
+	public String creazioneProdotto(@Valid @ModelAttribute("aggiornaProdottoForm") Prodotto prodotto, BindingResult result,Model model,
+			HttpSession session) {
 		if(result.hasErrors())
 			return "admin-prodotti-form";
 		
 		prodottoDao.create(prodotto);
 		
 		return "redirect:/adminProdotti";
+	
 	}
 	
 	  @GetMapping("/modificaProdotto") 
@@ -171,7 +173,7 @@ import it.pw.model.Utente;
 			model.addAttribute("prodotti",prodottoDao.vediTutti());
 			return "admin-prodotti";
 		}
-		
+			session.setAttribute("esitoRegistrazione",true);
 			prodottoDao.delete(prodotto);
 			return "redirect:/adminProdotti";
 		

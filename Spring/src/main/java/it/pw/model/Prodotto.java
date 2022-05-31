@@ -37,8 +37,8 @@ public class Prodotto implements Serializable{
 	@Column(name = "prezzo", length = 255, nullable = false)
 	private double prezzo;
 	
-	@Pattern(regexp = "[a-zA-Z]{1}",message = "{user.form.error.general}")
-	@Column(name = "categoria", length = 1, nullable = false)
+	
+	@Column(name = "categoria", length = 255, nullable = false)
 	private String categoria;
 	
 	
