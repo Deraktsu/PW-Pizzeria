@@ -9,12 +9,19 @@
   Impossibile modificare: Il prodotto fa parte di un ordine in corso.
 </div>
 </c:if>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-6" style="margin-left:auto;margin-right:auto;margin-top:30px;margin-bottom:30px">
+			<a href='<spring:url value="/adminProdotti/creaProdotto?id=${prodotto.id_prodotto}"/>' class="btn btn-primary admin2">
+								crea Prodotto
+							</a>
+			</div>
+		</div>
+
     <div class="row">
 	<div class="col-12">
 	
-	<a href='<spring:url value="/adminProdotti/creaProdotto?id=${prodotto.id_prodotto}"/>' class="btn btn-primary btn-sm ">
-								crea Prodotto
-							</a>
+	
 		<table class="table table-striped table-responsive">
 			<thead>
 			<tr>
@@ -47,14 +54,14 @@
 							${prodotto.categoria}
 						</td>
 							<td class="text-left">
-							<a href='<spring:url value="/adminProdotti/modificaProdotto?id=${prodotto.id_prodotto}"/>' class="btn btn-primary btn-sm ">
+							<a href='<spring:url value="/adminProdotti/modificaProdotto?id=${prodotto.id_prodotto}"/>' class="btn btn-primary admin2">
 								Modifica prodotto
 							</a>
 						</td>
 						
 						
 						<td class="text-left" >
-							<a href='<spring:url value="/adminProdotti/eliminaProdotto?id=${prodotto.id_prodotto}"/>' class="btn btn-primary btn-sm ">
+							<a href='<spring:url value="/adminProdotti/eliminaProdotto?id=${prodotto.id_prodotto}"/>' class="btn btn-primary admin2 ">
 								Elimina prodotto
 							</a>
 						</td>
@@ -67,4 +74,5 @@
 			</tbody>
 		</table>
 	</div>
+</div>
 </div>

@@ -15,12 +15,12 @@
 
 <a href="/pizzeria/home#menu">MENU'</a>
 
-<a href="/pizzeria/home/doveSiamo">DOVE SIAMO</a>
+<a href="/pizzeria/home/doveSiamo">DOVE&nbsp;SIAMO</a>
 
 </nav>
 </c:if>
 <c:if test="${logAdmin}">
-<h2>AREA AMMINISTRATORE</h2>
+<h2 style="text-align:center;">AREA AMMINISTRATORE</h2>
 </c:if>
 <div class="side-bar">
 

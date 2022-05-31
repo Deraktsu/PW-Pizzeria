@@ -48,7 +48,7 @@
 			</div>
 		</form:form>
 		
-		<c:if test="${mode}">
+		
 		<div class="col-4">
 		<div class="row mt-4">
 			<div class="col-12 text-center">
@@ -83,7 +83,7 @@
 			</div>
 		</div>
 	</div>
-		</c:if>
+		
 		
 
 		

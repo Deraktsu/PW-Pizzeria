@@ -20,7 +20,7 @@
 			<th class="text-left" >COGNOME</th>
 			<th class="text-left" >TELEFONO</th>
 			<th class="text-left" >EMAIL</th>
-			<th class="text-left" >PASSWORD</th>
+			
 			<td></td>
 			</tr>
 			</thead>
@@ -43,15 +43,13 @@
 							<td class="text-left" >
 							${utente.email}
 							</td>
-							<td class="text-left" >
-							${utente.password}
-							</td>
+							
 							
 			
 						
 						
 						<td class="text-left" >
-							<a href='<spring:url value="/adminUtenti/eliminaUtente?id=${utente.id_utente}" />' class="btn btn-primary btn-sm ">
+							<a href='<spring:url value="/adminUtenti/eliminaUtente?id=${utente.id_utente}" />' class="btn btn-primary admin2">
 								Elimina
 							</a>
 						</td>

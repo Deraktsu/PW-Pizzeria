@@ -58,11 +58,11 @@ public class RegistrazioneController {
 			   utenteService.create(utente);
 				  
 			  }else { 
-				  model.addAttribute("esitoRegistrazione",false);
+				  model.addAttribute("signup",false);
 				  return "registrazione"; }
 			 
 		}
-		session.setAttribute("esitoRegistrazione", true);
+		session.setAttribute("signup", true);
 		
 		return"redirect:/registrazione/login";
 	}
@@ -85,12 +85,12 @@ public class RegistrazioneController {
 		
 		if(logUtente || logAdmin)
 			return "redirect:/areaClienti";
-		if(session.getAttribute("esitoRegistrazione") == null) {
-			session.setAttribute("esitoRegistrazione",false);
+		if(session.getAttribute("signup") == null) {
+			session.setAttribute("signup",false);
 		}
 			
 		
-		model.addAttribute("registrazioneFatta",session.getAttribute("esitoRegistrazione"));
+		model.addAttribute("registrazioneFatta",session.getAttribute("signup"));
 		
 		model.addAttribute("user", new Utente());
 		model.addAttribute("esitoLogin", true);
@@ -101,7 +101,7 @@ public class RegistrazioneController {
 	@PostMapping("/login")
 	public String comparaCredenziali(@ModelAttribute("user") Utente utente, Model model,
 			HttpServletRequest request, HttpSession session) {	
-			session.setAttribute("esitoRegistrazione", false);
+			session.setAttribute("signup", false);
 		if(utenteService.verificaLogin(utente.getEmail(), utente.getPassword())) {
 			session.setAttribute("logUtente", true);
 			session.setAttribute("Utente", utenteService.getUtenteByUsername(utente.getEmail()));

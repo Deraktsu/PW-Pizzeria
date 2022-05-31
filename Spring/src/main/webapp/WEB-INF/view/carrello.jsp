@@ -8,11 +8,11 @@
     <div class="row">
         <div class="col-xs-6 col-md-6" id="sinistra">
             <h2>Riassunto ordinazione </h2>
-            <table class="table table-striped" style="width:10%;">
+            <table class="table table-striped" style="width:100%;">
                 <thead>
                 <tr>
                     <th>Prodotti</th>
-                    <th>Modifiche</th>
+                    
                     <th>Quantità</th>
                     <th>Prezzo</th>
                     <th></th>
@@ -25,7 +25,7 @@
                 <c:forEach items="${listaCarrello}" var="carrello">
                 <tr>
                     <td>${carrello.nome}</td>
-                    <td></td>
+                    
                     <td>${carrello.quantita}</td>
                     <td>${carrello.prezzo} €</td>
                 	<td title="Dimunisci quantita di 1" class="text-left">

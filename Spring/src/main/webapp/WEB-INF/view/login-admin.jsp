@@ -42,18 +42,27 @@
         </c:if>
         
         <c:if test="${logAdmin}">
-	
-				<a href='<spring:url value="/adminProdotti" />' class="btn btn-primary btn-sm ">
+		<div class="container-fluid" style="margin-top:200px">
+			<div class="row">
+			<div class="col-4">
+				<a href='<spring:url value="/adminProdotti" />' class="btn btn-primary admin1">
 								Gestisci PRODOTTI
 				</a>
-				<a href='<spring:url value="adminUtenti" />' class="btn btn-primary btn-sm ">
+			</div>
+			<div class="col-4">
+				<a href='<spring:url value="adminUtenti" />' class="btn btn-primary admin1">
 								Gestisci UTENTI
 				</a>
-				<a href='<spring:url value="adminOrdini" />' class="btn btn-primary btn-sm ">
+			</div>
+			<div class="col-4" >
+				<a href='<spring:url value="adminOrdini" />' class="btn btn-primary admin1">
 								Gestisci ORDINI
 				</a>
+				</div>
+			</div>
+		</div>
 </c:if>	
-        
+       
         
     </div>
     

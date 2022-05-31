@@ -95,11 +95,11 @@ function cambia() {
       let i = 0;
 
       let stringaOrario = parseFloat(ore + "." + minuti);
-      let stringaOrario2 = 23.00;
+      let stringaOrario2 = 6.00;
 
       function modStringaOrario() {
     	
-          stringaOrario2 = 11.00;
+          stringaOrario = 11.00;
           document.getElementById("avviso").style.display = "none";
           document.getElementById("destra").style.display = "block";
           
@@ -115,7 +115,7 @@ function cambia() {
               document.getElementById("divOrario").innerHTML +='<select name="select_orario" class="form-select" id="orarid">';
               document.getElementById("orarid").innerHTML += '<option value="" disabled selected>Seleziona il tuo orario</option>';
               for(i; i < orari.length; i++) {
-                  if(stringaOrario2 < parseFloat(orari[i])) { //controllo su ore successive a quella attuale
+                  if(stringaOrario < parseFloat(orari[i])) { //controllo su ore successive a quella attuale
                       if (i !== orari.length-1) {
                           let orario_invio = orari[i] + '-' + orari[i+1];
                           //let ora_invio = orari[i];
@@ -140,13 +140,13 @@ function cambia() {
       function recuperaData() {
           document.getElementById("pulsante").style.display = "none";
           document.getElementById("destra").style.display = "block";
-          if (stringaOrario2 > 22.00) {
+          if (stringaOrario > 22.00) {
               document.getElementById("destra").style.backgroundColor = "white";
               document.getElementById("destra").innerHTML += '<div  id="avviso" style="padding: 10px; text-align: center;">' +
                   'Il ristorante ha chiuso alle 22.00, vuoi effettuare la tua prenotazione un altro giorno?</div>' +
                   '<div class="row" id="siOno"><div class="col-6"><a href="/pizzeria/carrello" class="btn" role="button">NO</a></div> ' +
                   '<div class="col-6"><a class="btn" role="button" onclick="mostragiorni()"> SI </a></div></div> '
-          } else if (stringaOrario2 < 10.59) {
+          } else if (stringaOrario < 10.59) {
               document.getElementById("destra").style.backgroundColor = "darkcyan";
               document.getElementById("destra").style.color = "white";
               document.getElementById("destra").innerHTML += '<div id="avviso" style="padding: 10px; text-align: center;">' +
@@ -168,7 +168,7 @@ function cambia() {
               document.getElementById("divOrario").innerHTML +='<select name="select_orario" class="form-select" id="orarid">';
               document.getElementById("orarid").innerHTML += '<option value="" disabled selected>Seleziona il tuo orario</option>';
               for(i; i < orari.length; i++) {
-                  if(stringaOrario2 < parseFloat(orari[i])) { //controllo su ore successive a quella attuale
+                  if(stringaOrario < parseFloat(orari[i])) { //controllo su ore successive a quella attuale
                       if (i !== orari.length-1) {
                           let orario_invio = orari[i] + '-' + orari[i+1];
                           //let ora_invio = orari[i];
@@ -184,7 +184,7 @@ function cambia() {
 
       // funzione che si avvia SOLO se un utente chiede di prenotare un altro giorno
       function mostragiorni() {
-    	  stringaOrario2 = 11.01;
+    	  stringaOrario = 11.01;
           document.getElementById("avviso").style.display = "none";
           document.getElementById("siOno").style.display = "none";
           document.getElementById("destra").style.backgroundColor = "green";

@@ -4,50 +4,43 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<div class="col-xs-6 col-md-8" id="sinistra">
-<table class="table table-striped">
+<div class="col-xs-4 col-md-4" id="sinistra" style="margin-left:auto; margin-right:auto;border:2px solid black;margin-top:20px;">
+	<h1>Riepilogo Ordine</h1>
+	<table class="table table-striped" >
                 
              	<thead>
-             	<tr>  
-                	
-                </tr>
+
                 </thead>	         
-                <tbody>
-                
-               
+                <tbody >
                 <tr>
-                	<th>DATA</th>
-                    <td>${dataRiepilogo}</td>
-                	<td></td>
-                	
+                	<th style="text-align:left;">DATA</th>
+                    <td style="text-align:left;"><fmt:formatDate value="${dataRiepilogo}" pattern="dd-MM-yyyy"/></td>
+                    
                 </tr>
-                
                     <tr>
-                    <th>ORARIO</th>
-					<td>${orarioRiepilogo}</td>
-					
+                    <th style="text-align:left;">ORARIO</th>
+					<td style="text-align:left;">${orarioRiepilogo}</td>
 				</tr>
-				<tr>
-					<th>PREZZO</th>
-					<td>${totaleRiepilogo}</td>
-					
-				</tr>
-				<tr>
-				</tr>
-				<tr>
-					<th>PRODOTTI:</th>
+				
+				<tr >
+					<th>PRODOTTI</th>
+					<th style="text-align:left;">PREZZO</th>
 					
 					<c:forEach items="${listaRiepilogo}" var="prodotto">
-					<tr>
-					<td>${prodotto.nome}</td>
-					</tr>
+								<tr>
+									<td>${prodotto.nome}</td>
+									<td style="text-align:left;">${prodotto.prezzo} €</td>
+								</tr>
 					</c:forEach>
-					
 					</tr>
+					<tr>
+					<th style="text-align:left;">TOTALE</th>
+					<td style="text-align:left;"><b>${totaleRiepilogo}&nbsp;€</b></td>
+					
+				</tr>
 				</tbody>
 				
 				</table>
-
 
 
 

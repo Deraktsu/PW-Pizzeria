@@ -10,14 +10,18 @@
   Accesso non autorizzato.
 </div>
 </c:if>
-<c:if test="${registrazioneFatta}"> <div class="alert alert-success" role="alert"> <h2> Registrazione completata. Effettua il login. </h2> </div> </c:if>
+<c:if test="${registrazioneFatta}"> 
+	<div class="alert alert-success" role="alert"> 
+		<h2> Registrazione completata. Effettua il login. </h2> 
+	</div> 
+</c:if>
 
 <div class="row">
     <div class="col-12" id="titolo_signUp">
     	
        
         
-        <h2>BENVENUTO!</h2>
+        <h2>BENVENUTI!</h2>
     </div>
 
     <div class="col-sm-6 col-xs-12" id="cont1">
