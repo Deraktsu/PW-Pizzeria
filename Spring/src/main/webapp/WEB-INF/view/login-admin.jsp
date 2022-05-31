@@ -3,16 +3,16 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-
-<div class="container" style="text-align: center; margin-top: 20px">
-    <div class="row" style="text-align: center">
-
-	<c:if test="${!esitoLoginAdmin}">
+<c:if test="${!esitoLoginAdmin}">
 		<div class="alert alert-danger" role="alert">
   			Accesso non autorizzato.
 		</div>
 	</c:if>
+
+<div class="container" style="text-align: center; margin-top: 20px">
+    <div class="row" style="text-align: center">
+
+	
 	
 	<c:if test="${!logAdmin}">
         <div class="col-12">

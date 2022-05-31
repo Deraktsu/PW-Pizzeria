@@ -11,10 +11,8 @@
 
     <div class="row">
 	<div class="col-12">
-		<table class="table table-striped table-responsive">
+		<table class="table table-striped">
 			<thead>
-			</thead>
-			<tbody>
 			<tr>
 			<th class="text-left" >ID</th>
 			<th class="text-left" >DATA ORDINE</th>
@@ -23,6 +21,9 @@
 			<!-- <td class="text-left" >ID UTENTE</td> -->
 			<td></td>
 			</tr>
+			</thead>
+			<tbody>
+			
 				<c:forEach items="${ordini}" var="ordine">
 					<tr>
 							

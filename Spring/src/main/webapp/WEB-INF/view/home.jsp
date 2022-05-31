@@ -166,7 +166,7 @@
     </div>
   </div>
 <div class="container" style=" text-align:right;">
-  <a class="btn"  data-bs-toggle="offcanvas" data-bs-target="#demo" aria-controls="offcanvasRight" style="z-index:10000;position:absolute ;width:30%; background-color: yellow; color: #f42f1d; padding: 10px;">
+  <a class="btn"  data-bs-toggle="offcanvas" data-bs-target="#demo" aria-controls="offcanvasRight" style="width:100%; background-color: yellow; color: #f42f1d; padding: 10px;">
     <i class="bi bi-bag-check" style="font-size:40px"></i>
     
   </a>

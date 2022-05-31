@@ -12,7 +12,7 @@
 </c:if>
 <c:if test="${registrazioneFatta}"> 
 	<div class="alert alert-success" role="alert"> 
-		<h2> Registrazione completata. Effettua il login. </h2> 
+		Registrazione completata. Effettua il login.
 	</div> 
 </c:if>
 
