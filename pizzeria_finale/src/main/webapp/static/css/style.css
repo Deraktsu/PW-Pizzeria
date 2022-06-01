@@ -1,0 +1,544 @@
+
+body {
+    margin:0;
+    padding:0;
+    top:0;
+    left:0;
+    right:0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+footer{
+	background-color:whitesmoke;
+	
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 8rem;
+    overflow-x: hidden;
+}
+html::-webkit-scrollbar {
+    width:1rem;
+}
+html::-webkit-scrollbar-thumb {
+    background: #f42f1d;
+}
+#demo {
+    background-color: rgb(255,205,57,0.95);
+    color: black;
+}
+#demo1 {
+    background-color: rgb(255,205,57,0.95);
+    color: white;
+}
+.head {
+    position:relative;
+    left:0;
+    right:0;
+    z-index: 1000;
+    display: flex;
+    background-color: rgb(255,205,57,0.95);
+    color: white;
+    padding: 1.5rem 9%;
+    align-items: center;
+    justify-content: space-between;
+}
+.head .navbar a {
+    color: white;
+
+    text-decoration: none;
+    font-size: 2.5rem;
+    font-weight:600;
+    margin:0 4rem;
+}
+.head .navbar a:hover {
+    color: #f42f1d;
+    transition: .4s ease;
+}
+.head .side-bar i {
+    font-size: 2.1rem;
+    border: none;
+    background-color: white;
+    color: #f42f1d;
+}
+.head .side-bar i:hover {
+    background-color: #f42f1d;
+    color: rgb(255,205,57);
+    transition: .5s ease all;
+}
+
+
+.headb {
+    position: relative;
+    z-index:100;
+    left:0;
+    right:0;
+    margin: 0;
+    display: flex;
+    background-color: rgb(255,205,57,0.95);
+    color: white;
+    padding: 1.25rem 9%;
+    align-items: center;
+    justify-content: space-between;
+	
+}
+.headb .navbar a {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight:600;
+    margin:0 2rem;
+}
+.headb .navbar a:hover {
+    color: #f42f1d;
+    transition: .4s ease;
+}
+
+.headb .side-bar i {
+    padding: 1.5rem;
+    font-size: 2rem;
+    border: none;
+    color: white;
+
+}
+.headb .side-bar i:hover {
+    color: #f42f1d;
+    transition: .5s ease all;
+}
+
+.headb .side-bar a{
+	text-decoration: none;
+	color: white;
+	overflow: scroll;
+	
+}
+
+#bars {
+    display: none;
+}
+
+#tabella {
+    background-color: white;
+    height: 100%;
+}
+
+#benvenuto {
+    border-top: 2px solid #f42f1d;
+    width: 50%;
+    height: 100%;
+    font-size:20px;
+}
+#benvenuto b {
+    font-size:40px;
+
+}
+
+#flip {
+    padding: 20px;
+    background-color: white;
+    width: 100%;
+    color: #f42f1d;
+    text-align: center;
+}
+#flip:hover {
+    background-color: #f42f1d;
+    color: #f7d913;
+    transition: 2.4s ease;
+}
+
+#flip a {
+    text-align: center;
+    text-decoration: none;
+    font-size: 2.5rem;
+    font-weight:600;
+}
+/*
+#flip a:hover {
+    color: white;
+    transition: .4s ease;
+}
+ */
+
+#panel1 {
+    padding: 20px;
+    margin-top: -1px;
+    text-align: center;
+    background-color: #e5eecc;
+    width: 100%;
+    height: auto;
+    display: none;
+}
+
+#panel1 p{
+    text-decoration: none;
+    display:inline;
+}
+
+#panel1 a{
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.trigger a {
+    background-color: white;
+    color: #f42f1d;
+    padding: 10px;
+}
+.trigger a:hover{
+    background-color: #f42f1d;
+    color: #f7d913;
+    transition: .4s ease;
+}
+.trigger:active{
+    background-color: #f42f1d;
+    color: #f7d913;
+}
+.panel1 {
+    width: 100%;
+    display: inline-block;
+    min-height: 1px;
+}
+
+/* ho provato con una classe prodotti ma non funziona */
+
+
+#prodotti1  {
+    color: black;
+    background-color:whitesmoke;
+    width: 100%;
+    font-size: 16px;
+    padding: 8px;
+}
+
+#pizza {
+	border-bottom: 1px solid #f42f1d;
+	background-color:whitesmoke;
+}
+
+
+#prodotti2 {
+    color: black;
+    background-color:whitesmoke;
+    width: 100%;
+    font-size: 16px;
+    padding: 8px;
+}
+
+#calzone {
+	border-bottom: 1px solid #f42f1d;
+	background-color:whitesmoke;
+}
+
+#prodotti3  {
+    color: black;
+    background-color:whitesmoke;
+    width: 100%;
+    font-size: 16px;
+    padding: 8px;
+}
+
+#bevanda {
+	border-bottom: 1px solid #f42f1d;
+	background-color:whitesmoke;
+}
+
+.bottoni{
+	width:60%;
+}
+
+.cella1 {
+   	background-color: whitesmoke;
+    border-bottom: 1px solid #f42f1d;
+
+}
+.cella2 {
+    background-color: white;
+    border-bottom: 1px solid #f42f1d;
+}
+
+.btn i {
+    background-color: transparent;
+    font-size: 1.4rem;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    color: black;
+    transition: all 0.1s ease 0s;
+}
+
+.btn i:hover {
+    border: none;
+    border-radius: 5px;
+    background-color: #f42f1d;
+    color: rgb(255,205,57);
+    box-shadow: 0rem 0.1rem 0.1rem rgba(0, 0, 0, 0.5);
+
+}
+
+#carrello-off-canvas:hover{
+	border:none;
+	background-color:transparent;
+	color:black;
+		
+}
+
+/*
+.btn {
+    padding: 10px;
+    font-size: 11px;
+    text-align: center;
+    width: 80%;
+    height: 80%;
+    border-radius: 0;
+    color: black;
+    transition: ease 0s;
+}
+
+.btn:hover {
+    background-color: #f42f1d;
+    border: none;
+    color: rgb(255,205,57);
+    transform: translateY(-.05rem);
+}
+*/
+select {
+    text-align: center;
+}
+
+#sinistra {
+    background-color: #f2e7c3;
+    color: black;
+    font-size: 16px;
+}
+#destra {
+	background-color: #f2e7c3;
+    display: none;
+    color: black;
+    font-size: 16px;
+}
+
+footer p {
+    font-size: 16px;
+}
+
+#datepicker {
+    width: 100%;
+    color: black;
+    border-radius: 4px;
+    border: 1px solid grey;
+    text-align: center;
+    height: 40px;
+}
+.admin1 {
+	background-color: rgb(255,205,57);
+	padding: 20px;
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    color: white;
+	box-shadow: 0rem 0.1rem 0.1rem rgba(0, 0, 0, 0.5);
+	border:none;
+}
+
+
+
+
+.admin1:hover {
+	background-color: #f42f1d;
+	color: #f7d913;
+	
+}
+
+.admin2 {
+	background-color: rgb(255,205,57);
+	padding:3px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    color: black;
+	box-shadow: 0rem 0.1rem 0.1rem rgba(0, 0, 0, 0.5);
+	text-decoration:none;
+	border:none;
+}
+
+
+
+
+.admin2:hover {
+	background-color: #f42f1d;
+	color: #f7d913;
+	
+}
+.sticky {
+          position: -webkit-sticky;
+          position: sticky;
+          bottom: 1.5rem;
+          left: 95%;
+          background-color: yellow;
+          font-size: 20px;
+          width: 50px;
+        }
+
+@media only screen and (max-width: 768px){
+    #benvenuto{
+        width: 100%;
+    }
+}
+
+
+
+
+#descrNo{
+	display:none;
+}
+#prezNo{
+	display:none;
+}
+
+@media only screen and (max-width: 576px) {
+	#descr{
+	display:none;
+	}
+	
+	#descrNo{
+	display:block;
+	}
+	
+	#prez{
+	display:none;
+	}
+	
+	#prezNo{
+	display:block;
+	}
+	
+	.btnDistanzaDiv{
+	margin-bottom:10px;
+	
+	}
+
+	
+}
+
+
+
+/* CSS Edgar */
+
+#titolo_signUp {
+    margin-top: 3%;
+    text-align: center;
+    margin-bottom: 1%;
+    font-style: italic;
+    color: rgb(244, 47, 29);
+    font-family: Helsinki;
+}
+
+#cont1 {
+    background-color: rgb(255, 208, 67);
+    width: 450px;
+    height: 500px;
+    margin-left: auto;
+    position: relative;
+    border-style: outset;
+    border: 10px solid rgb(255, 208, 67);
+    border-right: 5px solid rgb(255, 208, 67);
+}
+
+#imgSignUp {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    min-width: auto;
+    height: auto;
+    width: 450px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#cont2 {
+    background-color: white;
+    width: 450px;
+    height: 500px;
+    margin-right: auto;
+    padding-top: 15px;
+    border-style: outset;
+    border: 10px solid rgb(255, 208, 67);
+    border-left: 5px solid rgb(255, 208, 67);
+}
+
+#button_cont{
+    margin-left: 10%;
+    margin-right: auto;    
+}
+
+#button_SignUp{
+    width: 80%;
+}
+
+.testo_link{
+    text-align: center;
+    color: blue;
+}
+
+#non_account{
+    text-align: center;
+    color: black;
+}
+
+@font-face {
+    font-family: 'Helsinki';
+    src: url('fonts/Helsinki.eot');
+    src: url('fonts/Helsinki.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Helsinki.woff2') format('woff2'),
+        url('fonts/Helsinki.woff') format('woff'),
+        url('fonts/Helsinki.ttf') format('truetype'),
+        url('fonts/Helsinki.svg#Helsinki') format('svg');
+}
+
+
+
+@media only screen and (max-width: 950px) {
+    #cont1 {
+        margin-left: 28%;
+        border-right: 10px solid rgb(255, 208, 67);
+        border-bottom: 0px;
+    }
+
+    #cont2 {
+        margin-left: 28%;
+        height: 450px;
+        border-left: 10px solid rgb(255, 208, 67);
+        border-top: 0px;
+    }
+}
+
+
+@media only screen and (max-width: 850px) {
+    #cont1 {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #cont2 {
+        margin-left: auto;
+        margin-right: auto;
+        height: 450px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #cont2 {
+        height: 650px;
+    }
+}

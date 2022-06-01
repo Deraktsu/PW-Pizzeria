@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+ "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+ "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+ <tiles-definitions>
+
+ <definition name="baseLayout" template="/WEB-INF/layout/template/base.jsp">
+ <put-attribute name="title" value="" />
+ <put-attribute name="header" value="/WEB-INF/layout/template/header.jsp" />
+ <put-attribute name="content" value="" />
+ <put-attribute name="footer" value="/WEB-INF/layout/template/footer.jsp" />
+ </definition>
+ 
+ 
+
+ <definition name="home" extends="baseLayout">
+ <put-attribute name="title" value="Home" />
+ <put-attribute name="content" value="/WEB-INF/view/home.jsp" />
+ </definition>
+ 
+ <definition name="test" extends="baseLayout">
+ <put-attribute name="title" value="Test" />
+ <put-attribute name="content" value="/WEB-INF/view/test.jsp" />
+ </definition>
+ 
+ <definition name="info-prodotti" extends="baseLayout">
+ <put-attribute name="title" value="Info-Prodotti" />
+ <put-attribute name="content" value="/WEB-INF/view/info-prodotti.jsp" />
+ </definition>
+ 
+ <definition name="carrello" extends="baseLayout">
+ <put-attribute name="title" value="Carrello" />
+ <put-attribute name="content" value="/WEB-INF/view/carrello.jsp" />
+ </definition>
+ 
+ <definition name="login" extends="baseLayout">
+ <put-attribute name="title" value="Login" />
+ <put-attribute name="content" value="/WEB-INF/view/login.jsp" />
+ </definition>
+ 
+  <definition name="login-admin" extends="baseLayout">
+ <put-attribute name="title" value="Login-Admin" />
+ <put-attribute name="content" value="/WEB-INF/view/login-admin.jsp" />
+ </definition>
+ 
+ <definition name="registrazione" extends="baseLayout">
+ <put-attribute name="title" value="Registrazione" />
+ <put-attribute name="content" value="/WEB-INF/view/registrazione.jsp" />
+ </definition>
+ 
+ <definition name="area-clienti" extends="baseLayout">
+ <put-attribute name="title" value="Area Clienti" />
+ <put-attribute name="content" value="/WEB-INF/view/area-clienti.jsp" />
+ </definition>
+ 
+ <definition name="admin-utenti" extends="baseLayout">
+ <put-attribute name="title" value="Admin Utenti" />
+ <put-attribute name="content" value="/WEB-INF/view/admin-utenti.jsp" />
+ </definition>
+ 
+ <definition name="admin-prodotti" extends="baseLayout">
+ <put-attribute name="title" value="Admin Prodotti" />
+ <put-attribute name="content" value="/WEB-INF/view/admin-prodotti.jsp" />
+ </definition>
+ 
+ <definition name="admin-ordini" extends="baseLayout">
+ <put-attribute name="title" value="Admin Ordini" />
+ <put-attribute name="content" value="/WEB-INF/view/admin-ordini.jsp" />
+ </definition>
+ 
+ <definition name="doveSiamo" extends="baseLayout">
+ <put-attribute name="title" value="Dove Siamo" />
+ <put-attribute name="content" value="/WEB-INF/view/doveSiamo.jsp" />
+ </definition>
+ 
+ <definition name="riepilogo" extends="baseLayout">
+ <put-attribute name="title" value="Riepilogo" />
+ <put-attribute name="content" value="/WEB-INF/view/riepilogo.jsp" />
+ </definition>
+ 
+ <definition name="admin-prodotti-form" extends="baseLayout">
+ <put-attribute name="title" value="Riepilogo" />
+ <put-attribute name="content" value="/WEB-INF/view/admin-prodotti-form.jsp" />
+ </definition>
+ 
+ </tiles-definitions>
